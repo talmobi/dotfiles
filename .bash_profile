@@ -1,1 +1,1 @@
-/Users/mollie/.bash_profile
+source ~/.bashrc
