@@ -1,4 +1,7 @@
-*.swo
-*.swp
-*.DS_STORE
 view
+
+.*.swo
+.*.swp
+.*.DS_STORE
+
+../.*.sw?

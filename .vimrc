@@ -55,7 +55,7 @@ nmap Q gqap
 
 cmap w!! w !sudo tee % >/dev/null
 
-
+nmap <silent> ,, :nohlsearch<CR>
 
 
 " set wildmode=list:longest,list:full
