@@ -1,7 +1,6 @@
 view
 
-.*.swo
-.*.swp
+.**.sw?
 .*.DS_STORE
 
 ../.*.sw?

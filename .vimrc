@@ -1,9 +1,5 @@
 set nocompatible
 
-" Pathogen here
-call pathogen#helptags()
-call pathogen#infect()
-
 set hidden
 
 set nowrap
@@ -18,8 +14,10 @@ set shiftround
 set showmatch
 set ignorecase
 set smartcase
+set encoding=utf-8
 
 set smarttab
+set expandtab
 
 set hlsearch
 set incsearch
@@ -56,6 +54,27 @@ nmap Q gqap
 cmap w!! w !sudo tee % >/dev/null
 
 nmap <silent> ,, :nohlsearch<CR>
+
+" Pathogen here
+execute pathogen#helptags()
+execute pathogen#infect()
+
+" 
+" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" make sure cursorline is alwasy visible
+au BufWinEnter *.* set cursorline
+
+" CtrlP plugin
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_md = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+" neocomplete plugin
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
 
 
 " set wildmode=list:longest,list:full
