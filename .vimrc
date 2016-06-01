@@ -5,6 +5,7 @@ set hidden
 set nowrap
 set tabstop=2
 set backspace=indent,eol,start
+set scrolloff=6
 
 set autoindent
 set copyindent
