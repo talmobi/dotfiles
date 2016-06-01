@@ -20,6 +20,12 @@ set encoding=utf-8
 set smarttab
 set expandtab
 
+set splitbelow
+set splitright
+
+set ruler
+set laststatus=2
+
 set hlsearch
 set incsearch
 
