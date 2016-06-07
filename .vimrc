@@ -70,7 +70,9 @@ execute pathogen#infect()
 " inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " make sure cursorline is alwasy visible
-au BufWinEnter *.* set cursorline
+set cursorline
+au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+" au BufWinEnter *.* set cursorline
 
 " CtrlP plugin
 let g:ctrlp_map = '<c-p>'
