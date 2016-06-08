@@ -5,7 +5,10 @@ set hidden
 set nowrap
 set tabstop=2
 set backspace=indent,eol,start
+
 set scrolloff=6
+set sidescrolloff=7
+set sidescroll=1
 
 set autoindent
 set copyindent
@@ -24,17 +27,19 @@ set splitbelow
 set splitright
 
 set ruler
-set laststatus=2
 
 set hlsearch
 set incsearch
 
 set history=1000
 set undolevels=1000
-set wildignore=*.swp,*.bak,*.pyc,*.class
 set title
 set visualbell
 set noerrorbells
+
+set wildmode=list:longest ",list:full
+set wildmenu
+set wildignore=*.swp,*.swo,*~,*.swn,*.swm,*.bak,*.pyc,*.class
 
 filetype plugin indent on
 
@@ -66,7 +71,7 @@ nmap <silent> ,, :nohlsearch<CR>
 execute pathogen#helptags()
 execute pathogen#infect()
 
-" 
+"
 " inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " make sure cursorline is alwasy visible
@@ -84,6 +89,22 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+" statusline setup
+set statusline=[%{pathshorten(getcwd())}] "display shortened path of current directory
+set statusline+=\ %t       "tail of the filename
+set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}, "file encoding
+set statusline+=%{&ff}] "file format
+set statusline+=%h      "help file flag
+set statusline+=%m      "modified flag
+set statusline+=%r      "read only flag
+set statusline+=%y      "filetype
+set statusline+=%=      "left/right separator
+set statusline+=%c,     "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
+set laststatus=2
+
 
 
 " set wildmode=list:longest,list:full
