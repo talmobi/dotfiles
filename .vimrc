@@ -10,6 +10,9 @@ set scrolloff=6
 set sidescrolloff=7
 set sidescroll=1
 
+set cindent
+set cino=b1,+0,p0,(s,m1,t0 "sane indentations (see :help cino)
+
 set autoindent
 set copyindent
 set number
@@ -104,7 +107,6 @@ set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 set laststatus=2
-
 
 
 " set wildmode=list:longest,list:full
