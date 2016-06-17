@@ -12,6 +12,7 @@ set sidescroll=1
 
 set cindent
 set cino=b1,+0,p0,(s,m1,t0 "sane indentations (see :help cino)
+set cinw-=if,else "disable word indentation
 
 set autoindent
 set copyindent
