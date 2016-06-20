@@ -12,7 +12,8 @@ set sidescroll=1
 
 set cindent
 set cino=b1,+0,p0,(s,m1,t0 "sane indentations (see :help cino)
-set cinw-=if,else "disable word indentation
+" set cinw-=if,else,while, "disable word indentation
+set cinw='' "disable all word indentation (enable this for python)
 
 set autoindent
 set copyindent
@@ -82,6 +83,8 @@ execute pathogen#infect()
 set cursorline
 au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
 " au BufWinEnter *.* set cursorline
+
+" vim-css-color plugin
 
 " CtrlP plugin
 let g:ctrlp_map = '<c-p>'
