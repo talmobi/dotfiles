@@ -86,6 +86,9 @@ au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
 
 " vim-css-color plugin
 
+" multi cursor plugin https://github.com/terryma/vim-multiple-cursors
+let g:multi_cursor_use_default_mapping = 0 " turn off default keybinds
+
 " CtrlP plugin
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_md = 'CtrlP'
