@@ -2,13 +2,15 @@ set nocompatible
 
 set hidden
 
+set synmaxcol=100 "css data uri anti-choke!
+
 set nowrap
 set tabstop=2
 set backspace=indent,eol,start
 
 set scrolloff=6
 set sidescrolloff=7
-set sidescroll=1
+set sidescroll=5
 
 set cindent
 set cino=b1,+0,p0,(s,m1,t0 "sane indentations (see :help cino)
@@ -68,6 +70,7 @@ set showmode
 vmap Q gq
 nmap Q gqap
 
+" sudo write shorthand
 cmap w!! w !sudo tee % >/dev/null
 
 nmap <silent> ,, :nohlsearch<CR>
@@ -93,6 +96,8 @@ let g:multi_cursor_use_default_mapping = 0 " turn off default keybinds
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_md = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
+
+" ignore silly files and directores from CtrlP search
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " neocomplete plugin
