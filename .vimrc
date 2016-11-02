@@ -79,6 +79,17 @@ nmap <silent> ,, :nohlsearch<CR>
 execute pathogen#helptags()
 execute pathogen#infect()
 
+" disable default ctrl-w c to close window
+nnoremap <c-w>c <nop>
+
+" instead bind it to q (and disable useless window quit short-cut)
+nnoremap <c-w>q <c-w>c
+
+" shortcut to full size splitted window (use <c-w>= to equalize)
+nnoremap <c-w>z <c-w>_ <c-w>\|
+
+" nnoremap <C-W>
+
 "
 " inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
