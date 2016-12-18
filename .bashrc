@@ -9,3 +9,6 @@ alias tree="tree -I 'node_modules'"
 
 # prepend android sdk and tools to PATH
 export PATH=/Users/mollie/Library/Android/sdk/platform-tools:/Users/mollie/Library/Android/sdk/tools:$PATH
+
+# postgres PATH
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
