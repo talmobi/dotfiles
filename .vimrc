@@ -2,7 +2,7 @@ set nocompatible
 
 set hidden
 
-set synmaxcol=125 "syntax anti-choke!
+set synmaxcol=199 "syntax anti-choke!
 
 set nowrap
 set tabstop=2
