@@ -4,6 +4,10 @@ set hidden
 
 set synmaxcol=199 "syntax anti-choke!
 
+" more color highlighting for *.json files
+autocmd FileType json setlocal synmaxcol=299
+" autocmd BufNewFile,BufRead *.json setlocal synmaxcol=299
+
 set nowrap
 set tabstop=2
 set backspace=indent,eol,start
