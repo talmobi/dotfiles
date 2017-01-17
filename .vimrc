@@ -8,6 +8,9 @@ set synmaxcol=199 "syntax anti-choke!
 autocmd FileType json setlocal synmaxcol=299
 " autocmd BufNewFile,BufRead *.json setlocal synmaxcol=299
 
+" add flex support for vim-stylus plugin, see: https://github.com/wavded/vim-stylus/issues/46
+hi link stylusProperty cssVisualProp
+
 set nowrap
 set tabstop=2
 set backspace=indent,eol,start
