@@ -123,6 +123,8 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#sources#syntax#max_keyword_length = 30
+let g:neocomplete#sources#buffer#max_keyword_length = 30
 
 " statusline setup
 set statusline=[%{pathshorten(getcwd())}] "display shortened path of current directory
