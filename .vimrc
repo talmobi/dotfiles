@@ -57,6 +57,11 @@ set wildignore=*.swp,*.swo,*~,*.swn,*.swm,*.bak,*.pyc,*.class
 
 filetype plugin indent on
 
+
+" bind some javascript syntax to same syntax groups
+" hi def link javaScriptOperator JavaScriptMember
+hi def link javaScriptOperator javaScriptIdentifier
+
 set background=dark
 
 if &t_Co >= 256 || has("gui_running")
