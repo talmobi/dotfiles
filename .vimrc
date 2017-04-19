@@ -141,6 +141,9 @@ set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 set laststatus=2
 
+" highlight custom word boundaries
+highlight TalmobiCustomGroup guifg=#fb4934 ctermfg=167
+match TalmobiCustomGroup /delete/
 
 " set wildmode=list:longest,list:full
 " set complete=.,w,t
