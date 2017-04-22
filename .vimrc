@@ -57,7 +57,6 @@ set wildignore=*.swp,*.swo,*~,*.swn,*.swm,*.bak,*.pyc,*.class
 
 filetype plugin indent on
 
-
 " bind some javascript syntax to same syntax groups
 " hi def link javaScriptOperator JavaScriptMember
 hi def link javaScriptOperator javaScriptIdentifier
@@ -95,6 +94,8 @@ execute pathogen#infect()
 nnoremap <c-w>c <nop>
 nnoremap <c-w><c-c> <nop>
 
+nnoremap t <c-]>
+
 " instead bind it to q (and overwrite/disable default useless window quit short-cut)
 nnoremap <c-w>q <c-w>c
 
@@ -111,7 +112,8 @@ set cursorline
 au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
 " au BufWinEnter *.* set cursorline
 
-" vim-css-color plugin
+" suppress ctags version warning (since universal-ctags)
+" let g:easytags_suppress_ctags_warning = 1
 
 " multi cursor plugin https://github.com/terryma/vim-multiple-cursors
 let g:multi_cursor_use_default_mapping = 0 " turn off default keybinds
@@ -145,66 +147,3 @@ set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 set laststatus=2
-
-" set wildmode=list:longest,list:full
-" set complete=.,w,t
-" 
-" set splitbelow
-" set splitright
-" 
-" set t_Co=256
-" 
-" let g:hybrid_use_Xresources = 1
-" let g:hybrid_use_iTerm_colors = 1
-" colorscheme gruvbox
-" 
-" " hi CursorLineNr guifg=#050505
-" set cursorline
-" set nocompatible
-" set showcmd
-" set ruler
-" set laststatus=2
-" 
-" set encoding=utf-8
-" set smartcase
-" set ignorecase
-" 
-" set list listchars=tab:»·,trail:·,eol:¬,extends:>,precedes:<,nbsp:¶
-" 
-" set autoindent
-" set tabstop=2
-" set shiftwidth=2
-" set expandtab
-" 
-" set scrolloff=6
-" 
-" " let g:neocomplete#enable_at_startup = 1
-" " let g:neocomplete#enable_smart_case = 1
-" " let g:neocomplete#sources#syntax#min_keyword_length = 3
-" " inoremap <expr><C-g>  neocomplete#undo_completion()
-" " inoremap <expr><C-l>  neocomplete#complete_common_string()
-" " " <TAB>: completion.
-" " inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-" 
-" " Enable syntax omni completion.
-" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-" 
-" " prefer longest first
-" set completeopt+=longest
-" 
-" syntax on
-" filetype plugin indent on
-" " filetype indent off
-" 
-" " autocmd FileType javascript set formatoptions=t
-" " set formatoptions=2,l
-" 
-" set pastetoggle=<F2>
-" set showmode
-" 
-" au BufWinLeave *.* mkview
-" au BufWinEnter *.* silent loadview
