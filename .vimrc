@@ -191,3 +191,14 @@ set laststatus=2
 
 " load all help files
 silent! helptags ALL
+
+" show commands as they are being typed in
+set showcmd
+
+" SNIPPETS
+
+" sample package json snippet
+nnoremap snipp :let @x=''<CR>m'"xciw<ESC>:-1read $HOME/.vim/snippets/package.json<CR>V'':s/NAME/<C-R>x/g<CR>/TODO<CR>
+
+" sample html5 snippet
+nnoremap sniph :let @x=''<CR>m'"xciw<ESC>:-1read $HOME/.vim/snippets/index.html<CR>/TODO<CR>''4jcit<ESC>"xpa
