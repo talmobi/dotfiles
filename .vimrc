@@ -1,5 +1,44 @@
 set nocompatible
 
+filetype off
+let &runtimepath.=',~/.vim/bundle/ale'
+filetype plugin on
+
+" use javascript standard linter
+let g:ale_linters = {
+      \ 'javascript': ['standard'],
+      \}
+
+" navigate between errors
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" toggle tagbar plugin
+nmap <F8> :TagbarToggle<CR>
+
+" don't lint on modified
+let g:ale_lint_on_text_changed = 'never'
+
+" dont lint on file open
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_filetype_changed = 0
+
+" tag bar css
+let g:tagbar_type_css = {
+\ 'ctagstype' : 'Css',
+    \ 'kinds'     : [
+        \ 'c:classes',
+        \ 's:selectors',
+        \ 'i:identities'
+    \ ]
+\ }
+
+" lint on save
+let g:ale_lint_on_save = 0
+
+nmap <silent> <F3> :call ale#Lint()<CR>
+
+" hidden buffers
 set hidden
 
 set synmaxcol=199 "syntax anti-choke!
@@ -53,7 +92,7 @@ set noerrorbells
 
 set wildmode=list:longest ",list:full
 set wildmenu
-set wildignore=*.swp,*.swo,*~,*.swn,*.swm,*.bak,*.pyc,*.class
+set wildignore=*.swp,*.swo,*~,*.swn,*.swm,*.bak,*.pyc,*.class,node_modules,.git,*.DS_Store
 
 filetype plugin indent on
 
@@ -126,6 +165,8 @@ let g:ctrlp_working_path_mode = 'ra'
 " ignore silly files and directores from CtrlP search
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
+set includeexpr=substitute(v:fname,'\\.',expand('%:p:h'),'')
+
 " neocomplete plugin
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
@@ -147,3 +188,6 @@ set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 set laststatus=2
+
+" load all help files
+silent! helptags ALL
