@@ -23,7 +23,7 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_filetype_changed = 0
 
-" tag bar css
+" tag bar css (depends on uctags)
 let g:tagbar_type_css = {
 \ 'ctagstype' : 'Css',
     \ 'kinds'     : [
