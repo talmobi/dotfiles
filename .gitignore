@@ -1,3 +1,4 @@
 .netrwhist
 *.sw?
 *.DS_STORE
+.tmux/plugins/*
