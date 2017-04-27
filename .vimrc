@@ -92,7 +92,7 @@ set noerrorbells
 
 set wildmode=list:longest ",list:full
 set wildmenu
-set wildignore=*.swp,*.swo,*~,*.swn,*.swm,*.bak,*.pyc,*.class,node_modules,.git,*.DS_Store
+set wildignore=*.swp,*.swo,*~,*.swn,*.swm,*.bak,*.pyc,*.class,*node_modules*,*.git,*.DS_Store
 
 filetype plugin indent on
 
@@ -165,7 +165,7 @@ let g:ctrlp_working_path_mode = 'ra'
 " ignore silly files and directores from CtrlP search
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
-set includeexpr=substitute(v:fname,'\\.',expand('%:p:h'),'')
+" set includeexpr=substitute(v:fname,'\\.',expand('%:p:h'),'')
 
 " neocomplete plugin
 let g:neocomplete#enable_at_startup = 1
@@ -195,10 +195,16 @@ silent! helptags ALL
 " show commands as they are being typed in
 set showcmd
 
+" disable tiny preview window on omnicomplete
+set completeopt-=preview
+
 " SNIPPETS
 
 " sample package json snippet
-nnoremap snipp :let @x=''<CR>m'"xciw<ESC>:-1read $HOME/.vim/snippets/package.json<CR>V'':s/NAME/<C-R>x/g<CR>/TODO<CR>
+nnoremap snipp :let @x=''<CR>m'"xciW<ESC>:-1read $HOME/.vim/snippets/package.json<CR>V'':s/NAME/<C-R>x/g<CR>/TODO<CR>
 
 " sample html5 snippet
-nnoremap sniph :let @x=''<CR>m'"xciw<ESC>:-1read $HOME/.vim/snippets/index.html<CR>/TODO<CR>''4jcit<ESC>"xpa
+nnoremap sniph :let @x=''<CR>m'"xciW<ESC>:-1read $HOME/.vim/snippets/index.html<CR>/TODO<CR>''4jcit<ESC>"xpa
+
+" sample rollup.config.js snippet
+nnoremap snipr :-1read $HOME/.vim/snippets/index.html<CR>
