@@ -198,6 +198,14 @@ set showcmd
 " disable tiny preview window on omnicomplete
 set completeopt-=preview
 
+
+" LINT
+
+" use standardjs output for vim's built in quickfix
+" (:make, :copen, :cn, :cp, etc)
+set makeprg=standard\ %
+
+
 " SNIPPETS
 
 " sample package json snippet
