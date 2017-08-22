@@ -1,42 +1,42 @@
 set nocompatible
 
-filetype off
-let &runtimepath.=',~/.vim/bundle/ale'
+" filetype off
+" let &runtimepath.=',~/.vim/bundle/ale'
 filetype plugin on
 
 " use javascript standard linter
-let g:ale_linters = {
-      \ 'javascript': ['standard'],
-      \}
-
-" navigate between errors
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
-" toggle tagbar plugin
-nmap <F8> :TagbarToggle<CR>
-
-" don't lint on modified
-let g:ale_lint_on_text_changed = 'never'
-
-" dont lint on file open
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_filetype_changed = 0
-
-" tag bar css (depends on uctags)
-let g:tagbar_type_css = {
-\ 'ctagstype' : 'Css',
-    \ 'kinds'     : [
-        \ 'c:classes',
-        \ 's:selectors',
-        \ 'i:identities'
-    \ ]
-\ }
-
-" lint on save
-let g:ale_lint_on_save = 0
-
-nmap <silent> <F3> :call ale#Lint()<CR>
+" let g:ale_linters = {
+"       \ 'javascript': ['standard'],
+"       \}
+" 
+" " navigate between errors
+" nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+" nmap <silent> <C-j> <Plug>(ale_next_wrap)
+" 
+" " toggle tagbar plugin
+" nmap <F8> :TagbarToggle<CR>
+" 
+" " don't lint on modified
+" let g:ale_lint_on_text_changed = 'never'
+" 
+" " dont lint on file open
+" let g:ale_lint_on_enter = 0
+" let g:ale_lint_on_filetype_changed = 0
+" 
+" " tag bar css (depends on uctags)
+" let g:tagbar_type_css = {
+" \ 'ctagstype' : 'Css',
+"     \ 'kinds'     : [
+"         \ 'c:classes',
+"         \ 's:selectors',
+"         \ 'i:identities'
+"     \ ]
+" \ }
+" 
+" " lint on save
+" let g:ale_lint_on_save = 0
+" 
+" nmap <silent> <F3> :call ale#Lint()<CR>
 
 " hidden buffers
 set hidden
@@ -140,6 +140,9 @@ nnoremap <c-w>q <c-w>c
 
 " shortcut to full size splitted window (use <c-w>= to equalize)
 nnoremap <c-w>z <c-w>_ <c-w>\|
+
+" paste replace without yanking replaced text
+vnoremap <leader>p "_dP
 
 " nnoremap <C-W>
 
