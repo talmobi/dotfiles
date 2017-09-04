@@ -1,42 +1,8 @@
 set nocompatible
 
-" filetype off
-" let &runtimepath.=',~/.vim/bundle/ale'
+filetype off
+" filetype plugin off
 filetype plugin on
-
-" use javascript standard linter
-" let g:ale_linters = {
-"       \ 'javascript': ['standard'],
-"       \}
-" 
-" " navigate between errors
-" nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-" nmap <silent> <C-j> <Plug>(ale_next_wrap)
-" 
-" " toggle tagbar plugin
-" nmap <F8> :TagbarToggle<CR>
-" 
-" " don't lint on modified
-" let g:ale_lint_on_text_changed = 'never'
-" 
-" " dont lint on file open
-" let g:ale_lint_on_enter = 0
-" let g:ale_lint_on_filetype_changed = 0
-" 
-" " tag bar css (depends on uctags)
-" let g:tagbar_type_css = {
-" \ 'ctagstype' : 'Css',
-"     \ 'kinds'     : [
-"         \ 'c:classes',
-"         \ 's:selectors',
-"         \ 'i:identities'
-"     \ ]
-" \ }
-" 
-" " lint on save
-" let g:ale_lint_on_save = 0
-" 
-" nmap <silent> <F3> :call ale#Lint()<CR>
 
 " hidden buffers
 set hidden
@@ -47,7 +13,7 @@ set synmaxcol=199 "syntax anti-choke!
 autocmd FileType json setlocal synmaxcol=299
 " autocmd BufNewFile,BufRead *.json setlocal synmaxcol=299
 
-" add flex support for vim-stylus plugin, see: https://github.com/wavded/vim-stylus/issues/46
+" essentially adds flex support for vim-stylus plugin, see: https://github.com/wavded/vim-stylus/issues/46
 hi link stylusProperty cssVisualProp
 
 set nowrap
@@ -94,6 +60,7 @@ set wildmode=list:longest ",list:full
 set wildmenu
 set wildignore=*.swp,*.swo,*~,*.swn,*.swm,*.bak,*.pyc,*.class,*node_modules*,*.git,*.DS_Store
 
+" filetype plugin indent off
 filetype plugin indent on
 
 " bind some javascript syntax to same syntax groups
@@ -117,20 +84,16 @@ set pastetoggle=<F2>
 set showmode
 
 " Use Q for formatting the current paragraph (or selection)
-vmap Q gq
-nmap Q gqap
+" vmap Q gq
+" nmap Q gqap
 
 " sudo write shorthand
 cmap w!! w !sudo tee % >/dev/null
 
 nmap <silent> ,, :nohlsearch<CR>
 
-" Pathogen here
-execute pathogen#helptags()
-execute pathogen#infect()
-
 " disable default useless  and annoying ctrl-w_c and ctr-w_ctrl_c to close window
-nnoremap <c-w>c <nop>
+nnoremap <c-w> <nop>
 nnoremap <c-w><c-c> <nop>
 
 nnoremap t <c-]>
@@ -149,6 +112,10 @@ vnoremap <leader>p "_dP
 "
 " inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
+" Pathogen here
+execute pathogen#helptags()
+execute pathogen#infect()
+
 " make sure cursorline is alwasy visible
 set cursorline
 au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
@@ -158,7 +125,7 @@ au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
 " let g:easytags_suppress_ctags_warning = 1
 
 " multi cursor plugin https://github.com/terryma/vim-multiple-cursors
-let g:multi_cursor_use_default_mapping = 0 " turn off default keybinds
+" let g:multi_cursor_use_default_mapping = 0 " turn off default keybinds
 
 " CtrlP plugin
 let g:ctrlp_map = '<c-p>'
@@ -170,12 +137,18 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " set includeexpr=substitute(v:fname,'\\.',expand('%:p:h'),'')
 
+" dont set sparkup mappings by default
+let g:sparkupNextMapping = '<nop>'
+
+" set sparkup mappings for html files
+" autocmd FileType html let g:sparkupMaps=1
+
 " neocomplete plugin
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#sources#syntax#max_keyword_length = 30
-let g:neocomplete#sources#buffer#max_keyword_length = 30
+" let g:neocomplete#enable_at_startup = 1
+" let g:neocomplete#enable_smart_case = 1
+" let g:neocomplete#sources#syntax#min_keyword_length = 3
+" let g:neocomplete#sources#syntax#max_keyword_length = 30
+" let g:neocomplete#sources#buffer#max_keyword_length = 30
 
 " statusline setup
 set statusline=[%{pathshorten(getcwd())}] "display shortened path of current directory
@@ -199,7 +172,7 @@ silent! helptags ALL
 set showcmd
 
 " disable tiny preview window on omnicomplete
-set completeopt-=preview
+" set completeopt-=preview
 
 
 " LINT
