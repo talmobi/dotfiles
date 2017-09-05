@@ -16,7 +16,7 @@ autocmd FileType json setlocal synmaxcol=299
 " auto save/load folds etc
 augroup AutoSaveFolds
   autocmd!
-  autocmd BufWinEnter * mkview
+  autocmd BufWinLeave * mkview
   autocmd BufWinEnter * silent loadview
 augroup END
 
