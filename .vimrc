@@ -97,7 +97,6 @@ noremap <c-w>c <nop>
 noremap <c-w>q <nop>
 " disable another default useless and annoying ctrl-w_o ( use :only instead )
 noremap <c-w>o <nop>
-noremap c <nop>
 " nnoremap <c-w><c-c> <nop>
 
 nnoremap t <c-]>
