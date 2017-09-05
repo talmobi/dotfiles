@@ -3,3 +3,6 @@
 *.DS_STORE
 
 _oldbundles
+
+# was already ignored in .vim/.gitignore but just to make sure..
+.vim/view/
