@@ -92,14 +92,18 @@ cmap w!! w !sudo tee % >/dev/null
 
 nmap <silent> ,, :nohlsearch<CR>
 
-" disable default useless  and annoying ctrl-w_c and ctr-w_ctrl_c to close window
-nnoremap <c-w> <nop>
-nnoremap <c-w><c-c> <nop>
+" disable default useless and annoying ctrl-w_c ( use :close or :q instead )
+noremap <c-w>c <nop>
+noremap <c-w>q <nop>
+" disable another default useless and annoying ctrl-w_o ( use :only instead )
+noremap <c-w>o <nop>
+noremap c <nop>
+" nnoremap <c-w><c-c> <nop>
 
 nnoremap t <c-]>
 
 " instead bind it to q (and overwrite/disable default useless window quit short-cut)
-nnoremap <c-w>q <c-w>c
+" nnoremap <c-w>q <c-w>c
 
 " shortcut to full size splitted window (use <c-w>= to equalize)
 nnoremap <c-w>z <c-w>_ <c-w>\|
@@ -170,6 +174,9 @@ silent! helptags ALL
 
 " show commands as they are being typed in
 set showcmd
+
+" disable command timeouts ( fixes buggy <c-w> [timeout] c issues )
+set notimeout
 
 " disable tiny preview window on omnicomplete
 " set completeopt-=preview
