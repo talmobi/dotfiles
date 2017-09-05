@@ -13,6 +13,13 @@ set synmaxcol=199 "syntax anti-choke!
 autocmd FileType json setlocal synmaxcol=299
 " autocmd BufNewFile,BufRead *.json setlocal synmaxcol=299
 
+" auto save/load folds etc
+augroup AutoSaveFolds
+  autocmd!
+  autocmd BufWinEnter * mkview
+  autocmd BufWinEnter * silent loadview
+augroup END
+
 " essentially adds flex support for vim-stylus plugin, see: https://github.com/wavded/vim-stylus/issues/46
 hi link stylusProperty cssVisualProp
 
@@ -21,8 +28,8 @@ set tabstop=2
 set backspace=indent,eol,start
 
 set scrolloff=6
-set sidescrolloff=7
-set sidescroll=5
+set sidescrolloff=5 " was 7
+set sidescroll=4 " was 5
 
 set cindent
 set cino=b1,+0,p0,(s,m1,t0 "sane indentations (see :help cino)
