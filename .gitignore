@@ -6,3 +6,9 @@ _oldbundles
 
 # was already ignored in .vim/.gitignore but just to make sure..
 .vim/view/
+
+# install tpm ( tmux plugin manager first )
+# git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# ignore tmux plugins, let tpm install then press "prefix + I" to install plugins
+.tmux/plugins
