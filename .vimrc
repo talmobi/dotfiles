@@ -20,6 +20,33 @@ augroup AutoSaveFolds
   autocmd BufWinEnter *.* silent loadview
 augroup END
 
+" sometimes mk/loadview fucks up, so here
+" is a function to reset the view file
+" ( found in ~/.vim/view/ ) of the current file
+function! ResetView ()
+  " where to find the view files
+  let dir = "~/.vim/view/*"
+
+  " build the command we want to execute
+  " list the files with find
+  " parse the results with grep
+  " pipe through xargs and delete with dm
+  let cmd = "!" . "find " . dir . " | grep % | xargs rm"
+
+  " ripgrep version ( not necessary probably )
+  " let cmd = "!" . "rg --files -g " . dir . " | rg % | xargs rm"
+
+  " clear output
+  silent !clear
+
+  " run in silent mode
+  execute "silent " . cmd
+  " echo "silent " . cmd
+
+  " redraw screen ( otherwise it may be all black )
+  redraw!
+endfunction
+
 " essentially adds flex support for vim-stylus plugin, see: https://github.com/wavded/vim-stylus/issues/46
 hi link stylusProperty cssVisualProp
 
