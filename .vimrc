@@ -20,31 +20,51 @@ augroup AutoSaveFolds
   autocmd BufWinEnter *.* silent loadview
 augroup END
 
+" dev testing function
+function! NameLength ()
+  let s = len( expand( "%" ) )
+  echo s
+
+  let limit = 14
+
+  if s > limit
+    echo 'bigger than limit'
+  else
+    echo 'less than limit'
+  endif
+endfunction
+
 " sometimes mk/loadview fucks up, so here
 " is a function to reset the view file
 " ( found in ~/.vim/view/ ) of the current file
 function! ResetView ()
-  " where to find the view files
-  let dir = "~/.vim/view/*"
+  " make sure the filename is of reasonable length
+  let fileNameLength = len( expand( "%" ) )
+  if fileNameLength < 4
+    echo "file name was too short ( less than 4 ), did not delete viewfile"
+  else
+    " where to find the view files
+    let dir = "~/.vim/view/*"
 
-  " build the command we want to execute
-  " list the files with find
-  " parse the results with grep
-  " pipe through xargs and delete with dm
-  let cmd = "!" . "find " . dir . " | grep % | xargs rm"
+    " build the command we want to execute
+    " list the files with find
+    " parse the results with grep
+    " pipe through xargs and delete with dm
+    let cmd = "!" . "find " . dir . " | grep % | xargs rm"
 
-  " ripgrep version ( not necessary probably )
-  " let cmd = "!" . "rg --files -g " . dir . " | rg % | xargs rm"
+    " ripgrep version ( not necessary probably )
+    " let cmd = "!" . "rg --files -g " . dir . " | rg % | xargs rm"
 
-  " clear output
-  silent !clear
+    " clear output
+    silent !clear
 
-  " run in silent mode
-  execute "silent " . cmd
-  " echo "silent " . cmd
+    " run in silent mode
+    execute "silent " . cmd
+    " echo "silent " . cmd
 
-  " redraw screen ( otherwise it may be all black )
-  redraw!
+    " redraw screen ( otherwise it may be all black )
+    redraw!
+  endif
 endfunction
 
 " essentially adds flex support for vim-stylus plugin, see: https://github.com/wavded/vim-stylus/issues/46
