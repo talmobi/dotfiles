@@ -21,18 +21,18 @@ augroup AutoSaveFolds
 augroup END
 
 " dev testing function
-function! NameLength ()
-  let s = len( expand( "%" ) )
-  echo s
-
-  let limit = 14
-
-  if s > limit
-    echo 'bigger than limit'
-  else
-    echo 'less than limit'
-  endif
-endfunction
+" function! NameLength ()
+"   let s = len( expand( "%" ) )
+"   echo s
+" 
+"   let limit = 14
+" 
+"   if s > limit
+"     echo 'bigger than limit'
+"   else
+"     echo 'less than limit'
+"   endif
+" endfunction
 
 " sometimes mk/loadview fucks up, so here
 " is a function to reset the view file
@@ -40,9 +40,7 @@ endfunction
 function! ResetView ()
   " make sure the filename is of reasonable length
   let fileNameLength = len( expand( "%" ) )
-  if fileNameLength < 4
-    echo "file name was too short ( less than 4 ), did not delete viewfile"
-  else
+  if fileNameLength > 2
     " where to find the view files
     let dir = "~/.vim/view/*"
 
@@ -64,6 +62,8 @@ function! ResetView ()
 
     " redraw screen ( otherwise it may be all black )
     redraw!
+  else
+    echo "file name was too short ( less than 3 ), did not delete viewfile"
   endif
 endfunction
 
@@ -279,7 +279,7 @@ set notimeout
 
 " use standardjs output for vim's built in quickfix
 " (:make, :copen, :cn, :cp, etc)
-set makeprg=standard\ %
+set makeprg=standarder\ %
 
 " holy fucking shit!!!!!
 set grepprg=rg\ --vimgrep
