@@ -105,6 +105,12 @@ noremap <c-w>o <nop>
 
 nnoremap t <c-]>
 
+" cgn based replace
+nnoremap # *''cgn
+
+" better default * ( doesn't move cursor at start)
+nnoremap * *''
+
 " instead bind it to q (and overwrite/disable default useless window quit short-cut)
 " nnoremap <c-w>q <c-w>c
 
