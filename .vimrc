@@ -119,6 +119,43 @@ nnoremap <c-w>z <c-w>_ <c-w>\|
 
 " paste replace without yanking replaced text
 vnoremap p "_dP
+" vnoremap // "9y/<c-r>9<cr>
+" vnoremap // "_d"-P/<c-r>-<cr>N
+
+" let g:_unnamedReg = @"
+" function! StoreUnnamedReg ()
+"   let g:_unnamedReg = @"
+" endfunction
+" 
+" function! LoadUnnamedReg ()
+"   let @" = g:_unnamedReg
+" endfunction
+" 
+" vnoremap // :call StoreUnnamedReg()<cr>"ay/<c-r>a<cr>N:call LoadUnnamedReg()<cr>
+
+" function! RestorePreviousYank ()
+"   let @" = @0
+" endfunction
+
+function! VisualSearch ()
+  let temp = @"
+  normal! gv"ay
+  let search = escape( @a, "/\"'" )
+  let @a = search
+  let @" = temp
+
+  let s = "/" . search . "\<cr>" . "N"
+  call feedkeys( s )
+endfunction
+
+nnoremap ss :source ~/.vimrc<cr>
+
+" vnoremap // "ay/<c-r>a<cr>:call RestorePreviousYank()<cr>N
+" vnoremap // :call VisualSearch()<cr>/<c-r>a<cr>N
+vnoremap // :call VisualSearch()<cr>
+
+" type in the <CR> implicitly for you
+nnoremap // //<cr>
 
 " nnoremap <C-W>
 
@@ -196,6 +233,9 @@ set notimeout
 " use standardjs output for vim's built in quickfix
 " (:make, :copen, :cn, :cp, etc)
 set makeprg=standard\ %
+
+" holy fucking shit!!!!!
+set grepprg=rg\ --vimgrep
 
 
 " SNIPPETS
