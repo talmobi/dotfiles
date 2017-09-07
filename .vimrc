@@ -1,8 +1,8 @@
 set nocompatible
 
-filetype off
-" filetype plugin off
+filetype on
 filetype plugin on
+filetype plugin indent on
 
 " hidden buffers
 set hidden
@@ -16,8 +16,8 @@ autocmd FileType json setlocal synmaxcol=299
 " auto save/load folds etc
 augroup AutoSaveFolds
   autocmd!
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent loadview
+  autocmd BufWinLeave *.* mkview
+  autocmd BufWinEnter *.* silent loadview
 augroup END
 
 " essentially adds flex support for vim-stylus plugin, see: https://github.com/wavded/vim-stylus/issues/46
@@ -67,9 +67,6 @@ set wildmode=list:longest ",list:full
 set wildmenu
 set wildignore=*.swp,*.swo,*~,*.swn,*.swm,*.bak,*.pyc,*.class,*node_modules*,*.git,*.DS_Store
 
-" filetype plugin indent off
-filetype plugin indent on
-
 " bind some javascript syntax to same syntax groups
 " hi def link javaScriptOperator JavaScriptMember
 hi def link javaScriptOperator javaScriptIdentifier
@@ -115,7 +112,7 @@ nnoremap t <c-]>
 nnoremap <c-w>z <c-w>_ <c-w>\|
 
 " paste replace without yanking replaced text
-vnoremap <leader>p "_dP
+vnoremap p "_dP
 
 " nnoremap <C-W>
 
