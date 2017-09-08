@@ -162,7 +162,7 @@ nnoremap t <c-]>
 nnoremap # *''cgn
 
 " better default * ( doesn't move cursor at start)
-nnoremap * *''
+nnoremap * *''0n
 
 " instead bind it to q (and overwrite/disable default useless window quit short-cut)
 " nnoremap <c-w>q <c-w>c
@@ -209,8 +209,10 @@ vnoremap // :call VisualSearch()<cr>
 
 vnoremap * :call VisualSearch()<cr>
 
+vnoremap Y ygv:call VisualSearch()<cr>
+
 " type in the <CR> implicitly for you
-nnoremap // //<cr>
+nnoremap // 0//<cr>
 
 " nnoremap <C-W>
 
