@@ -193,7 +193,7 @@ vnoremap p "_dP
 function! VisualSearch ()
   let temp = @"
   normal! gv"ay
-  let search = escape( @a, "/\"'" )
+  let search = escape( @a, "/\"'$]" )
   let @a = search
   let @" = temp
 
