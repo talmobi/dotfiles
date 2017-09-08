@@ -201,6 +201,8 @@ nnoremap ss :source ~/.vimrc<cr>
 " vnoremap // :call VisualSearch()<cr>/<c-r>a<cr>N
 vnoremap // :call VisualSearch()<cr>
 
+vnoremap * :call VisualSearch()<cr>
+
 " type in the <CR> implicitly for you
 nnoremap // //<cr>
 
