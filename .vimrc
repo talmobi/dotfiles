@@ -114,6 +114,12 @@ set wildmode=list:longest ",list:full
 set wildmenu
 set wildignore=*.swp,*.swo,*~,*.swn,*.swm,*.bak,*.pyc,*.class,*node_modules*,*.git,*.DS_Store
 
+" open folds recursively
+nnoremap zO zczO
+
+" fold indents
+set foldmethod=indent
+
 " bind some javascript syntax to same syntax groups
 " hi def link javaScriptOperator JavaScriptMember
 hi def link javaScriptOperator javaScriptIdentifier
@@ -195,7 +201,7 @@ function! VisualSearch ()
   call feedkeys( s )
 endfunction
 
-nnoremap ss :source ~/.vimrc<cr>
+nnoremap ss :call ResetView()<cr>:source ~/.vimrc<cr>
 
 " vnoremap // "ay/<c-r>a<cr>:call RestorePreviousYank()<cr>N
 " vnoremap // :call VisualSearch()<cr>/<c-r>a<cr>N
