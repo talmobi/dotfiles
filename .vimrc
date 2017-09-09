@@ -114,8 +114,9 @@ set wildmode=list:longest ",list:full
 set wildmenu
 set wildignore=*.swp,*.swo,*~,*.swn,*.swm,*.bak,*.pyc,*.class,*node_modules*,*.git,*.DS_Store
 
-" open folds recursively
-nnoremap zO zczO
+" open all folds recursively by default
+nnoremap zo zCzO
+nnoremap zO zo
 
 " fold indents
 set foldmethod=indent
@@ -126,12 +127,38 @@ hi def link javaScriptOperator javaScriptIdentifier
 
 set background=dark
 
+
+" gruvbox contrasts ( medium on all by default )
+" let g:gruvbox_contrast_light='soft'
+" let g:gruvbox_contrast_light='medium'
+" let g:gruvbox_contrast_light='hard'
+
+" let g:gruvbox_contrast='soft'
+" let g:gruvbox_contrast='medium'
+" let g:gruvbox_contrast='hard'
+
+" let g:gruvbox_contrast_dark='soft'
+" let g:gruvbox_contrast_dark='medium'
+" let g:gruvbox_contrast_dark='hard'
+
+
 if &t_Co >= 256 || has("gui_running")
+  " Fixes background color erase
+  " see: https://sunaku.github.io/vim-256color-bce.html
+  set t_ut=
   colorscheme gruvbox
 endif
 
 if &t_Co > 2 || has("gui_running")
   syntax on
+endif
+
+if &t_Co <= 8
+  " set basic colorscheme
+  colorscheme desert
+
+  " darkblue hilight of cursor
+  hi CursorLine ctermbg=4 cterm=
 endif
 
 set list
