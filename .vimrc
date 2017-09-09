@@ -158,7 +158,7 @@ if &t_Co <= 8
   colorscheme desert
 
   " darkblue hilight of cursor
-  hi CursorLine ctermbg=4
+  hi CursorLine term=NONE cterm=NONE ctermbg=4
 endif
 
 set list
