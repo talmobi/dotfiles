@@ -197,6 +197,9 @@ nnoremap * *''0n
 " shortcut to full size splitted window (use <c-w>= to equalize)
 nnoremap <c-w>z <c-w>_ <c-w>\|
 
+nnoremap <tab> <c-t>t
+nnoremap <s-tab> <c-t>T
+
 " paste replace without yanking replaced text
 vnoremap p "_dP
 " vnoremap // "9y/<c-r>9<cr>
