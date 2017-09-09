@@ -314,9 +314,13 @@ set notimeout
 
 " LINT
 
-" use standardjs output for vim's built in quickfix
+" use spacestandard linter by default ( for vim's built in quickfix )
 " (:make, :copen, :cn, :cp, etc)
-set makeprg=standarder\ %
+set makeprg=spacestandard\ %
+
+" use some other default makeprg based on filetype
+" autocmd Filetype foo setlocal makeprg=/bin/foo
+
 
 " holy fucking shit!!!!!
 set grepprg=rg\ --vimgrep
