@@ -284,6 +284,12 @@ let g:sparkupNextMapping = '<nop>'
 " let g:neocomplete#sources#syntax#max_keyword_length = 30
 " let g:neocomplete#sources#buffer#max_keyword_length = 30
 
+" add some DOM API dict for js files
+autocmd FileType js execute 'setlocal dictionary+=~/.vim/domkeywords.txt'
+
+" add some general words to default dict
+set complete+=k~/.vim/keywords.txt
+
 " statusline setup
 set statusline=[%{pathshorten(getcwd())}] "display shortened path of current directory
 set statusline+=\ %t       "tail of the filename
@@ -308,9 +314,9 @@ set showcmd
 " disable command timeouts ( fixes buggy <c-w> [timeout] c issues )
 set notimeout
 
-" disable tiny preview window on omnicomplete
-" set completeopt-=preview
-
+" dont' insert directly on menu popup, allowing you to enter more chars
+" to pinpoint results
+set completeopt+=noinsert
 
 " LINT
 
