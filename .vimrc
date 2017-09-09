@@ -284,11 +284,21 @@ let g:sparkupNextMapping = '<nop>'
 " let g:neocomplete#sources#syntax#max_keyword_length = 30
 " let g:neocomplete#sources#buffer#max_keyword_length = 30
 
-" add some DOM API dict for js files
-autocmd FileType js execute 'setlocal dictionary+=~/.vim/domkeywords.txt'
+" load dictionaries basedon filetype
+autocmd FileType javascript setlocal dictionary+=~/.vim/words/Element.props.txt
+autocmd FileType javascript setlocal dictionary+=~/.vim/words/Element.methods.txt
+autocmd FileType javascript setlocal dictionary+=~/.vim/words/HTMLElement.props.txt
+autocmd FileType javascript setlocal dictionary+=~/.vim/words/HTMLElement.methods.txt
+autocmd FileType javascript setlocal dictionary+=~/.vim/words/EventTarget.methods.txt
+autocmd FileType javascript setlocal dictionary+=~/.vim/words/Node.props.txt
+autocmd FileType javascript setlocal dictionary+=~/.vim/words/Node.methods.txt
+autocmd FileType javascript setlocal dictionary+=~/.vim/words/HTMLCanvasElement.props.txt
+autocmd FileType javascript setlocal dictionary+=~/.vim/words/HTMLCanvasElement.methods.txt
+autocmd FileType javascript setlocal dictionary+=~/.vim/words/CanvasRenderingContext2D.props.txt
+autocmd FileType javascript setlocal dictionary+=~/.vim/words/CanvasRenderingContext2D.methods.txt
 
 " add some general words to default dict
-set complete+=k~/.vim/keywords.txt
+set complete+=k~/.vim/words/global.txt
 
 " statusline setup
 set statusline=[%{pathshorten(getcwd())}] "display shortened path of current directory

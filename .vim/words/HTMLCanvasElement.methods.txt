@@ -1,0 +1,4 @@
+getContext()
+toBlob()
+toDataURL()
+transferControlToOffscreen()
