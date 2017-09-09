@@ -1,0 +1,3 @@
+" some global keywords for complete
+width
+height
