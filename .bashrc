@@ -9,6 +9,9 @@ tmux-refresh() {
   stty sane; printf '\033k%s\033\\\033]2;%s\007' "$(basename "$SHELL")" "$(uname -n)"; tput reset; tmux refresh
 }
 
+export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 # . `brew --prefix`/etc/profile.d/z.sh
 
 parse_git_branch() {
@@ -22,3 +25,5 @@ export PATH=/Users/mollie/Library/Android/sdk/platform-tools:/Users/mollie/Libra
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 
 export PS1='\e[0;32m \u \e[m\e[0;33m \w \e[m\e[1;33m$(parse_git_branch)\e[m\n\$ '
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -11,7 +11,20 @@ set synmaxcol=199 "syntax anti-choke!
 
 " more color highlighting for *.json files
 autocmd FileType json setlocal synmaxcol=299
-" autocmd BufNewFile,BufRead *.json setlocal synmaxcol=299
+
+" auto mark files based on type ( holy shit! )
+" https://stackoverflow.com/a/16084326/3496140
+augroup VIMRC
+  autocmd!
+
+  autocmd BufLeave *.css normal! mC
+  autocmd BufLeave *.styl normal! mS
+  autocmd BufLeave *.html normal! mH
+  autocmd BufLeave *.js normal! mJ
+  autocmd BufLeave *.json normal! mO
+  autocmd BufLeave *.php normal! mP
+  autocmd BufLeave *.xml normal! mX
+augroup END
 
 " auto save/load folds etc
 augroup AutoSaveFolds
@@ -112,7 +125,14 @@ set noerrorbells
 
 set wildmode=list:longest ",list:full
 set wildmenu
-set wildignore=*.swp,*.swo,*~,*.swn,*.swm,*.bak,*.pyc,*.class,*node_modules*,*.git,*.DS_Store
+set wildignore=*.swp,*.swo,*~,*.swn,*.swm,*.bak
+set wildignore+=*.jpg,*.jpeg,*.png,*.gif
+set wildignore+=*.psd
+set wildignore+=*.mp4,*.avi,*.mpg,*.mpeg
+set wildignore+=*.pyc,*.class,*.DS_Store
+set wildignore+=*/.git/**/*,*/node_modules/**/*,*/.svn/**/*
+set wildignore+=tags
+set wildignore+=*.tar.*
 
 " open all folds recursively by default
 nnoremap zo zCzO
@@ -125,41 +145,34 @@ set foldmethod=indent
 " hi def link javaScriptOperator JavaScriptMember
 hi def link javaScriptOperator javaScriptIdentifier
 
-set background=dark
+" function! RefreshColorSchemes ()
+"   execute ":colorscheme " . g:colors_name
+" 
+"   if &t_Co <= 8
+"     " set basic colorscheme
+"     colorscheme desert
+" 
+"     " darkblue hilight of cursor
+"     hi CursorLine term=NONE cterm=NONE ctermbg=4
+"   endif
+" endfunction
 
+function! TabMessage (cmd)
+  redir => message
+  silent execute a:cmd
+  redir END
+  if empty(message)
+    echoerr "no output"
+  else
+    " use "new" instead of "tabnew" below if you prefer split windows instead of tabs
+    tabnew
+    setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified
+    silent put=message
+  endif
+endfunction
+command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 
-" gruvbox contrasts ( medium on all by default )
-" let g:gruvbox_contrast_light='soft'
-" let g:gruvbox_contrast_light='medium'
-" let g:gruvbox_contrast_light='hard'
-
-" let g:gruvbox_contrast='soft'
-" let g:gruvbox_contrast='medium'
-" let g:gruvbox_contrast='hard'
-
-" let g:gruvbox_contrast_dark='soft'
-" let g:gruvbox_contrast_dark='medium'
-" let g:gruvbox_contrast_dark='hard'
-
-
-if &t_Co >= 256 || has("gui_running")
-  " Fixes background color erase
-  " see: https://sunaku.github.io/vim-256color-bce.html
-  set t_ut=
-  colorscheme gruvbox
-endif
-
-if &t_Co > 2 || has("gui_running")
-  syntax on
-endif
-
-if &t_Co <= 8
-  " set basic colorscheme
-  colorscheme desert
-
-  " darkblue hilight of cursor
-  hi CursorLine term=NONE cterm=NONE ctermbg=4
-endif
+" autocmd BufWinEnter * call RefreshColorSchemes()
 
 set list
 set listchars=tab:»·,trail:·,eol:¬,extends:>,precedes:<,nbsp:¶
@@ -194,11 +207,19 @@ nnoremap * *''0n
 " instead bind it to q (and overwrite/disable default useless window quit short-cut)
 " nnoremap <c-w>q <c-w>c
 
-" shortcut to full size splitted window (use <c-w>= to equalize)
+" shortcut to full size splitted window ( use <c-w>= to equalize )
 nnoremap <c-w>z <c-w>_ <c-w>\|
 
-nnoremap <tab> <c-t>t
-nnoremap <s-tab> <c-t>T
+nnoremap gb :ls<cr>:b<space>
+
+cnoremap <c-t> \| tab split<cr>gT:b#<cr>gt
+cnoremap <c-x> \| split<cr><c-w><c-p>:b#<cr><c-w><c-p>
+cnoremap <c-v> \| vsplit<cr><c-w><c-p>:b#<cr><c-w><c-p>
+
+noremap <c-w><c-u> <c-w><c-p>
+
+" nnoremap <tab> gt
+" nnoremap <s-tab> gT
 
 " paste replace without yanking replaced text
 vnoremap p "_dP
@@ -231,7 +252,17 @@ function! VisualSearch ()
   call feedkeys( s )
 endfunction
 
+function! DeleteHiddenBuffers()
+    let tpbl=[]
+    call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+    for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
+        silent execute 'bwipeout' buf
+    endfor
+endfunction
+
 nnoremap ss :call ResetView()<cr>:source ~/.vimrc<cr>
+" nnoremap ss :source ~/.vimrc<cr>
+" :call RefreshColorSchemes()<cr>
 
 " vnoremap // "ay/<c-r>a<cr>:call RestorePreviousYank()<cr>N
 " vnoremap // :call VisualSearch()<cr>/<c-r>a<cr>N
@@ -250,8 +281,41 @@ nnoremap // 0//<cr>
 " inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Pathogen here
-execute pathogen#helptags()
-execute pathogen#infect()
+" execute pathogen#helptags()
+" execute pathogen#infect()
+
+" https://github.com/junegunn/vim-plug
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-journal'
+Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/rainbow_parentheses.vim'
+
+" Plug 'skammer/vim-css-color'
+" Plug 'ap/vim-css-color'
+Plug 'lilydjwg/colorizer'
+
+" Plug 'hail2u/vim-css3-syntax'
+
+Plug 'wavded/vim-stylus'
+
+Plug 'rstacruz/sparkup'
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+call plug#end()
+
+" Mapping selecting mappings
+nnoremap <c-p> :GFiles<cr>
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+let g:colorizer_auto_filetype='css,html,styl'
 
 " make sure cursorline is alwasy visible
 set cursorline
@@ -329,7 +393,9 @@ set notimeout
 
 " dont' insert directly on menu popup, allowing you to enter more chars
 " to pinpoint results
-set completeopt+=noinsert
+set completeopt-=noinsert
+set completeopt+=menuone
+set completeopt+=preview
 
 " LINT
 
@@ -344,6 +410,46 @@ set makeprg=spacestandard\ %
 " holy fucking shit!!!!!
 set grepprg=rg\ --vimgrep
 
+set background=dark
+
+" gruvbox contrasts ( medium on all by default )
+" let g:gruvbox_contrast_light='soft'
+" let g:gruvbox_contrast_light='medium'
+" let g:gruvbox_contrast_light='hard'
+
+" let g:gruvbox_contrast='soft'
+" let g:gruvbox_contrast='medium'
+" let g:gruvbox_contrast='hard'
+
+" let g:gruvbox_contrast_dark='soft'
+" let g:gruvbox_contrast_dark='medium'
+" let g:gruvbox_contrast_dark='hard'
+
+if &t_Co >= 256 || has("gui_running")
+  " Fixes background color erase
+  " see: https://sunaku.github.io/vim-256color-bce.html
+  set t_ut=
+  colorscheme gruvbox
+endif
+
+if &t_Co > 2 || has("gui_running")
+  syntax on
+endif
+
+if &t_Co <= 8
+  " set basic colorscheme
+  colorscheme desert
+
+  " darkblue hilight of cursor
+  hi CursorLine term=NONE cterm=NONE ctermbg=4
+endif
+
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+inoremap <c-j> <c-n>
+inoremap <c-k> <c-p>
 
 " SNIPPETS
 

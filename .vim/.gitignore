@@ -1,6 +1,7 @@
 view
+plugged
 
-.**.sw?
-.*.DS_STORE
+**.sw?
+**.DS_STORE
 
 ../.*.sw?
