@@ -4,6 +4,8 @@ export HISTIGNORE='history:clear:h'
 alias tree="tree -I 'node_modules'"
 export TERM=xterm-256color
 
+alias jap="grep . ~/dotfiles/jap/* | fzf"
+
 # refresh tmux pane in case of tty corruption
 tmux-refresh() {
   stty sane; printf '\033k%s\033\\\033]2;%s\007' "$(basename "$SHELL")" "$(uname -n)"; tput reset; tmux refresh
