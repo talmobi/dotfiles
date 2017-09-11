@@ -204,6 +204,9 @@ nnoremap # *''cgn
 " better default * ( doesn't move cursor at start)
 nnoremap * *''0n
 
+nnoremap ,o A・<ESC>$
+inoremap ,o ・
+
 " instead bind it to q (and overwrite/disable default useless window quit short-cut)
 " nnoremap <c-w>q <c-w>c
 
@@ -304,6 +307,8 @@ Plug 'rstacruz/sparkup'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+Plug 'junegunn/seoul256.vim'
 
 call plug#end()
 
