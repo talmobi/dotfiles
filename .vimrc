@@ -302,6 +302,8 @@ Plug 'junegunn/vim-journal'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/rainbow_parentheses.vim'
 
+Plug 'tomtom/tcomment_vim'
+
 " Plug 'skammer/vim-css-color'
 " Plug 'ap/vim-css-color'
 
