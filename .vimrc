@@ -16,7 +16,6 @@ autocmd FileType json setlocal synmaxcol=299
 " https://stackoverflow.com/a/16084326/3496140
 augroup VIMRC
   autocmd!
-
   autocmd BufLeave *.css normal! mC
   autocmd BufLeave *.styl normal! mS
   autocmd BufLeave *.html normal! mH
@@ -224,6 +223,14 @@ noremap <c-w><c-u> <c-w><c-p>
 " nnoremap <tab> gt
 " nnoremap <s-tab> gT
 
+nmap ,l <Plug>Colorizer
+
+" disable at startup ( use manually only )
+let g:colorizer_startup = 0
+
+" max lines
+let g:colorizer_maxlines = 300
+
 " paste replace without yanking replaced text
 vnoremap p "_dP
 " vnoremap // "9y/<c-r>9<cr>
@@ -297,7 +304,9 @@ Plug 'junegunn/rainbow_parentheses.vim'
 
 " Plug 'skammer/vim-css-color'
 " Plug 'ap/vim-css-color'
-Plug 'lilydjwg/colorizer'
+
+" slow...
+" Plug 'lilydjwg/colorizer'
 
 " Plug 'hail2u/vim-css3-syntax'
 
@@ -308,7 +317,7 @@ Plug 'rstacruz/sparkup'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'junegunn/seoul256.vim'
+" Plug 'junegunn/seoul256.vim'
 
 call plug#end()
 
@@ -320,7 +329,7 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-let g:colorizer_auto_filetype='css,html,styl'
+" let g:colorizer_auto_filetype='css,html,styl'
 
 " make sure cursorline is alwasy visible
 set cursorline
