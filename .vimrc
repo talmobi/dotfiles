@@ -325,6 +325,7 @@ call plug#end()
 
 " Mapping selecting mappings
 nnoremap <c-p> :GFiles<cr>
+nnoremap <c-f> :Files<cr>
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
