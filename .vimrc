@@ -33,6 +33,9 @@ augroup AutoSaveFolds
   autocmd BufWinEnter *.* silent loadview
 augroup END
 
+" fold indents
+set foldmethod=indent
+
 " dev testing function
 " function! NameLength ()
 "   let s = len( expand( "%" ) )
@@ -137,9 +140,6 @@ set wildignore+=*.tar.*
 " open all folds recursively by default
 nnoremap zo zCzO
 nnoremap zO zo
-
-" fold indents
-set foldmethod=indent
 
 " bind some javascript syntax to same syntax groups
 " hi def link javaScriptOperator JavaScriptMember
