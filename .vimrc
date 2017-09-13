@@ -240,15 +240,6 @@ noremap <c-w><c-u> <c-w><c-p>
 nnoremap <c-p> :call feedkeys(":e \<tab>**/", 't')<cr>
 cnoremap <c-o> */
 
-
-" Mapping selecting mappings
-" nnoremap <c-p> :GFiles<cr>
-
-
-
-" nnoremap <tab> gt
-" nnoremap <s-tab> gT
-
 nmap <a-l> <Plug>Colorizer
 
 " disable at startup ( use manually only )
@@ -350,6 +341,10 @@ Plug 'junegunn/fzf.vim'
 " Plug 'junegunn/seoul256.vim'
 
 call plug#end()
+
+" Mapping selecting mappings
+" nnoremap <c-p> :GFiles<cr>
+" nnoremap <c-f> :Files<cr>
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
