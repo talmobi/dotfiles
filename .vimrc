@@ -127,18 +127,33 @@ set noerrorbells
 
 set wildmode=list:longest ",list:full
 set wildmenu
-set wildignore=*.swp,*.swo,*~,*.swn,*.swm,*.bak
+
+set wildignore=*/.*,.*
+
+set wildignore+=*.swp,*.swo,*~,*.swn,*.swm,*.bak
 set wildignore+=*.jpg,*.jpeg,*.png,*.gif
 set wildignore+=*.psd
 set wildignore+=*.mp4,*.avi,*.mpg,*.mpeg
 set wildignore+=*.pyc,*.class,*.DS_Store
-set wildignore+=*/.git/**/*,*/node_modules/**/*,*/.svn/**/*
+
+set wildignore+=*/node_modules/*,node_modules/*
+set wildignore+=*/.git/*,.git/*
+set wildignore+=*/.svn/*,.svn/*
+
+
 set wildignore+=tags
 set wildignore+=*.tar.*
+set wildignore+=*.zip
 
 " open all folds recursively by default
-nnoremap zo zCzO
-nnoremap zO zo
+nnoremap zo :call SaveScreenOpenFoldLoadScreen()<cr>
+nnoremap zO :call SaveScreenOpenFoldLoadScreen()<cr>
+
+function! SaveScreenOpenFoldLoadScreen ()
+  let w = winsaveview()
+  normal! zO
+  call winrestview(w)
+endfunction
 
 " bind some javascript syntax to same syntax groups
 " hi def link javaScriptOperator JavaScriptMember
@@ -203,8 +218,8 @@ nnoremap # *''cgn
 " better default * ( doesn't move cursor at start)
 nnoremap * *''0n
 
-nnoremap ,o A・<ESC>$
-inoremap ,o ・
+nnoremap <a-o> A・<ESC>$
+inoremap <a-o> ・
 
 " instead bind it to q (and overwrite/disable default useless window quit short-cut)
 " nnoremap <c-w>q <c-w>c
@@ -220,10 +235,21 @@ cnoremap <c-v> \| vsplit<cr><c-w><c-p>:b#<cr><c-w><c-p>
 
 noremap <c-w><c-u> <c-w><c-p>
 
+" nnoremap <c-p> :e *<c-i>**/
+
+nnoremap <c-p> :call feedkeys(":e \<tab>**/", 't')<cr>
+cnoremap <c-o> */
+
+
+" Mapping selecting mappings
+" nnoremap <c-p> :GFiles<cr>
+
+
+
 " nnoremap <tab> gt
 " nnoremap <s-tab> gT
 
-nmap ,l <Plug>Colorizer
+nmap <a-l> <Plug>Colorizer
 
 " disable at startup ( use manually only )
 let g:colorizer_startup = 0
@@ -304,6 +330,8 @@ Plug 'junegunn/rainbow_parentheses.vim'
 
 Plug 'tomtom/tcomment_vim'
 
+Plug 'vim-scripts/gitignore'
+
 " Plug 'skammer/vim-css-color'
 " Plug 'ap/vim-css-color'
 
@@ -322,9 +350,6 @@ Plug 'junegunn/fzf.vim'
 " Plug 'junegunn/seoul256.vim'
 
 call plug#end()
-
-" Mapping selecting mappings
-nnoremap <c-p> :GFiles<cr>
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
