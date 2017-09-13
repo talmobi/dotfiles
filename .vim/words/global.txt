@@ -1,9 +1,10 @@
 " some global keywords for complete
-width
-height
+console
 require
 function
 default
 undefined
 export
 import
+width
+height
