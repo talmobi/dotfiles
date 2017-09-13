@@ -4,4 +4,6 @@ plugged
 **.sw?
 **.DS_STORE
 
+*.*
+
 ../.*.sw?
