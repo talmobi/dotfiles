@@ -82,6 +82,8 @@ function! ResetView ()
   endif
 endfunction
 
+command!  ResetView :call ResetView()
+
 " essentially adds flex support for vim-stylus plugin, see: https://github.com/wavded/vim-stylus/issues/46
 hi link stylusProperty cssVisualProp
 
@@ -212,12 +214,7 @@ noremap <c-w>o <nop>
 
 nnoremap t <c-]>
 
-" cgn based replace
-nnoremap # *''cgn
-
-" better default * ( doesn't move cursor at start)
-nnoremap * *''0n
-
+" 日本語のドット置いて。。。
 nnoremap <a-o> A・<ESC>$
 inoremap <a-o> ・
 
@@ -227,8 +224,10 @@ inoremap <a-o> ・
 " shortcut to full size splitted window ( use <c-w>= to equalize )
 nnoremap <c-w>z <c-w>_ <c-w>\|
 
+" buffer shotcut
 nnoremap gb :ls<cr>:b<space>
 
+" open ( file / buffer ) in splits
 cnoremap <c-t> \| tab split<cr>gT:b#<cr>gt
 cnoremap <c-x> \| split<cr><c-w><c-p>:b#<cr><c-w><c-p>
 cnoremap <c-v> \| vsplit<cr><c-w><c-p>:b#<cr><c-w><c-p>
@@ -237,10 +236,11 @@ noremap <c-w><c-u> <c-w><c-p>
 
 " nnoremap <c-p> :e *<c-i>**/
 
+" cheap, non-fuzzy, built-in CtrlP
 nnoremap <c-p> :call feedkeys(":e \<tab>**/", 't')<cr>
 cnoremap <c-o> */
 
-nmap <a-l> <Plug>Colorizer
+" nmap <a-l> <Plug>Colorizer
 
 " disable at startup ( use manually only )
 let g:colorizer_startup = 0
@@ -250,32 +250,24 @@ let g:colorizer_maxlines = 300
 
 " paste replace without yanking replaced text
 vnoremap p "_dP
-" vnoremap // "9y/<c-r>9<cr>
-" vnoremap // "_d"-P/<c-r>-<cr>N
-
-" let g:_unnamedReg = @"
-" function! StoreUnnamedReg ()
-"   let g:_unnamedReg = @"
-" endfunction
-" 
-" function! LoadUnnamedReg ()
-"   let @" = g:_unnamedReg
-" endfunction
-" 
-" vnoremap // :call StoreUnnamedReg()<cr>"ay/<c-r>a<cr>N:call LoadUnnamedReg()<cr>
-
-" function! RestorePreviousYank ()
-"   let @" = @0
-" endfunction
+vnoremap P "_dP
 
 function! VisualSearch ()
-  let temp = @"
-  normal! gv"ay
-  let search = escape( @a, "/\"'$]" )
-  let @a = search
-  let @" = temp
+  " remember values of the registers we are temporarily mutating
+  let temp = getreg("\"")
+  let tempv = getreg("v")
 
-  let s = "/" . search . "\<cr>" . "N"
+  " set last visual selection to register v
+  normal! gv"vy
+  let raw_search = getreg("v")
+  " escape the text for searching
+  let search = escape(raw_search, '\/.*$^~[]"')
+
+  " restore the previous values of the registers we mutated
+  call setreg("v", tempv)
+  call setreg("\"", temp)
+
+  let s = "/" . search . "\<cr>" . "\<c-o>"
   call feedkeys( s )
 endfunction
 
@@ -288,24 +280,26 @@ function! DeleteHiddenBuffers()
 endfunction
 
 nnoremap ss :call ResetView()<cr>:source ~/.vimrc<cr>
-" nnoremap ss :source ~/.vimrc<cr>
-" :call RefreshColorSchemes()<cr>
 
 " vnoremap // "ay/<c-r>a<cr>:call RestorePreviousYank()<cr>N
 " vnoremap // :call VisualSearch()<cr>/<c-r>a<cr>N
 vnoremap // :call VisualSearch()<cr>
 
-vnoremap * :call VisualSearch()<cr>
-
 vnoremap Y ygv:call VisualSearch()<cr>
+
+" better default * ( doesn't move cursor at start)
+nnoremap * *<c-o>
+vnoremap * <esc>:call VisualSearch()<cr>
+" have # as alias to * ( instead of default reverse search )
+nnoremap # *<c-o>
+vnoremap # <esc>:call VisualSearch()<cr>
+" vmap # *cgn
+" vnoremap # <esc>:call VisualSearch()<cr>cgn
+" vnoremap # :call VisualSearch()<cr>*''cgn
+
 
 " type in the <CR> implicitly for you
 nnoremap // 0//<cr>
-
-" nnoremap <C-W>
-
-"
-" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Pathogen here
 " execute pathogen#helptags()
@@ -324,12 +318,12 @@ Plug 'tomtom/tcomment_vim'
 Plug 'vim-scripts/gitignore'
 
 " Plug 'skammer/vim-css-color'
-" Plug 'ap/vim-css-color'
+Plug 'ap/vim-css-color'
 
 " slow...
 " Plug 'lilydjwg/colorizer'
 
-" Plug 'hail2u/vim-css3-syntax'
+Plug 'hail2u/vim-css3-syntax'
 
 Plug 'wavded/vim-stylus'
 
@@ -353,39 +347,22 @@ nmap ga <Plug>(EasyAlign)
 
 " let g:colorizer_auto_filetype='css,html,styl'
 
-" make sure cursorline is alwasy visible
+" make sure cursorline is always visible
 set cursorline
 au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-" au BufWinEnter *.* set cursorline
-
-" suppress ctags version warning (since universal-ctags)
-" let g:easytags_suppress_ctags_warning = 1
-
-" multi cursor plugin https://github.com/terryma/vim-multiple-cursors
-" let g:multi_cursor_use_default_mapping = 0 " turn off default keybinds
 
 " CtrlP plugin
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_md = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-
 " ignore silly files and directores from CtrlP search
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-
-" set includeexpr=substitute(v:fname,'\\.',expand('%:p:h'),'')
 
 " dont set sparkup mappings by default
 let g:sparkupNextMapping = '<nop>'
 
 " set sparkup mappings for html files
 " autocmd FileType html let g:sparkupMaps=1
-
-" neocomplete plugin
-" let g:neocomplete#enable_at_startup = 1
-" let g:neocomplete#enable_smart_case = 1
-" let g:neocomplete#sources#syntax#min_keyword_length = 3
-" let g:neocomplete#sources#syntax#max_keyword_length = 30
-" let g:neocomplete#sources#buffer#max_keyword_length = 30
 
 " load dictionaries basedon filetype
 autocmd FileType javascript setlocal dictionary+=~/.vim/words/Element.props.txt
@@ -427,8 +404,6 @@ set showcmd
 " disable command timeouts ( fixes buggy <c-w> [timeout] c issues )
 set notimeout
 
-" dont' insert directly on menu popup, allowing you to enter more chars
-" to pinpoint results
 set completeopt-=noinsert
 set completeopt+=menuone
 set completeopt+=preview
@@ -438,13 +413,51 @@ set completeopt+=preview
 " use spacestandard linter by default ( for vim's built in quickfix )
 " (:make, :copen, :cn, :cp, etc)
 set makeprg=spacestandard\ %
+let g:defaultmakeprg=&makeprg
+
+" run a shell command and grab its output into vim's quickfix
+" ( by temporarily setting makeprg and calling make, and then
+" restoring the makeprg optionback to what it was )
+function! ShellCommandToQuickfix (command)
+  " clear the screen
+  silent !clear
+
+  " remeber the makeprg
+  let prg=&makeprg
+
+  " set the makeprg temporarily so that we can grab the output
+  " of the command into quickfix
+  let cmd='set makeprg=' . escape( a:command, "/\"'$] " )
+  execute cmd
+
+  " run the command with make
+  make
+
+  " reset the makeprg back to what it was originally
+  let &makeprg=prg
+endfunction
+
+" bind ShellCommandToQuickfix to a readible command
+command! -nargs=+ -complete=shellcmd Q call ShellCommandToQuickfix(<q-args>)
+
+" a few common npm scripts to run
+command! Lint :call ShellCommandToQuickfix("npm run lint")
+command! Fixlint :call ShellCommandToQuickfix("npm run fixlint")
 
 " use some other default makeprg based on filetype
 " autocmd Filetype foo setlocal makeprg=/bin/foo
 
+" use 'npm run lint' as is common in javascript nodejs projects as default
+autocmd Filetype javascript setlocal makeprg=npm\ run\ lint\ -s
+
 
 " holy fucking shit!!!!!
-set grepprg=rg\ --vimgrep
+" set grepprg=rg\ --vimgrep
+" set grepprg=grep\ --ignore-case\ --fixed-strings
+" set grepprg=grep\ --color\ -iF
+
+" useful grep
+set grepprg=grep\ -rn
 
 set background=dark
 
@@ -480,12 +493,10 @@ if &t_Co <= 8
   hi CursorLine term=NONE cterm=NONE ctermbg=4
 endif
 
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
-inoremap <c-j> <c-n>
-inoremap <c-k> <c-p>
+" syn debugging helper
+" map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+" \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+" \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " SNIPPETS
 

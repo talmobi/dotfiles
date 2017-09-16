@@ -45,7 +45,7 @@ tmux-refresh() {
   stty sane; printf '\033k%s\033\\\033]2;%s\007' "$(basename "$SHELL")" "$(uname -n)"; tput reset; tmux refresh
 }
 
-export PROMPT_COMMAND="history -a; history -n"
+# export PROMPT_COMMAND="history -a; history -n"
 
 # export FZF_DEFAULT_COMMAND='find . | grep --exclude=vim'
 export FZF_DEFAULT_COMMAND='rg --files'
