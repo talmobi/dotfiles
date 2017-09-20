@@ -12,15 +12,12 @@ esac
 if  [ $machine = Mac ]
 then
   alias ls='ls -G'
-  echo 'Mac machine'
 elif  [ $machine = Linux ]
 then
   alias ls='ls --color'
-  echo 'Linux machine'
-else
-  echo 'unknown machine'
 fi
 
+echo "BASH_VERSION: $BASH_VERSION"
 echo "Machine: $machine"
 
 
@@ -68,10 +65,10 @@ export PS1='\e[0;32m \u \e[m\e[0;33m \w \e[m\e[1;33m$(parse_git_branch)\e[m\n\$ 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # enable bash completion in interactive shells
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
+# if ! shopt -oq posix; then
+#   if [ -f /usr/share/bash-completion/bash_completion ]; then
+#     . /usr/share/bash-completion/bash_completion
+#   elif [ -f /etc/bash_completion ]; then
+#     . /etc/bash_completion
+#   fi
+# fi
