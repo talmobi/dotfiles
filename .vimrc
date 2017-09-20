@@ -14,7 +14,7 @@ autocmd FileType json setlocal synmaxcol=299
 
 " auto mark files based on type ( holy shit! )
 " https://stackoverflow.com/a/16084326/3496140
-augroup VIMRC
+augroup AutoGlobalMarkFilesBasedOnFileType
   autocmd!
   autocmd BufLeave *.css normal! mC
   autocmd BufLeave *.styl normal! mS
@@ -23,12 +23,14 @@ augroup VIMRC
   autocmd BufLeave *.json normal! mO
   autocmd BufLeave *.php normal! mP
   autocmd BufLeave *.xml normal! mX
+  autocmd BufLeave *NetrwTreeListing* normal! mT
 augroup END
 
-" auto save/load folds etc
-augroup AutoSaveFolds
+" auto save/load view
+set viewoptions=cursor " only save cursor positions
+augroup AutoFolds
   autocmd!
-  autocmd BufWinLeave *.* mkview
+  autocmd BufWinLeave *.* silent mkview
   autocmd BufWinEnter *.* silent loadview
 augroup END
 
@@ -54,7 +56,7 @@ set foldmethod=indent
 " ( found in ~/.vim/view/ ) of the current file
 function! ResetView ()
   " make sure the filename is of reasonable length
-  let fileNameLength = len( expand( "%" ) )
+  let fileNameLength = len(expand("%"))
   if fileNameLength > 2
     " where to find the view files
     let dir = "~/.vim/view/*"
@@ -82,10 +84,10 @@ function! ResetView ()
   endif
 endfunction
 
-command!  ResetView :call ResetView()
+command! ResetView :call ResetView()
 
 " essentially adds flex support for vim-stylus plugin, see: https://github.com/wavded/vim-stylus/issues/46
-hi link stylusProperty cssVisualProp
+hi def link stylusProperty cssVisualProp
 
 set nowrap
 set tabstop=2
@@ -127,21 +129,29 @@ set title
 set visualbell
 set noerrorbells
 
-set wildmode=list:longest ",list:full
+set path=.,,
+
 set wildmenu
+set wildmode=list:full
 
-set wildignore=*/.*,.*
+" set wildignore=*/.*,.*
 
-set wildignore+=*.swp,*.swo,*~,*.swn,*.swm,*.bak
-set wildignore+=*.jpg,*.jpeg,*.png,*.gif
+" Don't offer to open certain files/directories
+set wildignore+=**/node_modules*
+set wildignore+=**/.git*
+set wildignore+=**/.svn*
+
+" TODO revisit vim source files for recompiling
+" with wildignore support for starstar **
+" or perhaps hard coded skip of node_modules directory?
+" see: https://github.com/vim/vim/issues/2132
+
+set wildignore+=*.swp,*.swo,*~,*.swn,*.swm,*.bak,*.DS_Store
+
+set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.bmp
 set wildignore+=*.psd
 set wildignore+=*.mp4,*.avi,*.mpg,*.mpeg
-set wildignore+=*.pyc,*.class,*.DS_Store
-
-set wildignore+=*/node_modules/*,node_modules/*
-set wildignore+=*/.git/*,.git/*
-set wildignore+=*/.svn/*,.svn/*
-
+set wildignore+=*.pyc,*.class
 
 set wildignore+=tags
 set wildignore+=*.tar.*
@@ -150,6 +160,8 @@ set wildignore+=*.zip
 " open all folds recursively by default
 nnoremap zo :call SaveScreenOpenFoldLoadScreen()<cr>
 nnoremap zO :call SaveScreenOpenFoldLoadScreen()<cr>
+
+nnoremap zc :set foldmethod=indent<cr>zc
 
 function! SaveScreenOpenFoldLoadScreen ()
   let w = winsaveview()
@@ -212,7 +224,7 @@ noremap <c-w>q <nop>
 noremap <c-w>o <nop>
 " nnoremap <c-w><c-c> <nop>
 
-nnoremap t <c-]>
+" nnoremap t <c-]>
 
 " 日本語のドット置いて。。。
 nnoremap <a-o> A・<ESC>$
@@ -224,9 +236,6 @@ inoremap <a-o> ・
 " shortcut to full size splitted window ( use <c-w>= to equalize )
 nnoremap <c-w>z <c-w>_ <c-w>\|
 
-" buffer shotcut
-nnoremap gb :ls<cr>:b<space>
-
 " open ( file / buffer ) in splits
 cnoremap <c-t> \| tab split<cr>gT:b#<cr>gt
 cnoremap <c-x> \| split<cr><c-w><c-p>:b#<cr><c-w><c-p>
@@ -237,8 +246,12 @@ noremap <c-w><c-u> <c-w><c-p>
 " nnoremap <c-p> :e *<c-i>**/
 
 " cheap, non-fuzzy, built-in CtrlP
-nnoremap <c-p> :call feedkeys(":e \<tab>**/", 't')<cr>
-cnoremap <c-o> */
+" nnoremap <c-p> :call feedkeys(":e \<tab>**/", 't')<cr>
+nnoremap <c-p> :e <c-d>*
+cnoremap <c-o> */*<c-d>
+
+" buffer shotcut
+nnoremap <c-l> :ls<cr>:b<space>
 
 " nmap <a-l> <Plug>Colorizer
 
@@ -318,7 +331,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'vim-scripts/gitignore'
 
 " Plug 'skammer/vim-css-color'
-Plug 'ap/vim-css-color'
+" Plug 'ap/vim-css-color'
 
 " slow...
 " Plug 'lilydjwg/colorizer'
@@ -363,6 +376,11 @@ let g:sparkupNextMapping = '<nop>'
 
 " set sparkup mappings for html files
 " autocmd FileType html let g:sparkupMaps=1
+
+" config netrw a bit
+autocmd FileType netrw setlocal bufhidden=wipe
+let g:netrw_list_hide= '.*\.swp$'
+let g:netrw_list_hide= netrw_gitignore#Hide().'.*\.swp$'
 
 " load dictionaries basedon filetype
 autocmd FileType javascript setlocal dictionary+=~/.vim/words/Element.props.txt
@@ -448,7 +466,7 @@ command! Fixlint :call ShellCommandToQuickfix("npm run fixlint")
 " autocmd Filetype foo setlocal makeprg=/bin/foo
 
 " use 'npm run lint' as is common in javascript nodejs projects as default
-autocmd Filetype javascript setlocal makeprg=npm\ run\ lint\ -s
+autocmd Filetype javascript setlocal makeprg=npm\ run\ lint\ --silent
 
 
 " holy fucking shit!!!!!
