@@ -24,7 +24,7 @@ echo "Machine: $machine"
 alias h='history'
 export HISTIGNORE='history:clear:h'
 alias tree="tree -I 'node_modules'"
-export TERM=xterm-256color
+# export TERM=xterm-256color
 
 
 alias jap="grep . ~/dotfiles/jap/* | fzf"
