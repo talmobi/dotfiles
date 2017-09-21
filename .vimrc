@@ -248,7 +248,10 @@ noremap <c-w><c-u> <c-w><c-p>
 " cheap, non-fuzzy, built-in CtrlP
 " nnoremap <c-p> :call feedkeys(":e \<tab>**/", 't')<cr>
 nnoremap <c-p> :e <c-d>*
-cnoremap <c-o> */*
+cnoremap <c-o> */*<c-d>
+
+" don't prompt listings
+set nomore
 
 " buffer shotcut
 nnoremap <c-l> :ls<cr>:b<space>
