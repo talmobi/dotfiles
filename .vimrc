@@ -436,6 +436,9 @@ set completeopt+=preview
 set makeprg=spacestandard\ %
 let g:defaultmakeprg=&makeprg
 
+" use 'npm run lint' as is common in javascript nodejs projects as default
+autocmd FileType javascript setlocal makeprg=npm\ run\ lint\ --silent
+
 " run a shell command and grab its output into vim's quickfix
 " ( by temporarily setting makeprg and calling make, and then
 " restoring the makeprg optionback to what it was )
@@ -467,9 +470,6 @@ command! Fixlint :call ShellCommandToQuickfix("npm run fixlint")
 
 " use some other default makeprg based on filetype
 " autocmd Filetype foo setlocal makeprg=/bin/foo
-
-" use 'npm run lint' as is common in javascript nodejs projects as default
-autocmd Filetype javascript setlocal makeprg=npm\ run\ lint\ --silent
 
 
 " holy fucking shit!!!!!
@@ -506,7 +506,7 @@ if &t_Co > 2 || has("gui_running")
   syntax on
 endif
 
-if &t_Co <= 8
+if &t_Co <= 16
   " set basic colorscheme
   colorscheme desert
 
@@ -529,3 +529,32 @@ nnoremap sniph :let @x=''<CR>m'"xciW<ESC>:-1read $HOME/.vim/snippets/index.html<
 
 " sample rollup.config.js snippet
 nnoremap snipr :-1read $HOME/.vim/snippets/index.html<CR>
+
+" Generic highlighting
+" https://github.com/j16180339887/Global.vim/blob/master/plugin/Global.vim
+autocmd BufRead,BufNewFile,BufWritePost * call HighlightGlobal()
+function! HighlightGlobal()
+  if &filetype == "" || &filetype == "text"
+    syn match alphanumeric  "[A-Za-z0-9_]"
+    " Copy from $VIM/syntax/lua.vim
+    " integer number
+    syn match txtNumber     "\<\d\+\>"
+    " floating point number, with dot, optional exponent
+    syn match txtNumber     "\<\d\+\.\d*\%([eE][-+]\=\d\+\)\=\>"
+    " floating point number, starting with a dot, optional exponent
+    syn match txtNumber     "\.\d\+\%([eE][-+]\=\d\+\)\=\>"
+    " floating point number, without dot, with exponent
+    syn match txtNumber     "\<\d\+[eE][-+]\=\d\+\>"
+    " Wide characters and non-ascii characters
+    syn match nonalphabet   "[\u0021-\u002F]"
+    syn match nonalphabet   "[\u003A-\u0040]"
+    syn match nonalphabet   "[\u005B-\u0060]"
+    syn match nonalphabet   "[\u007B-\u007E]"
+    syn match nonalphabet   "[^\u0000-\u007F]"
+    syn match lineURL       /\(https\?\|ftps\?\|git\|ssh\):\/\/\(\w\+\(:\w\+\)\?@\)\?\([A-Za-z][-_0-9A-Za-z]*\.\)\{1,}\(\w\{2,}\.\?\)\{1,}\(:[0-9]\{1,5}\)\?\S*/
+    hi def link alphanumeric  Function
+    hi def link txtNumber      Define
+    hi def link lineURL        Number
+    hi def link nonalphabet   Conditional
+  endif
+endfunction
