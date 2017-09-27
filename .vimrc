@@ -484,7 +484,8 @@ command! Fixlint :call ShellCommandToQuickfix("npm run fixlint")
 " set grepprg=grep\ --color\ -iF
 
 " useful grep
-set grepprg=grep\ -rn
+" set grepprg=grep\ -rn
+set grepprg=grep\ --exclude=*node_modules*\ --exclude=*.git/*\ -rn
 
 set background=dark
 
