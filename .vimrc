@@ -158,15 +158,21 @@ set wildignore+=*.tar.*
 set wildignore+=*.zip
 
 " open all folds recursively by default
-nnoremap zo :call SaveScreenOpenFoldLoadScreen()<cr>
-nnoremap zO :call SaveScreenOpenFoldLoadScreen()<cr>
+nnoremap zo :call SaveScreenOpenFoldLoadScreen(0)<cr>
+nnoremap zO :call SaveScreenOpenFoldLoadScreen(1)<cr>
 
 nnoremap zc :set foldmethod=indent<cr>zc
 
-function! SaveScreenOpenFoldLoadScreen ()
+function! SaveScreenOpenFoldLoadScreen (recursive)
   let w = winsaveview()
-  normal! zO
-  call winrestview(w)
+
+  if a:recursive > 0
+    silent! normal! zO
+  else
+    silent! normal! zo
+  endif
+
+  silent! call winrestview(w)
 endfunction
 
 " bind some javascript syntax to same syntax groups
