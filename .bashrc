@@ -9,12 +9,17 @@ case "${unameOut}" in
   *)   machine="UNKNOWN:${unameOut}";;
 esac
 
-if  [ $machine = Mac ]
-then
+isWindows=1
+
+if  [ $machine = Mac ] ; then
   alias ls='ls -G'
-elif  [ $machine = Linux ]
-then
+  isWindows=0
+elif  [ $machine = Linux ]  ; then
   alias ls='ls --color'
+  isWindows=0
+elif [ $machine = MinGw ] || [ $machine = Cygwin ] ; then
+  alias ls='ls --color'
+  isWindows=1
 fi
 
 echo "BASH_VERSION: $BASH_VERSION"
@@ -50,7 +55,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # . `brew --prefix`/etc/profile.d/z.sh
 
-parse_git_branch() {
+function parse_git_branch {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
@@ -59,8 +64,6 @@ export PATH=$PATH:/Users/mollie/Library/Android/sdk/platform-tools:/Users/mollie
 
 # postgres PATH
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
-
-export PS1='\e[0;32m \u \e[m\e[0;33m \w \e[m\e[1;33m$(parse_git_branch)\e[m\n\$ '
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
@@ -72,3 +75,61 @@ export PS1='\e[0;32m \u \e[m\e[0;33m \w \e[m\e[1;33m$(parse_git_branch)\e[m\n\$ 
 #     . /etc/bash_completion
 #   fi
 # fi
+
+# get current branch in git repo
+function parse_git_branch2 {
+  BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+  if [ ! "${BRANCH}" == "" ]
+  then
+    # STAT=`parse_git_dirty`
+    # echo "[${BRANCH}${STAT}]"
+    echo "(${BRANCH})"
+  else
+    echo ""
+  fi
+}
+
+# get current status of git repo
+function parse_git_dirty {
+  status=`git status 2>&1 | tee`
+  dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
+  untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
+  ahead=`echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`
+  newfile=`echo -n "${status}" 2> /dev/null | grep "new file:" &> /dev/null; echo "$?"`
+  renamed=`echo -n "${status}" 2> /dev/null | grep "renamed:" &> /dev/null; echo "$?"`
+  deleted=`echo -n "${status}" 2> /dev/null | grep "deleted:" &> /dev/null; echo "$?"`
+  bits=''
+  if [ "${renamed}" == "0" ]; then
+    bits=">${bits}"
+  fi
+  if [ "${ahead}" == "0" ]; then
+    bits="*${bits}"
+  fi
+  if [ "${newfile}" == "0" ]; then
+    bits="+${bits}"
+  fi
+  if [ "${untracked}" == "0" ]; then
+    bits="?${bits}"
+  fi
+  if [ "${deleted}" == "0" ]; then
+    bits="x${bits}"
+  fi
+  if [ "${dirty}" == "0" ]; then
+    bits="!${bits}"
+  fi
+  if [ ! "${bits}" == "" ]; then
+    echo " ${bits}"
+  else
+    echo ""
+  fi
+}
+
+# export PS1="\u\W\`parse_git_branch\` "
+
+if [ $isWindows -eq 0 ]; then
+  export PS1='\e[0;32m \u \e[m\e[0;33m \w \e[m\e[1;33m$(parse_git_branch2)\e[m\n\$ '
+else
+  export PS1='\e[0;32m \u@\h\e[m\e[0;35m \s\e[m\e[0;33m \w\e[m \e[1;36m`parse_git_branch2`\e[m\n\$ '
+  # export PS1='\e[0;32m \u \e[m\e[0;33m \w \e[m\e[1;33m$(parse_git_branch)\e[m\n\$ '
+fi
+
