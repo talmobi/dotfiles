@@ -25,12 +25,23 @@ fi
 echo "BASH_VERSION: $BASH_VERSION"
 echo "Machine: $machine"
 
-
 alias h='history'
 export HISTIGNORE='history:clear:h'
 alias tree="tree -I 'node_modules'"
-# export TERM=xterm-256color
 
+# if [ $ncolors -ge 256 ]; then
+if [ -t 1 ]; then
+  if [ $TERM = xterm ]; then
+    export TERM=xterm-256color
+  else
+    export TERM=screen-256color
+  fi
+fi
+
+echo "TERM: $TERM"
+
+ncolors=$(tput colors)
+echo "ncolors: $ncolors"
 
 alias jap="grep . ~/dotfiles/jap/* | fzf"
 alias sf="rg --files | fzf"
