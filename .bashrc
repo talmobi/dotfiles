@@ -46,6 +46,7 @@ echo "ncolors: $ncolors"
 alias jap="grep . ~/dotfiles/jap/* | fzf"
 alias sf="rg --files | fzf"
 alias saf="find . | fzf"
+alias tips="grep . ~/dotfiles/scripts/tips.txt | fzf"
 
 # https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/
 # get top 10 files/dirs eting disc space

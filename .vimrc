@@ -36,6 +36,7 @@ augroup END
 
 " fold indents
 set foldmethod=indent
+set autochdir
 
 " dev testing function
 " function! NameLength ()

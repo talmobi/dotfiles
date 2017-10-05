@@ -1,0 +1,19 @@
+GIT_SSL_CAINFO=~/Downloads/111.cer git clone
+
+git config --system http.sslCAInfo ~/Downloads/111.cer # global
+
+git config --system --unset http.sslCAInfo # unset global
+
+git config --unset [key] # Remove repository configuration
+
+git config --global --unset [key] # Remove global configuration
+
+git config --system --unset [key] # Remove system configuration
+
+grep --exclude=*node_modules* -rn [key] [directory] # filter exclude
+
+grep -rn [key] [directory] | grep -v *node_modules* # filter
+
+miteru "**/*.php" "**/*.js" "**/*.css" --server --limit 200
+
+DEST="${FILE#PWD}" # bash string replace substring slice
