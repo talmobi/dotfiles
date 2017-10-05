@@ -1,3 +1,8 @@
+case $- in
+  *i*) ;;
+  *) return;;
+esac
+
 alias ls='ls -G'
 
 unameOut="$(uname -s)"
