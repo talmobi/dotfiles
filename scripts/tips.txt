@@ -27,3 +27,5 @@ bitbake -c clean cross-localedef-native
 bitbake -c cleanall cross-localedef-native
 
 bitbake cross-localedef-native
+
+# image img slide demo test interview https://jsbin.com/makiyayugo/edit?html,js,output
