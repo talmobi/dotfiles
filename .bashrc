@@ -1,3 +1,4 @@
+# fix for scp / rsync ( don't do anything if terminal isn't human basically )
 case $- in
   *i*) ;;
   *) return;;
