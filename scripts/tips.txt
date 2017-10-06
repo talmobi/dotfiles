@@ -21,3 +21,9 @@ DEST="${FILE#PWD}" # bash string replace substring slice
 alias ducks="du -cks * | sort -n | head"
 
 alias duke100="du -k * | awk '$1 > 100000' | sort -nr"
+
+bitbake -c clean cross-localedef-native
+
+bitbake -c cleanall cross-localedef-native
+
+bitbake cross-localedef-native
