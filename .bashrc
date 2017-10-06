@@ -3,8 +3,6 @@ case $- in
   *) return;;
 esac
 
-alias ls='ls -G'
-
 unameOut="$(uname -s)"
 case "${unameOut}" in
   Linux*)   machine=Linux;;
@@ -15,6 +13,8 @@ case "${unameOut}" in
 esac
 
 isWindows=1
+
+alias ls='ls -G'
 
 if  [ $machine = Mac ] ; then
   alias ls='ls -G'
@@ -29,10 +29,6 @@ fi
 
 echo "BASH_VERSION: $BASH_VERSION"
 echo "Machine: $machine"
-
-alias h='history'
-export HISTIGNORE='history:clear:h'
-alias tree="tree -I 'node_modules'"
 
 # if [ $ncolors -ge 256 ]; then
 if [ -t 1 ]; then
@@ -49,15 +45,20 @@ ncolors=$(tput colors)
 echo "ncolors: $ncolors"
 
 alias jap="grep . ~/dotfiles/jap/* | fzf"
+alias tips="grep . ~/dotfiles/scripts/tips.txt | fzf"
+
 alias sf="rg --files | fzf"
 alias saf="find . | fzf"
-alias tips="grep . ~/dotfiles/scripts/tips.txt | fzf"
+
+alias tree="tree -I 'node_modules'"
 
 # https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/
 # get top 10 files/dirs eting disc space
 alias ducks="du -cks * | sort -n | head"
-
 alias duke100="du -k * | awk '$1 > 100000' | sort -nr"
+
+alias h='history'
+export HISTIGNORE='history:clear:h:jap:tips'
 
 # refresh tmux pane in case of tty corruption
 tmux-refresh() {
