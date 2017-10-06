@@ -26,6 +26,9 @@ augroup AutoGlobalMarkFilesBasedOnFileType
   autocmd BufLeave *NetrwTreeListing* normal! mT
 augroup END
 
+" fold indents
+set foldmethod=indent
+
 " auto save/load view
 set viewoptions=cursor " only save cursor positions
 augroup AutoFolds
@@ -34,9 +37,28 @@ augroup AutoFolds
   autocmd BufWinEnter *.* silent loadview
 augroup END
 
-" fold indents
-set foldmethod=indent
-set autochdir
+
+set path=.,,
+
+if !exists("g:init_path")
+  let g:init_path = expand( "%:p:h" )
+  let &path = &path . ',' . expand( "%:p:h" )
+endif
+
+nnoremap <c-p> :call feedkeys(":e " . g:init_path . "/" . "\<c-d>" ."*")<cr>
+nnoremap <c-f> :execute ":Files " . g:init_path<cr>
+
+nnoremap <c-o> :e <c-d>*
+cnoremap <c-o> */*<c-d>
+
+autocmd BufEnter * silent! cd %:h
+" set autochdir
+
+" cheap, non-fuzzy, built-in CtrlP
+" nnoremap <c-f> :call feedkeys(":Files " . g:init_path . "/")<cr>
+" nnoremap <c-p> :call feedkeys(":e \<tab>**/", 't')<cr>
+" nnoremap <c-p> :e g:init_path*
+" nnoremap <c-p> :e <c-d>*
 
 " dev testing function
 " function! NameLength ()
@@ -129,8 +151,6 @@ set undolevels=1000
 set title
 set visualbell
 set noerrorbells
-
-set path=.,,
 
 set wildmenu
 set wildmode=list:full
@@ -248,14 +268,7 @@ cnoremap <c-t> \| tab split<cr>gT:b#<cr>gt
 cnoremap <c-x> \| split<cr><c-w><c-p>:b#<cr><c-w><c-p>
 cnoremap <c-v> \| vsplit<cr><c-w><c-p>:b#<cr><c-w><c-p>
 
-noremap <c-w><c-u> <c-w><c-p>
-
 " nnoremap <c-p> :e *<c-i>**/
-
-" cheap, non-fuzzy, built-in CtrlP
-" nnoremap <c-p> :call feedkeys(":e \<tab>**/", 't')<cr>
-nnoremap <c-p> :e <c-d>*
-cnoremap <c-o> */*<c-d>
 
 " don't prompt listings
 set nomore
@@ -565,4 +578,4 @@ function! HighlightGlobal()
     hi def link lineURL        Number
     hi def link nonalphabet   Conditional
   endif
-endfunction
+endfunction-
