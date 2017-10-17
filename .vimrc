@@ -48,7 +48,7 @@ endif
 nnoremap <c-p> :call feedkeys(":e " . g:init_path . "/" . "\<c-d>" ."*")<cr>
 nnoremap <c-f> :execute ":Files " . g:init_path<cr>
 
-nnoremap <c-o> :e <c-d>*
+nnoremap <c-k> :e <c-d>*
 cnoremap <c-o> */*<c-d>
 
 autocmd BufEnter * silent! cd %:h
