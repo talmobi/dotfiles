@@ -29,3 +29,17 @@ bitbake -c cleanall cross-localedef-native
 bitbake cross-localedef-native
 
 # image img slide demo test interview https://jsbin.com/makiyayugo/edit?html,js,output
+
+while true; do foo; sleep 2; done
+
+while true; do clear; foo; sleep 1; done
+
+count=0; while npm test; do (( count++ )); echo "$count"; done && say Tests have finished
+
+docker run --name rudolf-production-app-whale --rm --detach --env MONGO_HOST=docker.for.mac.localhost --env PORT=8080 --env STATS_HOST=docker.for.mac.localhost --env CLIENT_ID=whale --publish 8080:8080 rudolf-production-app
+
+:%!column -t
+
+:%!sed 's/[A-Z]/ &/'
+
+:%!sort -bk2,2 -k1,1g
