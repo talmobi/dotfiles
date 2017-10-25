@@ -43,3 +43,11 @@ docker run --name rudolf-production-app-whale --rm --detach --env MONGO_HOST=doc
 :%!sed 's/[A-Z]/ &/'
 
 :%!sort -bk2,2 -k1,1g
+
+# https://serverfault.com/questions/9708/what-is-a-pem-file-and-how-does-it-differ-from-other-openssl-generated-key-file
+
+openssl genrsa -des3 -out server.enc.key 1024 # encrypt private key with passphrase
+
+openssl req -new -key server.enc.key -out server.csr # create CSR ( Certificate Signing Request )
+
+openssl rsa -in server.env.key -out server.key # expose private key from encrypted key
