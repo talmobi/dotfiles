@@ -10,7 +10,8 @@
     "NAME"
   ],
   "author": "talmobi <talmo.christian@gmail.com>",
-  "license": "MIT",
+  "license": "UNLICENSED",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/talmobi/NAME"
