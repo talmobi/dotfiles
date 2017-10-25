@@ -51,3 +51,5 @@ openssl genrsa -des3 -out server.enc.key 1024 # encrypt private key with passphr
 openssl req -new -key server.enc.key -out server.csr # create CSR ( Certificate Signing Request )
 
 openssl rsa -in server.env.key -out server.key # expose private key from encrypted key
+
+openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt # create certificate
