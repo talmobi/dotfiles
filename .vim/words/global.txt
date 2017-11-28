@@ -9,3 +9,11 @@ import
 length
 width
 height
+setTimeout
+setInterval
+clearTimeout
+encodeURIComponent
+decodeURIComponent
+__dirname
+__filename
+process
