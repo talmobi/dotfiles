@@ -122,11 +122,12 @@ set sidescroll=4 " was 5
 
 set cindent
 set cino=b1,+0,p0,(s,m1,t0 "sane indentations (see :help cino)
-" set cinw-=if,else,while, "disable word indentation
+set cinw-=if,else,while, "disable word indentation
 set cinw='' "disable all word indentation (enable this for python)
 
 set autoindent
 set copyindent
+
 set number
 set shiftwidth=2
 set shiftround
@@ -148,8 +149,12 @@ set incsearch
 
 set history=1000
 set undolevels=1000
+
 set title
+
 set visualbell
+set t_vb=
+
 set noerrorbells
 
 set wildmenu
@@ -169,14 +174,14 @@ set wildignore+=**/.svn*
 
 set wildignore+=*.swp,*.swo,*~,*.swn,*.swm,*.bak,*.DS_Store
 
-set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.bmp
+" set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.bmp
 set wildignore+=*.psd
 set wildignore+=*.mp4,*.avi,*.mpg,*.mpeg
 set wildignore+=*.pyc,*.class
 
 set wildignore+=tags
-set wildignore+=*.tar.*
-set wildignore+=*.zip
+" set wildignore+=*.tar.*
+" set wildignore+=*.zip
 
 " open all folds recursively by default
 nnoremap zo :call SaveScreenOpenFoldLoadScreen(0)<cr>
@@ -550,6 +555,9 @@ nnoremap sniph :let @x=''<CR>m'"xciW<ESC>:-1read $HOME/.vim/snippets/index.html<
 
 " sample rollup.config.js snippet
 nnoremap snipr :-1read $HOME/.vim/snippets/index.html<CR>
+
+" md means markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Generic highlighting
 " https://github.com/j16180339887/Global.vim/blob/master/plugin/Global.vim
