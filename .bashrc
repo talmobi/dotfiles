@@ -61,6 +61,10 @@ alias duke100="du -k * | awk '$1 > 100000' | sort -nr"
 alias h='history'
 export HISTIGNORE='history:clear:h:jap:tips'
 
+if [ -x "$(command -v vim)" ]; then
+  export EDITOR=vim
+fi
+
 # refresh tmux pane in case of tty corruption
 tmux-refresh() {
   stty sane; printf '\033k%s\033\\\033]2;%s\007' "$(basename "$SHELL")" "$(uname -n)"; tput reset; tmux refresh
