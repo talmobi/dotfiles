@@ -55,3 +55,7 @@ openssl rsa -in server.env.key -out server.key # expose private key from encrypt
 openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt # create certificate
 
 java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb # start local dynamo db amazon aws
+
+:vimgrep <select>\_.\{-}<\/select> **       # vimgrep multi line and directory files regex search
+
+/<select\_.\{-}<\/select>       # multi line vim search
