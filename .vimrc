@@ -258,7 +258,7 @@ noremap <c-w>o <nop>
 
 " nnoremap t <c-]>
 
-" 日本語のドット置いて。。。
+" 日本語のドット置いて。。。 japanese dot
 nnoremap <a-o> A・<ESC>$
 inoremap <a-o> ・
 

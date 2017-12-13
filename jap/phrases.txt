@@ -32,7 +32,7 @@
 
 教会に行くのが苦手です・I am not good at going to church ・きょうかいにいくのがにがてです
 
-お母さんは誕生日にiPhoneをくれた・My mum gave me an iPhone on my birthday・おかあさんはたんじょうびにiPhoneをくれた
+お母さんは誕生日にiPhoneをくれた・My mum/mom gave me an iPhone on my birthday・おかあさんはたんじょうびにiPhoneをくれた
 
 お父さんは誕生日に車をくれた・My dad gave me a car on my birthday・おとうさんはたんじょうびにくるまをくれた
 
@@ -48,6 +48,27 @@
 みんなはクリスマスに何をもらった？・What did you get on Christmas?
 
 みんなは誰に何をあげた？・What and to whom did you give?・みんなはだれになにをあげた？
+
+学生のとき、朝早く起きられなかった・When I was a student, I couldn't wake up early in the morning・がくせいのとき、あさはやくおきられなかった
+
+りんごを食べる -> りんごが食べられる・<object>　が　<POTENTIAL verb>・が is often used instead of を when using the potential form.
+
+ひらがなが書ける・I can write hiragana・ひらがながかける
+
+日本語が話せます・I can speak Japanese・にほんごがはなせます
+
+英語と日本語が話せる・I can speak English and Japanese・えいごとにほんごがはなせる
+
+まだ上手に日本語が話せない／話せません・I can't (don't) speak Japanese well yet・まだじょうずににほんごがはなせない
+
+一人で日本に行ける／行けます・I can go to Japan alone・ひとりでにほんにいける／いけます
+
+見られる　vs　見える・Can see (external) vs visible・みられる　vs　みえる
+聞ける　vs　聞こえる・Can hear (external) vs audible・きける　vs　きこえる
+
+新しいパソコンが買える・can buy a new computer・あたらしいパソコンがかえる
+
+Patreonのおかげで、新しいパソコンが買えた・I was able to buy a new computer thanks to Patreons・Patreonのおかげで、あたらしいパソコンがかえた
 
 
 
