@@ -59,3 +59,7 @@ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb # 
 :vimgrep <select>\_.\{-}<\/select> **       # vimgrep multi line and directory files regex search
 
 /<select\_.\{-}<\/select>       # multi line vim search
+
+git config credential.helper store
+
+git config --global credential.helper 'cache --timeout 7200'
