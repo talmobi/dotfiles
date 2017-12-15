@@ -393,11 +393,11 @@ set cursorline
 au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
 
 " CtrlP plugin
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_md = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_md = 'CtrlP'
+" let g:ctrlp_working_path_mode = 'ra'
 " ignore silly files and directores from CtrlP search
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+" let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " dont set sparkup mappings by default
 let g:sparkupNextMapping = '<nop>'
