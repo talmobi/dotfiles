@@ -342,10 +342,6 @@ vnoremap # <esc>:call VisualSearch()<cr>
 " type in the <CR> implicitly for you
 nnoremap // 0//<cr>
 
-" Pathogen here
-" execute pathogen#helptags()
-" execute pathogen#infect()
-
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 
