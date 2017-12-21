@@ -65,3 +65,15 @@ git config credential.helper store
 git config --global credential.helper 'cache --timeout 7200'
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+machine github.com login <token> # .netrc ## generate token with https://help.github.com/articles/creating-an-oauth-token-for-command-line-use
+
+machine github.com \n login technoweenie \n password SECRET # .netrc
+
+pm2 deploy ../../ecosystem.config.js dev exec "echo $APPEND_NETRC \> \~/.netrc"
+
+pm2 deploy dev setup
+
+pm2 deploy dev # https://keymetrics.io/2014/06/25/ecosystem-json-deploy-and-iterate-faster/
+
+pm2 deploy dev exec "echo foo \> \~/bar.txt"
