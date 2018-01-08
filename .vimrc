@@ -167,6 +167,9 @@ set wildignore+=**/node_modules*
 set wildignore+=**/.git*
 set wildignore+=**/.svn*
 
+" ignore bundle files
+set wildignore+=*.bundle.*
+
 " TODO revisit vim source files for recompiling
 " with wildignore support for starstar **
 " or perhaps hard coded skip of node_modules directory?
@@ -422,21 +425,6 @@ autocmd FileType javascript setlocal dictionary+=~/.vim/words/CanvasRenderingCon
 " add some general words to default dict
 set complete+=k~/.vim/words/global.txt
 
-" statusline setup
-set statusline=[%{pathshorten(getcwd())}] "display shortened path of current directory
-set statusline+=\ %t       "tail of the filename
-set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}, "file encoding
-set statusline+=%{&ff}] "file format
-set statusline+=%h      "help file flag
-set statusline+=%m      "modified flag
-set statusline+=%r      "read only flag
-set statusline+=%y      "filetype
-set statusline+=%=      "left/right separator
-set statusline+=%c,     "cursor column
-set statusline+=%l/%L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
-set laststatus=2
-
 " load all help files
 silent! helptags ALL
 
@@ -583,3 +571,29 @@ function! HighlightGlobal()
     hi def link nonalphabet   Conditional
   endif
 endfunction-
+
+highlight StatusLineFileName ctermfg=black ctermbg=gray
+
+augroup SetStatusLineHighlights
+  autocmd!
+  autocmd ColorScheme * silent hi StatusLineFileName
+augroup END
+
+" statusline setup
+set statusline=[%{pathshorten(getcwd())}] "display shortened path of current directory
+set statusline+=\        "a space before the filename
+set statusline+=%#StatusLineFileName#
+set statusline+=%t       "tail of the filename
+set statusline+=%*      "reset highlight grup to defaults
+set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}, "file encoding
+set statusline+=%{&ff}] "file format
+set statusline+=%h      "help file flag
+set statusline+=%m      "modified flag
+set statusline+=%r      "read only flag
+set statusline+=%y      "filetype
+set statusline+=%=      "left/right separator
+set statusline+=%c,     "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
+set laststatus=2
+
