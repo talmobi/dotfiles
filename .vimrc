@@ -2,7 +2,7 @@ set nocompatible
 
 filetype on
 filetype plugin on
-filetype plugin indent on
+" filetype plugin indent on
 
 " hidden buffers
 set hidden
@@ -127,6 +127,8 @@ set cinw='' "disable all word indentation (enable this for python)
 
 set autoindent
 set copyindent
+
+" set isk+=- " consider words as part of -
 
 set number
 set shiftwidth=2
@@ -573,6 +575,7 @@ function! HighlightGlobal()
 endfunction-
 
 highlight StatusLineFileName ctermfg=black ctermbg=gray
+highlight StatusLineModifiedFlag ctermfg=red ctermbg=red
 
 augroup SetStatusLineHighlights
   autocmd!
@@ -588,7 +591,9 @@ set statusline+=%*      "reset highlight grup to defaults
 set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}, "file encoding
 set statusline+=%{&ff}] "file format
 set statusline+=%h      "help file flag
+set statusline+=%#StatusLineModifiedFlag#
 set statusline+=%m      "modified flag
+set statusline+=%*      "reset highlight grup to defaults
 set statusline+=%r      "read only flag
 set statusline+=%y      "filetype
 set statusline+=%=      "left/right separator
