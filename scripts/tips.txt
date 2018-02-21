@@ -79,3 +79,13 @@ pm2 deploy dev # https://keymetrics.io/2014/06/25/ecosystem-json-deploy-and-iter
 pm2 deploy dev exec "echo foo \> \~/bar.txt"
 
 du -a ~ | sort -n -r | head -n 5 # find sort file size
+
+mqtt pub -t 'sensor/get_sensor_config' -m 'foo'
+
+SELECT * FROM "sensor:sensorF" WHERE time > now() - 1w GROUP BY time(1m) fill(none) ORDER BY time desc
+
+SELECT MEAN("wearabs") FROM "sensor:sensorF" WHERE time > now() - 10h GROUP BY time(10m) fill(0) ORDER BY time asc
+
+SELECT "wearabs","location" FROM "sensor:sensorF" WHERE wearabs > 0
+
+SELECT MAX("wearabs") FROM "sensor:sensorF" INTO "temp_max_wearabs" WHERE time > now() - 10h GROUP BY time(10m) fill(0) ORDER BY time asc
