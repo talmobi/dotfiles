@@ -1,7 +1,7 @@
 set nocompatible
 
 filetype on
-filetype plugin on
+filetype plugin off
 " filetype plugin indent on
 
 " hidden buffers
@@ -170,7 +170,10 @@ set wildignore+=**/.git*
 set wildignore+=**/.svn*
 
 " ignore bundle files
-set wildignore+=*.bundle.*
+set wildignore+=*bundle.*
+
+" ignore minified files
+set wildignore+=*.min.*
 
 " TODO revisit vim source files for recompiling
 " with wildignore support for starstar **
@@ -368,6 +371,17 @@ Plug 'vim-scripts/gitignore'
 Plug 'hail2u/vim-css3-syntax'
 
 Plug 'wavded/vim-stylus'
+
+" Plug 'jelera/vim-javascript-syntax'
+" Plug 'Quramy/vim-js-pretty-template'
+
+" let g:javascript_plugin_jsdoc = 0
+" let g:javascript_plugin_ngdoc = 0
+" let g:javascript_plugin_flow = 0
+" set conceallevel=0
+
+" Plug 'pangloss/vim-javascript'
+" Plug 'mxw/vim-jsx'
 
 Plug 'rstacruz/sparkup'
 
@@ -602,3 +616,35 @@ set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 set laststatus=2
 
+"
+" Selectively copy pasted some hi lighting from
+" https://github.com/pangloss/vim-javascript/blob/master/syntax/javascript.vim
+"
+" basically just template string and common nodejs/javascript keywords
+"
+" Strings, Templates, Numbers
+" syntax region  jsString           start=+\z(["']\)+  skip=+\\\%(\z1\|$\)+  end=+\z1\|$+  contains=jsSpecial,@Spell extend
+syntax region  jsTemplateString   start=+`+  skip=+\\`+  end=+`+     contains=jsTemplateExpression,jsSpecial,@Spell extend
+" syntax match   jsTaggedTemplate   /\<\K\k*\ze`/ nextgroup=jsTemplateString
+" syntax match   jsNumber           /\c\<\%(\d\+\%(e[+-]\=\d\+\)\=\|0b[01]\+\|0o\o\+\|0x\x\+\)\>/
+syntax keyword jsNumber           Infinity
+" syntax match   jsFloat            /\c\<\%(\d\+\.\d\+\|\d\+\.\|\.\d\+\)\%(e[+-]\=\d\+\)\=\>/
+
+" Keywords
+syntax keyword jsGlobalObjects      Array Boolean Date Function Iterator Number Object Symbol Map WeakMap Set WeakSet RegExp String Proxy Promise Buffer ParallelArray ArrayBuffer DataView Float32Array Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array Uint8Array Uint8ClampedArray JSON Math console document window Intl Collator DateTimeFormat NumberFormat fetch
+syntax keyword jsGlobalNodeObjects  module exports global process __dirname __filename
+syntax match   jsGlobalNodeObjects  /\<require\>/ containedin=jsFuncCall
+syntax keyword jsExceptions         Error EvalError InternalError RangeError ReferenceError StopIteration SyntaxError TypeError URIError
+syntax keyword jsBuiltins           decodeURI decodeURIComponent encodeURI encodeURIComponent eval isFinite isNaN parseFloat parseInt uneval
+" DISCUSS: How imporant is this, really? Perhaps it should be linked to an error because I assume the keywords are reserved?
+syntax keyword jsFutureKeys         abstract enum int short boolean interface byte long char final native synchronized float package throws goto private transient implements protected volatile double public
+
+" Regular Expressions
+" syntax match   jsSpecial            contained "\v\\%(x\x\x|u%(\x{4}|\{\x{4,5}})|c\u|.)"
+syntax region  jsTemplateExpression contained matchgroup=jsTemplateBraces start=+${+ end=+}+ contains=@jsExpression keepend
+
+" hi link jsSpecial              Special
+" hi link jsTemplateBraces       Noise
+
+filetype plugin indent off
+filetype plugin off
