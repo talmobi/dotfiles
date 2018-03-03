@@ -270,6 +270,17 @@ noremap <c-w>o <nop>
 nnoremap <a-o> A・<ESC>$
 inoremap <a-o> ・
 
+nnoremap œ A・<ESC>$
+inoremap œ ・
+
+" nnoremap <a-c> °C
+inoremap <a-c> °C
+inoremap <a-f> °F
+
+" nnoremap ç °C
+inoremap ç °C
+inoremap ƒ °C
+
 " instead bind it to q (and overwrite/disable default useless window quit short-cut)
 " nnoremap <c-w>q <c-w>c
 
