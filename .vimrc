@@ -170,10 +170,10 @@ set wildignore+=**/.git*
 set wildignore+=**/.svn*
 
 " ignore bundle files
-set wildignore+=*bundle.*
+" set wildignore+=*bundle.*
 
 " ignore minified files
-set wildignore+=*.min.*
+" set wildignore+=*.min.*
 
 " TODO revisit vim source files for recompiling
 " with wildignore support for starstar **
