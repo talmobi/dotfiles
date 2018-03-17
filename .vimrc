@@ -1,8 +1,8 @@
 set nocompatible
 
 filetype on
-filetype plugin off
-" filetype plugin indent on
+filetype plugin on
+filetype plugin indent on
 
 " hidden buffers
 set hidden
@@ -657,5 +657,3 @@ syntax region  jsTemplateExpression contained matchgroup=jsTemplateBraces start=
 " hi link jsSpecial              Special
 " hi link jsTemplateBraces       Noise
 
-filetype plugin indent off
-filetype plugin off
