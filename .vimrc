@@ -657,3 +657,15 @@ syntax region  jsTemplateExpression contained matchgroup=jsTemplateBraces start=
 " hi link jsSpecial              Special
 " hi link jsTemplateBraces       Noise
 
+fun! ShowFuncName()
+  echohl ModeMsg
+  echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bWn'))
+  echohl None
+endfun
+
+nnoremap cf :call ShowFuncName() <CR>
+
+" nnoremap [[ ?{<CR>w99[{
+" nnoremap ][ /}<CR>b99]}
+" nnoremap ]] j0[[%/{<CR>
+" nnoremap [] k$][%?}<CR>
