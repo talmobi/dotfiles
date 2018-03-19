@@ -89,3 +89,7 @@ SELECT MEAN("wearabs") FROM "sensor:sensorF" WHERE time > now() - 10h GROUP BY t
 SELECT "wearabs","location" FROM "sensor:sensorF" WHERE wearabs > 0
 
 SELECT MAX("wearabs") FROM "sensor:sensorF" INTO "temp_max_wearabs" WHERE time > now() - 10h GROUP BY time(10m) fill(0) ORDER BY time asc
+
+var merged = [].concat.apply([], arrays) // merge concat combine arrays ES5
+
+var merged = [].concat( ...arrays ) // merge concat combine arrays ES6
