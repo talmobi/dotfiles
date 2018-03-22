@@ -384,6 +384,7 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'wavded/vim-stylus'
 
 " Plug 'jelera/vim-javascript-syntax'
+" Plug 'pangloss/vim-javascript'
 " Plug 'Quramy/vim-js-pretty-template'
 
 " let g:javascript_plugin_jsdoc = 0
