@@ -520,6 +520,10 @@ set grepprg=grep\ --exclude=*node_modules*\ --exclude=*.git/*\ -rn
 
 set background=dark
 
+" let g:gruvbox_contrast='medium'
+" let g:gruvbox_contrast_light='medium'
+" let g:gruvbox_contrast_dark='medium'
+
 " gruvbox contrasts ( medium on all by default )
 " let g:gruvbox_contrast_light='soft'
 " let g:gruvbox_contrast_light='medium'
