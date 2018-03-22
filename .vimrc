@@ -683,7 +683,7 @@ function! ExtraHighlights()
     "  DOM, Browser and Ajax Support   {{{
     syntax keyword _jsBrowserObjects           window navigator screen history location console
 
-    hi link _jsBrowserObjects javaScriptIdentifier
+    hi link _jsBrowserObjects javascriptGlobal
 
     syntax keyword _jsDOMObjects               document event HTMLElement Anchor Area Base Body Button Form Frame Frameset Image Link Meta Option Select Style Table TableCell TableRow Textarea
     syntax keyword _jsDOMMethods               createTextNode createElement insertBefore replaceChild removeChild appendChild  hasChildNodes  cloneNode  normalize  isSupported  hasAttributes  getAttribute  setAttribute  removeAttribute  getAttributeNode  setAttributeNode  removeAttributeNode  getElementsByTagName  hasAttribute  getElementById adoptNode close compareDocumentPosition createAttribute createCDATASection createComment createDocumentFragment createElementNS createEvent createExpression createNSResolver createProcessingInstruction createRange createTreeWalker elementFromPoint evaluate getBoxObjectFor getElementsByClassName getSelection getUserData hasFocus importNode
