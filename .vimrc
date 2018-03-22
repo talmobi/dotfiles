@@ -633,34 +633,137 @@ set statusline+=\ %P    "percent through file
 set laststatus=2
 
 "
-" Selectively copy pasted some hi lighting from
+" Selectively cherry picked highlights from
+" https://github.com/jelera/vim-javascript-syntax/blob/master/syntax/javascript.vim
 " https://github.com/pangloss/vim-javascript/blob/master/syntax/javascript.vim
+
+
+autocmd BufRead,BufNewFile,BufWritePost * call ExtraHighlights()
+function! ExtraHighlights()
+  if &filetype == "javascript"
+    "" syntax coloring for Node.js shebang line
+    syntax match shebang "^#!.*"
+    hi link shebang Comment
+
+    syntax match   jsFuncCall       /\<\K\k*\ze\s*(/
+
+    " keywords
+    syntax keyword jsGlobalNodeObjects  module exports global process __dirname __filename
+    syntax match   jsGlobalNodeRequire  /\<require\>/ containedin=jsFuncCall
+
+    hi link jsGlobalNodeObjects Constant
+    " hi link jsGlobalNodeRequire javaScriptIdentifier
+    " hi link jsGlobalNodeRequire javaScriptMember
+    hi link jsGlobalNodeRequire javaScriptMember
+
+    " Statement Keywords {{{
+    " syntax keyword jsSource         import export from
+    syntax keyword javaScriptIdentifier     arguments this let var void yield async await const
+    " syntax keyword jsOperator       delete new instanceof typeof
+    " syntax keyword jsBoolean        true false
+    " syntax keyword jsNull           null undefined
+    " syntax keyword jsMessage        alert confirm prompt status
+
+    " syntax keyword jsGlobal         self top parent
+    " syntax keyword jsDeprecated     escape unescape all applets alinkColor bgColor fgColor linkColor vlinkColor xmlEncoding
+    " syntax keyword jsConditional    if else switch
+    " syntax keyword jsRepeat         do while for in of
+    " syntax keyword jsBranch         break continue
+    " syntax keyword jsLabel          case default
+    syntax keyword _jsPrototype      prototype
+    " syntax keyword jsStatement      return with
+    syntax keyword _jsGlobalObjects  Array Boolean Date Function Math Number Object RegExp String
+    " syntax keyword jsExceptions     try catch throw finally Error EvalError RangeError ReferenceError SyntaxError TypeError URIError
+    " syntax keyword jsReserved       abstract enum int short boolean export interface static byte extends long super char final native synchronized class float package throws goto private transient debugger implements protected volatile double import public
+    "}}}
+
+    hi link _jsPrototype javaScriptType
+    hi link _jsGlobalObjects javaScriptType
+
+    "  DOM, Browser and Ajax Support   {{{
+    syntax keyword _jsBrowserObjects           window navigator screen history location console
+
+    hi link _jsBrowserObjects javaScriptIdentifier
+
+    syntax keyword _jsDOMObjects               document event HTMLElement Anchor Area Base Body Button Form Frame Frameset Image Link Meta Option Select Style Table TableCell TableRow Textarea
+    syntax keyword _jsDOMMethods               createTextNode createElement insertBefore replaceChild removeChild appendChild  hasChildNodes  cloneNode  normalize  isSupported  hasAttributes  getAttribute  setAttribute  removeAttribute  getAttributeNode  setAttributeNode  removeAttributeNode  getElementsByTagName  hasAttribute  getElementById adoptNode close compareDocumentPosition createAttribute createCDATASection createComment createDocumentFragment createElementNS createEvent createExpression createNSResolver createProcessingInstruction createRange createTreeWalker elementFromPoint evaluate getBoxObjectFor getElementsByClassName getSelection getUserData hasFocus importNode
+    " syntax keyword _jsDOMProperties            nodeName  nodeValue  nodeType  parentNode  childNodes  firstChild  lastChild  previousSibling  nextSibling  attributes  ownerDocument  namespaceURI  prefix  localName  tagName
+
+    hi link _jsDOMObjects javaScriptFunction
+    hi link _jsDOMMethods javaScriptMember
+    " hi link _jsDOMProperties javaScriptMember
+
+    syntax keyword _jsExceptions         Error EvalError InternalError RangeError ReferenceError StopIteration SyntaxError TypeError URIError
+    syntax keyword _jsBuiltins           decodeURI decodeURIComponent encodeURI encodeURIComponent eval isFinite isNaN parseFloat parseInt uneval
+
+    hi link _jsExceptions javaScriptExceptions
+    hi link _jsBuiltins javaScriptMember
+
+    syntax keyword _jsAjaxObjects              XMLHttpRequest
+    " syntax keyword jsAjaxProperties           readyState responseText responseXML statusText
+    " syntax keyword jsAjaxMethods              onreadystatechange abort getAllResponseHeaders getResponseHeader open send setRequestHeader
+
+    " syntax keyword jsPropietaryObjects        ActiveXObject
+    " syntax keyword jsPropietaryMethods        attachEvent detachEvent cancelBubble returnValue
+
+    " syntax keyword jsHtmlElemProperties       className  clientHeight  clientLeft  clientTop  clientWidth  dir  href  id  innerHTML  lang  length  offsetHeight  offsetLeft  offsetParent  offsetTop  offsetWidth  scrollHeight  scrollLeft  scrollTop  scrollWidth  style  tabIndex  target  title
+
+    " syntax keyword jsEventListenerKeywords    blur click focus mouseover mouseout load item
+
+    " syntax keyword jsEventListenerMethods     scrollIntoView  addEventListener  dispatchEvent  removeEventListener preventDefault stopPropagation
+    " }}}
+
+    hi link _jsAjaxObjects javaScriptMember
+
+    " ES6 String Interpolation {{{
+    syntax match  javaScriptTemplateDelim    "\${\|}" contained
+    syntax region javaScriptTemplateVar      start=+${+ end=+}+                        contains=javaScriptTemplateDelim keepend
+    syntax region javaScriptTemplateString   start=+`+  skip=+\\\(`\|$\)+  end=+`+     contains=javaScriptTemplateVar,javaScriptSpecial keepend
+    "}}}
+
+    hi link javaScriptTemplateDelim          javaScriptBraces
+    hi link javaScriptTemplateString         String
+
+  endif
+endfunction-
+
+call ExtraHighlights()
+
+" syntax match   jsFuncCall       /\<\K\k*\ze\s*(/
+
+" keywords
+" syntax keyword jsGlobalObjects      Array Boolean Date Function Iterator Number Object Symbol Map WeakMap Set WeakSet RegExp String Proxy Promise Buffer ParallelArray ArrayBuffer DataView Float32Array Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array Uint8Array Uint8ClampedArray JSON Math console document window Intl Collator DateTimeFormat NumberFormat fetch
+" syntax keyword jsGlobalNodeObjects  module exports global process __dirname __filename
+" syntax match   jsGlobalNodeObjects  /\<require\>/ containedin=jsFuncCall
+
+" hi link jsGlobalObjects Constant
+
 "
 " basically just template string and common nodejs/javascript keywords
 "
 " Strings, Templates, Numbers
 " syntax region  jsString           start=+\z(["']\)+  skip=+\\\%(\z1\|$\)+  end=+\z1\|$+  contains=jsSpecial,@Spell extend
-syntax region  jsTemplateString   start=+`+  skip=+\\`+  end=+`+     contains=jsTemplateExpression,jsSpecial,@Spell extend
+"" syntax region  jsTemplateString   start=+`+  skip=+\\`+  end=+`+     contains=jsTemplateExpression,jsSpecial,@Spell extend
 " syntax match   jsTaggedTemplate   /\<\K\k*\ze`/ nextgroup=jsTemplateString
 " syntax match   jsNumber           /\c\<\%(\d\+\%(e[+-]\=\d\+\)\=\|0b[01]\+\|0o\o\+\|0x\x\+\)\>/
-syntax keyword jsNumber           Infinity
+"" syntax keyword jsNumber           Infinity
 " syntax match   jsFloat            /\c\<\%(\d\+\.\d\+\|\d\+\.\|\.\d\+\)\%(e[+-]\=\d\+\)\=\>/
 
 " Keywords
-syntax keyword jsGlobalObjects      Array Boolean Date Function Iterator Number Object Symbol Map WeakMap Set WeakSet RegExp String Proxy Promise Buffer ParallelArray ArrayBuffer DataView Float32Array Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array Uint8Array Uint8ClampedArray JSON Math console document window Intl Collator DateTimeFormat NumberFormat fetch
-syntax keyword jsGlobalNodeObjects  module exports global process __dirname __filename
-syntax match   jsGlobalNodeObjects  /\<require\>/ containedin=jsFuncCall
-syntax keyword jsExceptions         Error EvalError InternalError RangeError ReferenceError StopIteration SyntaxError TypeError URIError
-syntax keyword jsBuiltins           decodeURI decodeURIComponent encodeURI encodeURIComponent eval isFinite isNaN parseFloat parseInt uneval
+"" syntax keyword jsGlobalObjects      Array Boolean Date Function Iterator Number Object Symbol Map WeakMap Set WeakSet RegExp String Proxy Promise Buffer ParallelArray ArrayBuffer DataView Float32Array Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array Uint8Array Uint8ClampedArray JSON Math console document window Intl Collator DateTimeFormat NumberFormat fetch
+"" syntax keyword jsGlobalNodeObjects  module exports global process __dirname __filename
+"" syntax match   jsGlobalNodeObjects  /\<require\>/ containedin=jsFuncCall
+"" syntax keyword jsExceptions         Error EvalError InternalError RangeError ReferenceError StopIteration SyntaxError TypeError URIError
+"" syntax keyword jsBuiltins           decodeURI decodeURIComponent encodeURI encodeURIComponent eval isFinite isNaN parseFloat parseInt uneval
 " DISCUSS: How imporant is this, really? Perhaps it should be linked to an error because I assume the keywords are reserved?
-syntax keyword jsFutureKeys         abstract enum int short boolean interface byte long char final native synchronized float package throws goto private transient implements protected volatile double public
+"" syntax keyword jsFutureKeys         abstract enum int short boolean interface byte long char final native synchronized float package throws goto private transient implements protected volatile double public
 
 " Regular Expressions
 " syntax match   jsSpecial            contained "\v\\%(x\x\x|u%(\x{4}|\{\x{4,5}})|c\u|.)"
-syntax region  jsTemplateExpression contained matchgroup=jsTemplateBraces start=+${+ end=+}+ contains=@jsExpression keepend
+"" syntax region  jsTemplateExpression contained matchgroup=jsTemplateBraces start=+${+ end=+}+ contains=@jsExpression keepend
 
-" hi link jsSpecial              Special
-" hi link jsTemplateBraces       Noise
+"" hi link jsSpecial              Special
+"" hi link jsTemplateBraces       Noise
 
 fun! ShowFuncName()
   echohl ModeMsg
