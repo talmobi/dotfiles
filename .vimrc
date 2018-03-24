@@ -248,10 +248,6 @@ set listchars=tab:»·,trail:·,eol:¬,extends:>,precedes:<,nbsp:¶
 set pastetoggle=<F2>
 set showmode
 
-" Use Q for formatting the current paragraph (or selection)
-" vmap Q gq
-" nmap Q gqap
-
 " sudo write shorthand
 cmap w!! w !sudo tee % >/dev/null
 
@@ -262,24 +258,28 @@ noremap <c-w>c <nop>
 noremap <c-w>q <nop>
 " disable another default useless and annoying ctrl-w_o ( use :only instead )
 noremap <c-w>o <nop>
-" nnoremap <c-w><c-c> <nop>
-
-" nnoremap t <c-]>
 
 " 日本語のドット置いて。。。 japanese dot
 nnoremap <a-o> A・<ESC>$
 inoremap <a-o> ・
-
 nnoremap œ A・<ESC>$
 inoremap œ ・
 
-" nnoremap <a-c> °C
+" celsius
 inoremap <a-c> °C
-inoremap <a-f> °F
-
-" nnoremap ç °C
 inoremap ç °C
-inoremap ƒ °C
+
+" fahtenheit
+inoremap <a-f> °F
+inoremap ƒ °F
+
+" temperature ball
+inoremap <a-g> °
+inoremap ¸ °
+
+" inifnity symbol
+inoremap <a-i> ∞
+inoremap ı ∞
 
 " instead bind it to q (and overwrite/disable default useless window quit short-cut)
 " nnoremap <c-w>q <c-w>c
@@ -679,6 +679,9 @@ function! ExtraHighlights()
 
     hi link _jsPrototype javaScriptType
     hi link _jsGlobalObjects javaScriptType
+
+    syntax keyword _jsInfinity           Infinity
+    hi link _jsInfinity javaScriptNumber
 
     "  DOM, Browser and Ajax Support   {{{
     syntax keyword _jsBrowserObjects           window navigator screen history location console
