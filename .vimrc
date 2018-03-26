@@ -699,7 +699,7 @@ function! ExtraHighlights()
     syntax keyword _jsExceptions         Error EvalError InternalError RangeError ReferenceError StopIteration SyntaxError TypeError URIError
     syntax keyword _jsBuiltins           decodeURI decodeURIComponent encodeURI encodeURIComponent eval isFinite isNaN parseFloat parseInt uneval
 
-    hi link _jsExceptions javaScriptExceptions
+    hi link _jsExceptions GruvboxYellow
     hi link _jsBuiltins javaScriptMember
 
     syntax keyword _jsAjaxObjects              XMLHttpRequest
