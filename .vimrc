@@ -669,7 +669,7 @@ function! ExtraHighlights()
     " syntax keyword jsConditional    if else switch
     " syntax keyword jsRepeat         do while for in of
     " syntax keyword jsBranch         break continue
-    " syntax keyword jsLabel          case default
+    syntax keyword _jsLabel          case default
     syntax keyword _jsPrototype      prototype
     " syntax keyword jsStatement      return with
     syntax keyword _jsGlobalObjects  Array Boolean Date Function Math Number Object RegExp String
@@ -677,6 +677,7 @@ function! ExtraHighlights()
     " syntax keyword jsReserved       abstract enum int short boolean export interface static byte extends long super char final native synchronized class float package throws goto private transient debugger implements protected volatile double import public
     "}}}
 
+    hi link _jsLabel javaScriptType
     hi link _jsPrototype javaScriptType
     hi link _jsGlobalObjects javaScriptType
 
