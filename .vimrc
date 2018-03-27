@@ -45,7 +45,14 @@ if !exists("g:init_path")
   let &path = &path . ',' . expand( "%:p:h" )
 endif
 
+" cheap, non-fuzzy, built-in CtrlP
 nnoremap <c-p> :call feedkeys(":e " . g:init_path . "/" . "\<c-d>" ."*")<cr>
+
+" quick arga and args ( pretty rarely used, maybe not necessary.. )
+" nnoremap <c-a> :call feedkeys(":arga " . g:init_path . "/" . "\<c-d>" ."*")<cr>
+" nnoremap <c-s> :call feedkeys(":args " . g:init_path . "/" . "\<c-d>" ."*")<cr>
+
+" fzf fuzzy CtrlP
 nnoremap <c-f> :execute ":Files " . g:init_path<cr>
 
 nnoremap <c-k> :e <c-d>*
