@@ -579,6 +579,9 @@ nnoremap sniph :let @x=''<CR>m'"xciW<ESC>:-1read $HOME/.vim/snippets/index.html<
 " sample rollup.config.js snippet
 nnoremap snipr :-1read $HOME/.vim/snippets/index.html<CR>
 
+" sample electron app snippet
+nnoremap snipe :-1read $HOME/.vim/snippets/electron-app.js<CR>
+
 " md means markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
