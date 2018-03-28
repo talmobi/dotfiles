@@ -1,5 +1,4 @@
 const _electron = require( 'electron' )
-const _ipcMain = _electron.ipcMain
 
 const _fs = require( 'fs' )
 const _path = require( 'path' )
@@ -12,10 +11,10 @@ _ipcMain.on( 'ready', function ( evt, data ) {
 } )
 
 // Module to control application life
-const app = electron.app
+const app = _electron.app
 
 // Module to create native browser window
-const BrowserWindow = electron.BrowserWindow
+const BrowserWindow = _electron.BrowserWindow
 
 function createWindow ()
 {
@@ -54,7 +53,7 @@ function createWindow ()
   // and load the index.html of the app
   mainWindow.loadURL(
     _url.format( {
-      pathname: path.join( __dirname, 'index.html' ),
+      pathname: _path.join( __dirname, 'index.html' ),
       protocol: 'file:',
       slashes: true
     } )
