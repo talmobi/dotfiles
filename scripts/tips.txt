@@ -93,3 +93,13 @@ SELECT MAX("wearabs") FROM "sensor:sensorF" INTO "temp_max_wearabs" WHERE time >
 var merged = [].concat.apply([], arrays) // merge concat combine arrays ES5
 
 var merged = [].concat( ...arrays ) // merge concat combine arrays ES6
+
+ffmpeg -i input.mp4 -vf fps=10,scale=728:-1:flags=lanczos output.gif # basic gif output with scaling
+
+ffmpeg -y -ss 30 -t 3 -i input.mp4 -vf fps=10,scale=320:-1:flags=lanczos,palettegen palette.png # generate palette, gif
+
+ffmpeg -i input.mp4 -i palette.png -filter_complex "fps=10,scale=320:-1:flags=lanczos[x];[x][1:v]paletteuse" output.gif # output gif using palette
+
+ffmpeg -ss 30 # ffmpeg start time
+
+ffmpeg -ss 30 -t 3 # ffmpeg start time with -t length
