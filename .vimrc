@@ -582,6 +582,9 @@ nnoremap snipe :-1read $HOME/.vim/snippets/electron-app.js<CR>
 " sample README.md snippet
 nnoremap snipr :-1read $HOME/.vim/snippets/README.md<CR>
 
+" sample npm scripts snippet
+nnoremap snips :-1read $HOME/.vim/snippets/npm-scripts.txt<CR>
+
 " md means markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 

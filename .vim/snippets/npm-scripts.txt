@@ -1,0 +1,11 @@
+"watch": "miru -w [ npm run watch:src, 'dist/$NAME.js' ] -f dist/$NAME.js -e 'npm run uglify && echo done'",
+"build": "npm run build:src && npm run uglify",
+"build:src": "browserify --bare --standalone $NAME -t [ babelify --presets [ env ] ] src/$NAME.js -o dist/$NAME.js 2>&1 | wooster",
+"watch:src": "watchify --bare --standalone $NAME -t [ babelify --presets [ env ] ] src/$NAME.js -o dist/$NAME.js",
+"uglify": "uglifyjs dist/$NAME.js -cmo dist/$NAME.min.js",
+"prepublish": "npm run build && npm test",
+"lint": "spacestandard src/**.js",
+"fixlint": "spacestandard --fix src/**.js",
+"test:production": "production=1 node test/test.js | faucet",
+"test:dev": "node test/test.js | faucet",
+"test": "npm run test:dev && npm run test:production"
