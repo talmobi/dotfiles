@@ -580,13 +580,14 @@ nnoremap sniph :let @x=''<CR>m'"xciW<ESC>:-1read $HOME/.vim/snippets/index.html<
 nnoremap snipe :-1read $HOME/.vim/snippets/electron-app.js<CR>
 
 " sample README.md snippet
-nnoremap snipr :-1read $HOME/.vim/snippets/README.md<CR>
+nnoremap snipr m':-1read $HOME/.vim/snippets/README.md<CR>''/\$NAME<CR>
 
 " sample npm scripts snippet
-nnoremap snips :-1read $HOME/.vim/snippets/npm-scripts.txt<CR>
+nnoremap snips m':-1read $HOME/.vim/snippets/npm-scripts.txt<CR>''/\$NAME<CR>
 
 " md means markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
 
 " Generic highlighting
 " https://github.com/j16180339887/Global.vim/blob/master/plugin/Global.vim
