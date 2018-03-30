@@ -10,7 +10,9 @@ git config --global --unset [key] # Remove global configuration
 
 git config --system --unset [key] # Remove system configuration
 
-git config credential.helper 'cache --timeout=7200' # git credential save cache store remember password login
+git config credential.helper store
+
+git config --global credential.helper 'cache --timeout 7200' # git credential save cache store remember password login
 
 grep --exclude=*node_modules* -rn [key] [directory] # filter exclude
 
@@ -61,10 +63,6 @@ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb # 
 :vimgrep <select>\_.\{-}<\/select> **       # vimgrep multi line and directory files regex search
 
 /<select\_.\{-}<\/select>       # multi line vim search
-
-git config credential.helper store
-
-git config --global credential.helper 'cache --timeout 7200'
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
