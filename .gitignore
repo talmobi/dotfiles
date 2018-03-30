@@ -1,5 +1,10 @@
+# vim dir
 .netrwhist
+
+# vim temp files
 *.sw?
+
+# mac files
 *.DS_STORE
 
 _oldbundles
@@ -15,3 +20,6 @@ _oldbundles
 
 # ignore tmux plugins, let tpm install then press "prefix + I" to install plugins
 .tmux/plugins
+
+# ignore tmux resurections
+.tmux/resurrect
