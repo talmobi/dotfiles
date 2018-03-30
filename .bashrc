@@ -53,6 +53,8 @@ alias saf="find . | fzf"
 
 alias tree="tree -I 'node_modules'"
 
+alias gist="ls -1 ~/dotfiles/gists/* | fzf --exit-0 --bind 'enter:execute(vim --not-a-term -- {})+abort'"
+
 # https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/
 # get top 10 files/dirs eting disc space
 alias ducks="du -cks * | sort -n | head"
