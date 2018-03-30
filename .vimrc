@@ -595,6 +595,9 @@ nnoremap snipr m':-1read $HOME/.vim/snippets/README.md<CR>''/\$NAME<CR>
 " sample npm scripts snippet
 nnoremap snips m':-1read $HOME/.vim/snippets/npm-scripts.txt<CR>''/\$NAME<CR>
 
+" sample .gitignore snippet
+nnoremap snipi :-1read $HOME/.vim/snippets/gitignore<CR>
+
 " md means markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
