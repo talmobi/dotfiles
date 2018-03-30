@@ -29,6 +29,11 @@ augroup END
 " fold indents
 set foldmethod=indent
 
+" format options
+set formatoptions=tcq "vim default
+set formatoptions=croql "mollie-1.local default
+set formatoptions= "current, disabled TODO
+
 " auto save/load view
 set viewoptions=cursor " only save cursor positions
 augroup AutoFolds
