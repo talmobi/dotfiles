@@ -634,18 +634,26 @@ augroup END
 " statusline setup
 set statusline=[%{pathshorten(getcwd())}] "display shortened path of current directory
 set statusline+=\        "a space before the filename
-set statusline+=%#StatusLineFileName#
+
+set statusline+=%#StatusLineFileName# "put gray background around filename
 set statusline+=%t       "tail of the filename
 set statusline+=%*      "reset highlight grup to defaults
+
 set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}, "file encoding
 set statusline+=%{&ff}] "file format
 set statusline+=%h      "help file flag
-set statusline+=%#StatusLineModifiedFlag#
+
+set statusline+=%#StatusLineModifiedFlag# "put red background around modified flag
 set statusline+=%m      "modified flag
 set statusline+=%*      "reset highlight grup to defaults
+
 set statusline+=%r      "read only flag
 set statusline+=%y      "filetype
+
+
 set statusline+=%=      "left/right separator
+
+
 set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
