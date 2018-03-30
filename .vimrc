@@ -624,7 +624,7 @@ function! HighlightGlobal()
 endfunction-
 
 highlight StatusLineFileName ctermfg=black ctermbg=gray
-highlight StatusLineModifiedFlag ctermfg=red ctermbg=red
+highlight StatusLineModifiedFlag ctermfg=white ctermbg=red
 
 augroup SetStatusLineHighlights
   autocmd!
