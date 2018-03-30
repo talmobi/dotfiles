@@ -10,6 +10,8 @@ git config --global --unset [key] # Remove global configuration
 
 git config --system --unset [key] # Remove system configuration
 
+git config credential.helper 'cache --timeout=7200' # git credential save cache store remember password login
+
 grep --exclude=*node_modules* -rn [key] [directory] # filter exclude
 
 grep -rn [key] [directory] | grep -v *node_modules* # filter
