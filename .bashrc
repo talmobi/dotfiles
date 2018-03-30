@@ -78,6 +78,9 @@ tmux-refresh() {
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+# https://github.com/junegunn/fzf/issues/816
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden --bind '?:toggle-preview' --bind 'ctrl-y:execute(echo -n {2..} | pbcopy)' --header 'Press CTRL-Y to copy command into clipboard'"
+
 # . `brew --prefix`/etc/profile.d/z.sh
 
 function parse_git_branch {
