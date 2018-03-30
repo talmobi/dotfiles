@@ -449,7 +449,12 @@ autocmd FileType netrw setlocal bufhidden=wipe
 let g:netrw_list_hide= '.*\.swp$'
 let g:netrw_list_hide= netrw_gitignore#Hide().'.*\.swp$'
 
-" load dictionaries basedon filetype
+" spelling
+" ref: https://github.com/bruno-/dotfiles/blob/master/home/.vimrc
+set spelllang=en_us                      " spelling options
+set spellfile=~/.vim/spell/en.utf-8.add  " spell files added with `zg`
+
+" load dictionaries based on filetype
 autocmd FileType javascript setlocal dictionary+=~/.vim/words/Element.props.txt
 autocmd FileType javascript setlocal dictionary+=~/.vim/words/Element.methods.txt
 autocmd FileType javascript setlocal dictionary+=~/.vim/words/HTMLElement.props.txt
