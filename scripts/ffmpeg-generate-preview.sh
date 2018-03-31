@@ -53,8 +53,8 @@ dimensions=320:-1
 
 # Temporary directory and text file where we'll store snippets
 # These will be cleaned up and removed when the preview image is generated
-tempdir=.tmp-preview.sh-snippets
-listfile=.tmp-preview.sh-list.txt
+tempdir=.tmp-ffmpeg-generate-preview.sh-snippets
+listfile=.tmp-ffmpeg-generate-preview.sh-list.txt
 
 # Display and check video length
 echo 'Video length: ' $length
