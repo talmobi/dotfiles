@@ -40,6 +40,8 @@ while true; do clear; foo; sleep 1; done
 
 count=0; while npm test; do (( count++ )); echo "$count"; done && say Tests have finished
 
+npm config set save-prefix='~' # npm save prefix tilde hat
+
 docker run --name rudolf-production-app-whale --rm --detach --env MONGO_HOST=docker.for.mac.localhost --env PORT=8080 --env STATS_HOST=docker.for.mac.localhost --env CLIENT_ID=whale --publish 8080:8080 rudolf-production-app
 
 :%!column -t
