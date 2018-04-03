@@ -604,7 +604,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Generic highlighting
 " https://github.com/j16180339887/Global.vim/blob/master/plugin/Global.vim
-autocmd BufRead,BufNewFile,BufWritePost * call HighlightGlobal()
+autocmd BufNewFile,BufReadPost * call HighlightGlobal()
 function! HighlightGlobal()
   if &filetype == "" || &filetype == "text"
     syn match alphanumeric  "[A-Za-z0-9_]"
@@ -632,7 +632,7 @@ function! HighlightGlobal()
 endfunction-
 
 highlight StatusLineFileName ctermfg=black ctermbg=gray
-highlight StatusLineModifiedFlag ctermfg=white ctermbg=red
+highlight StatusLineModifiedFlag ctermfg=NONE ctermbg=red
 
 augroup SetStatusLineHighlights
   autocmd!
@@ -673,7 +673,6 @@ set laststatus=2
 " https://github.com/pangloss/vim-javascript/blob/master/syntax/javascript.vim
 
 
-autocmd BufRead,BufNewFile,BufWritePost * call ExtraHighlights()
 function! ExtraHighlights()
   if &filetype == "javascript"
     "" syntax coloring for Node.js shebang line
@@ -766,7 +765,12 @@ function! ExtraHighlights()
   endif
 endfunction-
 
-call ExtraHighlights()
+" call ExtraHighlights()
+
+augroup AutoExtraHighlights
+  autocmd!
+  autocmd BufNewFile,BufReadPost *.js call ExtraHighlights()
+augroup END
 
 " syntax match   jsFuncCall       /\<\K\k*\ze\s*(/
 
@@ -811,9 +815,9 @@ fun! ShowFuncName()
 endfun
 
 " ref: http://vim.wikia.com/wiki/Identify_the_syntax_highlighting_group_used_at_the_cursor
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+nnoremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-nnoremap cf :call ShowFuncName() <CR>
+nnoremap <F9> :call ShowFuncName() <CR>
 
 " nnoremap [[ ?{<CR>w99[{
 " nnoremap ][ /}<CR>b99]}
