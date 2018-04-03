@@ -60,6 +60,9 @@ alias gist="ls -1 ~/dotfiles/gists/* | fzf --exit-0 --bind 'enter:execute(vim --
 alias ducks="du -cks * | sort -n | head"
 alias duke100="du -k * | awk '$1 > 100000' | sort -nr"
 
+# never again...
+alias gti=git
+
 alias h='history'
 export HISTIGNORE='history:clear:h:jap:tips'
 
