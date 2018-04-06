@@ -271,6 +271,14 @@ noremap <c-w>q <nop>
 " disable another default useless and annoying ctrl-w_o ( use :only instead )
 noremap <c-w>o <nop>
 
+" disable default useless visaul lowercase/uppercase transform
+xnoremap u <nop>
+xnoremap U <nop>
+xnoremap gu <nop>
+xnoremap gU <nop>
+nnoremap gu <nop>
+nnoremap gU <nop>
+
 " 日本語のドット置いて。。。 japanese dot
 nnoremap <a-o> A・<ESC>$
 inoremap <a-o> ・
