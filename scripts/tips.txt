@@ -105,3 +105,5 @@ ffmpeg -i input.mp4 -i palette.png -filter_complex "fps=10,scale=320:-1:flags=la
 ffmpeg -ss 30 # ffmpeg start time
 
 ffmpeg -ss 30 -t 3 # ffmpeg start time with -t length
+
+find -name "*.flac" -exec ffmpeg -i {} -acodec libmp3lame -ab 128k {}.mp3 \; # convert multiple files to mp3 music
