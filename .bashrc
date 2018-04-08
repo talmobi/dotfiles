@@ -96,6 +96,9 @@ export PATH=$PATH:/Users/mollie/Library/Android/sdk/platform-tools:/Users/mollie
 # postgres PATH
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 
+# dotfiles scripts path
+export PATH=$PATH:~/dotfiles/sh
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # enable bash completion in interactive shells
