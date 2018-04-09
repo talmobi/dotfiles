@@ -12,6 +12,12 @@ set synmaxcol=199 "syntax anti-choke!
 " more color highlighting for *.json files
 autocmd FileType json setlocal synmaxcol=299
 
+" set swap file directory
+" ref: https://vi.stackexchange.com/questions/177/what-is-the-purpose-of-swap-files
+" The ^= syntax for :set prepends the directory name to the head of the list, so Vim will check that directory first.
+" The // at the end of the directory name tells Vim to use the absolute path to the file to create the swap file so there aren't collisions between files of the same name from different directories.
+set directory^=$HOME/.vim/swaps//
+
 " auto mark files based on type ( holy shit! )
 " https://stackoverflow.com/a/16084326/3496140
 augroup AutoGlobalMarkFilesBasedOnFileType
