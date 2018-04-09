@@ -130,7 +130,9 @@ command! ResetView :call ResetView()
 " essentially adds flex support for vim-stylus plugin, see: https://github.com/wavded/vim-stylus/issues/46
 hi def link stylusProperty cssVisualProp
 
-set nowrap
+" set nowrap
+set wrap
+
 set tabstop=2
 set backspace=indent,eol,start
 
