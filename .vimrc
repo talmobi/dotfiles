@@ -555,7 +555,11 @@ command! Fixlint :call ShellCommandToQuickfix("npm run fixlint")
 
 " useful grep
 " set grepprg=grep\ -rn
-set grepprg=grep\ --exclude=*node_modules*\ --exclude=*.git/*\ -rn
+set grepprg=grep\ --exclude=*node_modules*\ --exclude=*.git/*\ -n
+
+if executable('rg')
+  set grepprg=rg\ --vimgrep
+endif
 
 set background=dark
 
@@ -696,7 +700,7 @@ set laststatus=2
 
 
 function! ExtraHighlights()
-  if &filetype == "javascript"
+  if &filetype == "javascript" || &filetype == "typescript"
     "" syntax coloring for Node.js shebang line
     syntax match shebang "^#!.*"
     hi link shebang Comment
@@ -783,15 +787,14 @@ function! ExtraHighlights()
 
     hi link javaScriptTemplateDelim          javaScriptBraces
     hi link javaScriptTemplateString         String
-
   endif
 endfunction-
 
-" call ExtraHighlights()
+call ExtraHighlights()
 
 augroup AutoExtraHighlights
   autocmd!
-  autocmd BufNewFile,BufReadPost *.js call ExtraHighlights()
+  autocmd BufNewFile,BufReadPost * call ExtraHighlights()
 augroup END
 
 " syntax match   jsFuncCall       /\<\K\k*\ze\s*(/
