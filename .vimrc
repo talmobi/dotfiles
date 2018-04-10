@@ -404,6 +404,9 @@ Plug 'tomtom/tcomment_vim'
 
 Plug 'vim-scripts/gitignore'
 
+" typescript syntax highlighting
+Plug 'leafgarland/typescript-vim'
+
 " Plug 'skammer/vim-css-color'
 " Plug 'ap/vim-css-color'
 
