@@ -18,6 +18,9 @@ autocmd FileType json setlocal synmaxcol=299
 " The // at the end of the directory name tells Vim to use the absolute path to the file to create the swap file so there aren't collisions between files of the same name from different directories.
 set directory^=$HOME/.vim/swaps//
 
+" suffixes to check when using 'gf' ( mnemnomic goto file )
+set suffixesadd+=.js,.jsx,.json,.java,.py
+
 " auto mark files based on type ( holy shit! )
 " https://stackoverflow.com/a/16084326/3496140
 augroup AutoGlobalMarkFilesBasedOnFileType
