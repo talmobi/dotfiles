@@ -66,8 +66,17 @@ nnoremap <c-p> :call feedkeys(":e " . g:init_path . "/" . "\<c-d>" ."*")<cr>
 " nnoremap <c-a> :call feedkeys(":arga " . g:init_path . "/" . "\<c-d>" ."*")<cr>
 " nnoremap <c-s> :call feedkeys(":args " . g:init_path . "/" . "\<c-d>" ."*")<cr>
 
-" fzf fuzzy CtrlP
-nnoremap <c-f> :execute ":Files " . g:init_path<cr>
+" don't prompt listings
+set nomore
+
+" buffer shotcut
+nnoremap <c-l> :ls<cr>:b<space>
+
+if executable('fzf')
+  " fzf fuzzy CtrlP
+  nnoremap <c-f> :execute ":Files " . g:init_path<cr>
+  nnoremap  :execute ":Buffers"<cr>
+endif
 
 nnoremap <c-k> :e <c-d>*
 cnoremap <c-o> */*<c-d>
@@ -324,13 +333,6 @@ cnoremap <c-x> \| split<cr><c-w><c-p>:b#<cr><c-w><c-p>
 cnoremap <c-v> \| vsplit<cr><c-w><c-p>:b#<cr><c-w><c-p>
 
 " nnoremap <c-p> :e *<c-i>**/
-
-" don't prompt listings
-set nomore
-
-" buffer shotcut
-nnoremap <c-l> :ls<cr>:b<space>
-
 " nmap <a-l> <Plug>Colorizer
 
 " disable at startup ( use manually only )
