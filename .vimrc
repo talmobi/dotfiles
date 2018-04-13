@@ -560,7 +560,7 @@ command! Fixlint :call ShellCommandToQuickfix("npm run fixlint")
 set grepprg=grep\ --exclude=*node_modules*\ --exclude=*.git/*\ -n
 
 if executable('rg')
-  set grepprg=rg\ --vimgrep
+  set grepprg=rg\ --vimgrep\ -u\ -M\ 200
 endif
 
 set background=dark
