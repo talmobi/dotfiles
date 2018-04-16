@@ -431,12 +431,14 @@ Plug 'wavded/vim-stylus'
 " Plug 'pangloss/vim-javascript'
 " Plug 'mxw/vim-jsx'
 
+" Plug 'junegunn/seoul256.vim
+" Plug 'junegunn/limelight.vim'
+" Plug 'junegunn/goyo.vim'
+
 Plug 'rstacruz/sparkup'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-
-" Plug 'junegunn/seoul256.vim'
 
 call plug#end()
 
