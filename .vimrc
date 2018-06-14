@@ -419,6 +419,8 @@ Plug 'hail2u/vim-css3-syntax'
 
 Plug 'wavded/vim-stylus'
 
+" Plug 'jbgutierrez/vim-better-comments'
+
 " Plug 'jelera/vim-javascript-syntax'
 " Plug 'pangloss/vim-javascript'
 " Plug 'Quramy/vim-js-pretty-template'
