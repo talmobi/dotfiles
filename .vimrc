@@ -563,6 +563,7 @@ command! Fixlint :call ShellCommandToQuickfix("npm run fixlint")
 " set grepprg=grep\ -rn
 set grepprg=grep\ --exclude=*node_modules*\ --exclude=*.git/*\ -n
 
+" set ripgrep as default grep program if it exists
 if executable('rg')
   set grepprg=rg\ --vimgrep\ -u\ -M\ 200
 endif
