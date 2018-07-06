@@ -2,7 +2,7 @@ set nocompatible
 
 filetype on
 filetype plugin on
-filetype plugin indent on
+filetype indent off
 
 " hidden buffers
 set hidden
@@ -152,13 +152,18 @@ set scrolloff=6
 set sidescrolloff=5 " was 7
 set sidescroll=4 " was 5
 
-set cindent
-set cino=b1,+0,p0,(s,m1,t0 "sane indentations (see :help cino)
+set cino=b1,+0,p0,m1 "sane indentations (see :help cino)
 set cinw-=if,else,while, "disable word indentation
-set cinw='' "disable all word indentation (enable this for python)
 
-set autoindent
-set copyindent
+set cino=''
+
+set cinw='' "disable all word indentation (enable this for python)
+set cinw=({
+
+set nocindent
+set noautoindent
+set nocopyindent
+set smartindent
 
 " set isk+=- " consider words as part of -
 
