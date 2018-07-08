@@ -442,6 +442,9 @@ Plug 'wavded/vim-stylus'
 " Plug 'junegunn/limelight.vim'
 " Plug 'junegunn/goyo.vim'
 
+" spark for html5 shorthands
+" e.g. html:5<c-e> auto complates to a html template
+" e.g. div#root<c-r> completes to <div id="root"></div> and sets cursor position inside the div
 Plug 'rstacruz/sparkup'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
