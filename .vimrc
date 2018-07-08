@@ -450,6 +450,13 @@ Plug 'rstacruz/sparkup'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" https://github.com/prabirshrestha/vim-lsp
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+
+" https://github.com/natebosch/vim-lsc
+Plug 'natebosch/vim-lsc'
+
 call plug#end()
 
 " Mapping selecting mappings
@@ -863,3 +870,13 @@ nnoremap <F9> :call ShowFuncName() <CR>
 " nnoremap ][ /}<CR>b99]}
 " nnoremap ]] j0[[%/{<CR>
 " nnoremap [] k$][%?}<CR>
+
+" see: https://github.com/prabirshrestha/vim-lsp
+" and install: npm i -g bash-language-server
+if executable('bash-language-server')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'bash-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+        \ 'whitelist': ['sh'],
+        \ })
+endif
