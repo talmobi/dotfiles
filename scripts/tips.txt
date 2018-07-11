@@ -44,6 +44,8 @@ npm config set save-prefix='~' # npm save prefix tilde hat
 
 docker run --name rudolf-production-app-whale --rm --detach --env MONGO_HOST=docker.for.mac.localhost --env PORT=8080 --env STATS_HOST=docker.for.mac.localhost --env CLIENT_ID=whale --publish 8080:8080 rudolf-production-app
 
+docker rm $(docker ps --all -q -f status=exited) # docker remove all exited containers
+
 :%!column -t
 
 :%!sed 's/[A-Z]/ &/'
