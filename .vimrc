@@ -451,11 +451,11 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " https://github.com/prabirshrestha/vim-lsp
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/vim-lsp'
 
 " https://github.com/natebosch/vim-lsc
-Plug 'natebosch/vim-lsc'
+" Plug 'natebosch/vim-lsc'
 
 call plug#end()
 
