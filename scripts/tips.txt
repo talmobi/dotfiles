@@ -109,3 +109,7 @@ ffmpeg -ss 30 # ffmpeg start time
 ffmpeg -ss 30 -t 3 # ffmpeg start time with -t length
 
 find -maxdepth 1 -name "*.flac" -exec ffmpeg -i {} -acodec libmp3lame -ab 128k {}.mp3 \; # convert multiple files to mp3 music
+
+:%bd|e#     # clear vim buffers, #bd = delete all buffers, e# = open last bufffer for editing
+:1,100bd    # clear vim buffers
+:bufdo bd   # clear buffers
