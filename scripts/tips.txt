@@ -14,6 +14,8 @@ git config credential.helper store
 
 git config --global credential.helper 'cache --timeout 7200' # git credential save cache store remember password login
 
+git log -p --pretty=format:"%h%x09%an%x09%ad%x09%s" # format date blame
+
 grep --exclude=*node_modules* -rn [key] [directory] # filter exclude
 
 grep -rn [key] [directory] | grep -v *node_modules* # filter
