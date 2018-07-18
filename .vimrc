@@ -880,3 +880,7 @@ if executable('bash-language-server')
         \ 'whitelist': ['sh'],
         \ })
 endif
+
+" ref: https://github.com/vim/vim/issues/549
+" Use relative paths in buffer list
+" autocmd BufReadPost * silent! lcd .
