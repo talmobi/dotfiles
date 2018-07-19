@@ -115,3 +115,5 @@ find -maxdepth 1 -name "*.flac" -exec ffmpeg -i {} -acodec libmp3lame -ab 128k {
 :%bd|e#     # clear vim buffers, #bd = delete all buffers, e# = open last bufffer for editing
 :1,100bd    # clear vim buffers
 :bufdo bd   # clear buffers
+
+lsof -n -i :3000 | grep LISTEN # find active port ECONN REFUSED
