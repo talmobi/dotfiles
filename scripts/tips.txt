@@ -119,3 +119,5 @@ find -maxdepth 1 -name "*.flac" -exec ffmpeg -i {} -acodec libmp3lame -ab 128k {
 lsof -n -i :3000 | grep LISTEN # find active port ECONN REFUSED
 
 git push origin HEAD # A handy way to push the current branch to the same name on the remote
+
+ctrl-b ctrl-s, ctrl-b ctrl-r # tmux resurrect save restore/load
