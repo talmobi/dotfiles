@@ -40,6 +40,9 @@ if [ -t 1 ]; then
   fi
 fi
 
+# fix irssi corrupted scrolling
+alias irssi='TERM=screen irssi'
+
 echo "TERM: $TERM"
 
 ncolors=$(tput colors)
