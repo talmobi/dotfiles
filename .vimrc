@@ -163,7 +163,9 @@ set cinw=({
 set nocindent
 set noautoindent
 set nocopyindent
-set smartindent
+set nosmartindent
+
+set cindent
 
 " set isk+=- " consider words as part of -
 
