@@ -121,3 +121,11 @@ lsof -n -i :3000 | grep LISTEN # find active port ECONN REFUSED
 git push origin HEAD # A handy way to push the current branch to the same name on the remote
 
 ctrl-b ctrl-s, ctrl-b ctrl-r # tmux resurrect save restore/load
+
+/server add -auto -network networkname irc.networkname.com 6667 # irssi server auto connect
+
+/network add -nick nickname networkname # irssi auto nick to identify
+
+/channel add -auto #channel networkname # irssi auto join channel
+
+//network add -autosendcmd "/msg nickserv identify password ;wait 2000" networkname # irssi auto identify login
