@@ -129,3 +129,5 @@ ctrl-b ctrl-s, ctrl-b ctrl-r # tmux resurrect save restore/load
 /channel add -auto #channel networkname # irssi auto join channel
 
 //network add -autosendcmd "/msg nickserv identify password ;wait 2000" networkname # irssi auto identify login
+
+tail -n 0 -f \##japanese.log | trans -s ja -t en -no-auto | cat > \##japanese-translated.log # live translate log
