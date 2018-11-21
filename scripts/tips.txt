@@ -131,3 +131,5 @@ ctrl-b ctrl-s, ctrl-b ctrl-r # tmux resurrect save restore/load
 //network add -autosendcmd "/msg nickserv identify password ;wait 2000" networkname # irssi auto identify login
 
 tail -n 0 -f \##japanese.log | trans -s ja -t en -no-auto | cat > \##japanese-translated.log # live translate log
+
+:e ++enc=<encoding> # reload vim encode/encoding utf-8 latin1 iso-8859-15
