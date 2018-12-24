@@ -138,4 +138,5 @@ dstat -ta --top-cpu --noheader --output systemstats.csv # monitor log save top c
 
 ps auxf > auxf.log # monitor log save cpu usage to file
 
-while true; do date >> auxf.log; ps auxf >> auxf.log; tail -n50000 auxf.log > auxf.log; date; sleep 10; done # auto save auxf.log
+while true; do echo "" >> auxf.log; date >> auxf.log; ps auxf >> auxf.log; sed -i '' '50001,$ d' auxf.log; date
+; sleep 10; done
