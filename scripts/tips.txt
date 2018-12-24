@@ -138,4 +138,4 @@ dstat -ta --top-cpu --noheader --output systemstats.csv # monitor log save top c
 
 ps auxf > auxf.log # monitor log save cpu usage to file
 
-while true; do echo "" >> auxf.log; date >> auxf.log; ps auxf >> auxf.log; tail -n50000 auxf.log | tee auxf.log; date; sleep 10; done # monitor log save cpu usage to file
+while true; do echo "" >> auxf.log; date >> auxf.log; ps auxf >> auxf.log; tail -n50000 auxf.log | sponge auxf.log; date; sleep 10; done # monitor log save cpu usage to file
