@@ -133,3 +133,9 @@ ctrl-b ctrl-s, ctrl-b ctrl-r # tmux resurrect save restore/load
 tail -n 0 -f \##japanese.log | trans -s ja -t en -no-auto | cat > \##japanese-translated.log # live translate log
 
 :e ++enc=<encoding> # reload vim encode/encoding utf-8 latin1 iso-8859-15
+
+dstat -ta --top-cpu --noheader --output systemstats.csv # monitor log save top cpu usage to file
+
+ps auxf > auxf.log # monitor log save cpu usage to file
+
+while true; do date >> auxf.log; ps auxf >> auxf.log; tail -n50000 auxf.log > auxf.log; date; sleep 10; done # auto save auxf.log
