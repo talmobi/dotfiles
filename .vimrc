@@ -581,8 +581,13 @@ command! Fixlint :call ShellCommandToQuickfix("npm run fixlint")
 set grepprg=grep\ --exclude=*node_modules*\ --exclude=*.git/*\ -n
 
 " set ripgrep as default grep program if it exists
+" --vimgrep : every result in its own line
+"  -S       : smart case
+"  -u       : add .ignored files in search
+"  -M 200   : ignore lines longer than 200 column width ( practically ignores minified
+"  files )
 if executable('rg')
-  set grepprg=rg\ --vimgrep\ -u\ -M\ 200
+  set grepprg=rg\ --vimgrep\ -S\ -u\ -M\ 200
 endif
 
 set background=dark
