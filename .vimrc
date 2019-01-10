@@ -57,6 +57,7 @@ set path=.,,
 if !exists("g:init_path")
   let g:init_path = expand( "%:p:h" )
   let &path = &path . ',' . expand( "%:p:h" )
+  call setreg( "P", g:init_path )
 endif
 
 " cheap, non-fuzzy, built-in CtrlP
