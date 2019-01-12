@@ -68,6 +68,14 @@ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb # 
 
 :vimgrep <select>\_.\{-}<\/select> **       # vimgrep multi line and directory files regex search
 
+:g/profile/d # remove/delete all lines containing/matching a pattern
+
+:g/^\s*$/d # remove/delete all empty lines or whitespace lines
+
+:g/^\s*$/d # remove/delete all empty lines or whitespace lines
+
+:v/error\|warn\|fail/d # remove/delete all lines except "error", "warn" or "fail" ( :v and :g! are the same )
+
 /<select\_.\{-}<\/select>       # multi line vim search
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
