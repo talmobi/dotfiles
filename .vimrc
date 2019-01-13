@@ -414,6 +414,10 @@ Plug 'junegunn/rainbow_parentheses.vim'
 
 Plug 'vim-scripts/gitignore'
 
+" for :Reject, :Keep and :Restore in quickfix list -- it's amazing
+" ( instead of set modifiable and :v/snip/d etc that breaks the jump marks... )
+Plug 'romainl/vim-qf'
+
 " typescript syntax highlighting
 Plug 'leafgarland/typescript-vim'
 
