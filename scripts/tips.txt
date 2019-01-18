@@ -149,3 +149,7 @@ ps auxf > auxf.log # monitor log save cpu usage to file
 while true; do echo "" >> auxf.log; date >> auxf.log; ps auxf >> auxf.log; tail -n50000 auxf.log | sponge auxf.log; date; sleep 10; done # monitor log save cpu usage to file
 
 kubectl logs --follow=true $(kubectl get pods | tail -1 | cut -d" " -f 1) # kube k8s kubernetes log last pod
+
+git branch -a # to show all local and remote branches that (local) git knows about
+
+git remote update origin --prune # update the local list of remote branches
