@@ -536,9 +536,9 @@ set completeopt+=preview
 
 " LINT
 
-" use spacestandard linter by default ( for vim's built in quickfix )
+" use npm script lint as by default ( for vim's built in quickfix )
 " (:make, :copen, :cn, :cp, etc)
-set makeprg=spacestandard\ %
+set makeprg=npm\ run\ lint\ --silent
 let g:defaultmakeprg=&makeprg
 
 " use 'npm run lint' as is common in javascript nodejs projects as default
