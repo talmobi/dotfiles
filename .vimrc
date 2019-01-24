@@ -576,6 +576,9 @@ command! -nargs=+ -complete=shellcmd Q call ShellCommandToQuickfix(<q-args>)
 command! Lint :call ShellCommandToQuickfix("npm run lint")
 command! Fixlint :call ShellCommandToQuickfix("npm run fixlint")
 
+command! Scratch :new | setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
+command! ScratchThis :setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
+
 " use some other default makeprg based on filetype
 " autocmd Filetype foo setlocal makeprg=/bin/foo
 
