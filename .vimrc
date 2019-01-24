@@ -579,6 +579,8 @@ command! Fixlint :call ShellCommandToQuickfix("npm run fixlint")
 command! Scratch :new | setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
 command! ScratchThis :setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
 
+command! GitBlame :new | setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile | r !git blame #
+
 " use some other default makeprg based on filetype
 " autocmd Filetype foo setlocal makeprg=/bin/foo
 
