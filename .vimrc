@@ -281,6 +281,9 @@ function! TabMessage (cmd)
 endfunction
 command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 
+" http://vim.wikia.com/wiki/Append_output_of_an_external_command
+" :command! -nargs=* -complete=shellcmd R new | setlocal buftype=nofile bufhidden=hide noswapfile | r !<args>
+
 " autocmd BufWinEnter * call RefreshColorSchemes()
 
 set list
