@@ -153,3 +153,9 @@ kubectl logs --follow=true $(kubectl get pods | tail -1 | cut -d" " -f 1) # kube
 git branch -a # to show all local and remote branches that (local) git knows about
 
 git remote update origin --prune # update the local list of remote branches
+
+netstat -vanp tcp | grep 3000 # process using port netstat
+
+sudo lsof -i tcp:3000 # process using port macOS El Capitan
+
+netstat -vanp --tcp | grep 3000 # process using port Centos7
