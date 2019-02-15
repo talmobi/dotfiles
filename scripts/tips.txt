@@ -159,3 +159,5 @@ netstat -vanp tcp | grep 3000 # process using port netstat
 sudo lsof -i tcp:3000 # process using port macOS El Capitan
 
 netstat -vanp --tcp | grep 3000 # process using port Centos7
+
+git submodule update --init --recursive
