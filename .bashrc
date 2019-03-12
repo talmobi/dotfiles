@@ -43,6 +43,12 @@ fi
 # fix irssi corrupted scrolling
 alias irssi='TERM=screen irssi'
 
+# if on windows
+if [ $isWindows -eq 1 ]; then
+  export TERM=xterm
+  export FORCE_COLOR=true
+fi
+
 echo "TERM: $TERM"
 
 ncolors=$(tput colors)
