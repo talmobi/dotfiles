@@ -481,9 +481,18 @@ nmap ga <Plug>(EasyAlign)
 
 " let g:colorizer_auto_filetype='css,html,styl'
 
-" make sure cursorline is always visible
-set cursorline
-au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+" flash the cursorline
+function! FlashCursor()
+  set cursorline
+  redraw
+  sleep 125m
+  set nocursorline
+endfunction
+
+" turn off cursorline because it makes scrolling slow
+set nocursorline
+
+" au VimEnter,WinEnter,BufWinEnter * call FlashCursor()
 
 " CtrlP plugin
 " let g:ctrlp_map = '<c-p>'
