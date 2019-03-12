@@ -414,6 +414,9 @@ Plug 'junegunn/vim-journal'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/rainbow_parentheses.vim'
 
+" graphql filetype detectio and syntax highlighting
+Plug 'jparise/vim-graphql'
+
 " Plug 'tomtom/tcomment_vim'
 
 Plug 'vim-scripts/gitignore'
