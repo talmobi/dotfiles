@@ -178,6 +178,7 @@ set showmatch
 set ignorecase
 set smartcase
 set encoding=utf-8
+"set ++enc=utf-8 " override fileencoding to utf-8
 
 set smarttab
 set expandtab
