@@ -27,3 +27,7 @@ cd ~/dotfiles
 ## vim tips
 double tap `s` key in normal mode to reload your ~/.vimrc
 
+// TODO quickfix fips
+// TODO quicfix fips
+
+## tmux tips
