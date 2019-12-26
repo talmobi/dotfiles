@@ -23,3 +23,7 @@ vim
 cd ~/dotfiles
 ./install-tpm.sh
 ```
+
+## vim tips
+double tap `s` key in normal mode to reload your ~/.vimrc
+
