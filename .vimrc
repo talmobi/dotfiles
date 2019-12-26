@@ -474,6 +474,10 @@ Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
+" remove '-' from iskeyword if it is set by css plugins
+" ( set by vim-stylus plugin at the moment )
+set iskeyword-=-
+
 " Mapping selecting mappings
 " nnoremap <c-p> :GFiles<cr>
 " nnoremap <c-f> :Files<cr>
