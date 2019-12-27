@@ -43,6 +43,12 @@ set formatoptions=tcq "vim default
 set formatoptions=croql "mollie-1.local default
 set formatoptions= "current, disabled TODO
 
+" set preferred textwidth for gq etc ( :help textwidth )
+" -> this way when organizing long text with gq ( such as
+"  comments and, incidentally this very comment, it will not
+"  wrap or be too long in most situations.
+set textwidth=64
+
 " auto save/load view
 set viewoptions=cursor " only save cursor positions
 augroup AutoFolds
