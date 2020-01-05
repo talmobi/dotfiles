@@ -82,10 +82,10 @@ nnoremap <c-l> :ls<cr>:b<space>
 " jump to outermost keyword (function) line (name) (ty romainl)
 " we include :p here to save the location to the :jumps list
 " use '' or ctrl-O manually to jump back to previous position
-nnoremap 3<c-g> m':?^\w?<cr>:call histdel('?', -1)<cr>:nohlsearch<cr>:call FlashCursor()<cr>:print<cr>
+nnoremap 3<c-g> m':?^\w?<cr>:call histdel('?', -1)<cr>:nohlsearch<cr>:call FlashCursor()<cr>
 
 " jump to nearest top function
-nnoremap 2<c-g> m':?function?<cr>:call histdel('?', -1)<cr>:nohlsearch<cr>:call FlashCursor()<cr>:print<cr>
+nnoremap 2<c-g> m':?function?<cr>:call histdel('?', -1)<cr>:nohlsearch<cr>:call FlashCursor()<cr>
 
 if executable('fzf')
   " fzf fuzzy CtrlP
