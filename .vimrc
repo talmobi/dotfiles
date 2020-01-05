@@ -507,7 +507,7 @@ nmap ga <Plug>(EasyAlign)
 function! FlashCursor()
   set cursorline
   redraw
-  sleep 125m
+  sleep 175m
   set nocursorline
 endfunction
 
