@@ -54,8 +54,8 @@ echo "TERM: $TERM"
 ncolors=$(tput colors)
 echo "ncolors: $ncolors"
 
-alias jap="grep . ~/dotfiles/jap/* | fzf"
-alias tips="grep . ~/dotfiles/scripts/tips.txt | fzf"
+alias jap="grep . ~/dotfiles/jap/* | nfzf"
+alias tips="grep . ~/dotfiles/scripts/tips.txt | nfzf"
 
 alias sf="rg --files | fzf"
 alias saf="find . | fzf"
@@ -87,8 +87,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=999999
-HISTFILESIZE=999999
+HISTSIZE=99999
+HISTFILESIZE=99999
 
 if [ -x "$(command -v vim)" ]; then
   export EDITOR=vim
