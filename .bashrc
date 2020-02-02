@@ -123,6 +123,10 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 # dotfiles scripts path
 export PATH=$PATH:~/dotfiles/sh
 
+# common npm global packages installation diretory
+# ref: https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
+export PATH=$PATH:~/.npm-packages/bin
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # enable bash completion in interactive shells
