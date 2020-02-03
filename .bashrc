@@ -64,8 +64,8 @@ alias tree="tree -I 'node_modules'"
 
 alias gist="ls -1 ~/dotfiles/gists/* | fzf --exit-0 --bind 'enter:execute(vim --not-a-term -- {})+abort'"
 
-alias gitcheckout="git branch | sed s/*//g | sed s/\ //g | nfzf | xargs git checkout"
-alias gitmerge="git branch | sed s/*//g | sed s/\ //g | nfzf | xargs git merge"
+alias gitcheckout="git branch | sed s/*//g | sed s/\ //g | nfzf --normal | xargs git checkout"
+alias gitmerge="git branch | sed s/*//g | sed s/\ //g | nfzf --normal | xargs git merge"
 
 # https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/
 # get top 10 files/dirs eting disc space
