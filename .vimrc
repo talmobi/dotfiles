@@ -221,7 +221,7 @@ set wildmode=list:full
 " set wildignore=*/.*,.*
 
 " Don't offer to open certain files/directories
-set wildignore+=**/node_modules*
+" set wildignore+=**/node_modules*
 set wildignore+=**/.git*
 set wildignore+=**/.svn*
 
