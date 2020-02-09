@@ -222,6 +222,8 @@ set wildmode=list:full
 
 " Don't offer to open certain files/directories
 " set wildignore+=**/node_modules*
+" when using vimgrep consider :vimgrep /foo/ `git ls-files` to
+" skip gitignored files/dirs like node_modules
 set wildignore+=**/.git*
 set wildignore+=**/.svn*
 
