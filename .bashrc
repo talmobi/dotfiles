@@ -125,7 +125,9 @@ export PATH=$PATH:~/dotfiles/sh
 
 # common npm global packages installation diretory
 # ref: https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
-export PATH=$PATH:~/.npm-packages/bin
+# ref: https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally
+export PATH=:~/.npm-packages/bin:$PATH
+export PATH=:~/.npm-global/bin:$PATH
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
