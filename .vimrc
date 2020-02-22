@@ -23,17 +23,17 @@ set suffixesadd+=.js,.jsx,.json,.java,.py
 
 " auto mark files based on type ( holy shit! )
 " https://stackoverflow.com/a/16084326/3496140
-augroup AutoGlobalMarkFilesBasedOnFileType
-  autocmd!
-  autocmd BufLeave *.css normal! mC
-  autocmd BufLeave *.styl normal! mS
-  autocmd BufLeave *.html normal! mH
-  autocmd BufLeave *.js normal! mJ
-  autocmd BufLeave *.json normal! mO
-  autocmd BufLeave *.php normal! mP
-  autocmd BufLeave *.xml normal! mX
-  autocmd BufLeave *NetrwTreeListing* normal! mT
-augroup END
+" augroup AutoGlobalMarkFilesBasedOnFileType
+"   autocmd!
+"   autocmd BufLeave *.css normal! mC
+"   autocmd BufLeave *.styl normal! mS
+"   autocmd BufLeave *.html normal! mH
+"   autocmd BufLeave *.js normal! mJ
+"   autocmd BufLeave *.json normal! mO
+"   autocmd BufLeave *.php normal! mP
+"   autocmd BufLeave *.xml normal! mX
+"   autocmd BufLeave *NetrwTreeListing* normal! mT
+" augroup END
 
 " fold indents
 set foldmethod=indent
