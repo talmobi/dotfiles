@@ -430,6 +430,19 @@ Plug 'junegunn/vim-journal'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/rainbow_parentheses.vim'
 
+" indent text object
+" github.com/michaeljsmith/vim-indent-object
+" ai, ii, aI, iI
+Plug 'michaeljsmith/vim-indent-object'
+
+" https://github.com/tpope/vim-surround
+" cs"', ds"
+Plug 'tpope/vim-surround'
+
+" https://github.com/tpope/vim-commentary
+" gcc, gcip, 4gc
+Plug 'tpope/vim-commentary'
+
 " graphql filetype detectio and syntax highlighting
 Plug 'jparise/vim-graphql'
 
