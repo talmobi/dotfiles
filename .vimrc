@@ -85,10 +85,10 @@ nnoremap 4<c-g> m':?^\(await\)\=\w\+\s*?<cr>:call histdel('search', -1)<cr>:nohl
 
 " jump to outermost keyword (function) line (name) (ty romainl)
 " use '' or ctrl-O manually to jump back to previous position
-nnoremap 3<c-g> m':?^\(function\\|async.function\).\a?<cr>:call histdel('search', -1)<cr>:nohlsearch<cr>:call FlashCursor()<cr>
+nnoremap 3<c-g> m':?^\(function\\|async.function\).\w?<cr>:call histdel('search', -1)<cr>:nohlsearch<cr>:call FlashCursor()<cr>
 
 " jump to nearest top function
-nnoremap 2<c-g> m':?\(function\\|async.function\).\a?<cr>:call histdel('search', -1)<cr>:nohlsearch<cr>:call FlashCursor()<cr>
+nnoremap 2<c-g> m':?\(function\\|async.function\).\w?<cr>:call histdel('search', -1)<cr>:nohlsearch<cr>:call FlashCursor()<cr>
 
 if executable('fzf')
   " fzf fuzzy CtrlP
