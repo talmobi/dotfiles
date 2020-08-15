@@ -79,6 +79,10 @@ set nomore
 " buffer shotcut
 nnoremap <c-l> :ls<cr>:b<space>
 
+" jump to outermost function call line
+" use '' or ctrl-O manually to jump back to previous position
+nnoremap 4<c-g> m':?^\(await\)\=\w\+\s*?<cr>:call histdel('search', -1)<cr>:nohlsearch<cr>:call FlashCursor()<cr>
+
 " jump to outermost keyword (function) line (name) (ty romainl)
 " use '' or ctrl-O manually to jump back to previous position
 nnoremap 3<c-g> m':?^\(function\\|async.function\).\a?<cr>:call histdel('search', -1)<cr>:nohlsearch<cr>:call FlashCursor()<cr>
