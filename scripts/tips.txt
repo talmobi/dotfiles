@@ -2,6 +2,8 @@
 
 // eslint-disable-line no-use-before-define -- eslint ignore line rule
 
+<prefix>+: and then enter respawn-pane -k and press <Enter> -- tmux respawn/restart/reset pane/window/tab
+
 Enter tild dot Enter ~. -- ssh close session force exit
 
 GIT_SSL_CAINFO=~/Downloads/111.cer git clone
