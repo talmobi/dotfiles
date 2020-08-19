@@ -1,3 +1,5 @@
+git reset --soft HEAD~1   --   git undo reset revert last previous commit
+
 // eslint-disable-next-line no-use-before-define -- eslint ignore line rule
 
 // eslint-disable-line no-use-before-define -- eslint ignore line rule
