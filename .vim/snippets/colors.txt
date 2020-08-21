@@ -1,0 +1,24 @@
+color_bg = #282828
+color_fg = #ebdbb2
+color_green = #b8bb26
+color_yellow = #fabd2f
+color_blue = #83a598
+color_purple = #d3869b
+color_aqua = #8ec97c
+color_orange = #fe8019
+color_red = #fb4934
+color_gray = #928374
+
+color_light_bg = #fbf1c7
+color_light_fg = #3c3836
+color_light_green = #79740e
+color_light_yellow = #b57614
+color_light_blue = #076678
+color_light_purple = #8f3f71
+color_light_aqua = #427b58
+color_light_orange = #af3a03
+color_light_red = #9d0006
+color_light_gray = #928374
+
+color_nimbus_green = #B2DBB1
+color_nimbus_brown = #7F7A72

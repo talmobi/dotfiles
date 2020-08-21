@@ -719,6 +719,9 @@ nnoremap snipi :-1read $HOME/.vim/snippets/gitignore<CR>
 " sample env snippet
 nnoremap snipn :-1read $HOME/.vim/snippets/env.js<CR>
 
+" sample color snippet
+nnoremap snipc :-1read /Users/mollie/.vim/snippets/colors.txt<CR>
+
 " md means markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
