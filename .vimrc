@@ -716,7 +716,7 @@ nnoremap snips m':-1read $HOME/.vim/snippets/npm-scripts.txt<CR>''/\$NAME<CR>
 " sample .gitignore snippet
 nnoremap snipi :-1read $HOME/.vim/snippets/gitignore<CR>
 
-" sample .gitignore snippet
+" sample env snippet
 nnoremap snipn :-1read $HOME/.vim/snippets/env.js<CR>
 
 " md means markdown
