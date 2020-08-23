@@ -1,3 +1,5 @@
+:.w !bash -- vim execute line in terminal/shell/bash
+
 :set spell, :set nospell, ]s [s z= zg (add) zw (wrong) -- vim spell
 
 git reset --soft HEAD~1   --   git undo reset revert last previous commit
