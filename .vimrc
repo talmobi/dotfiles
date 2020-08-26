@@ -164,9 +164,6 @@ hi def link stylusProperty cssVisualProp
 " set nowrap
 set wrap
 
-set tabstop=2
-set backspace=indent,eol,start
-
 set scrolloff=6
 set sidescrolloff=5 " was 7
 set sidescroll=4 " was 5
@@ -188,17 +185,22 @@ set cindent
 
 " set isk+=- " consider words as part of -
 
-set number
-set shiftwidth=2
-set shiftround
+set number " show column number on left side
+
 set showmatch
 set ignorecase
 set smartcase
 set encoding=utf-8
 "set ++enc=utf-8 " override fileencoding to utf-8
 
-set smarttab
-set expandtab
+set shiftround
+
+set nosmarttab
+set noexpandtab
+
+set shiftwidth=0 " spaces used when indenting and shifting <<, >> if 0 used tabs
+set tabstop=3 " how many spaces a tab should look like
+set backspace=indent,eol,start
 
 set splitbelow
 set splitright
