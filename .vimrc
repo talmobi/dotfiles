@@ -199,7 +199,7 @@ set nosmarttab
 set noexpandtab
 
 set shiftwidth=0 " spaces used when indenting and shifting <<, >> if 0 used tabs
-set tabstop=3 " how many spaces a tab should look like
+set tabstop=4 " how many spaces a tab should look like
 set backspace=indent,eol,start
 
 set splitbelow
