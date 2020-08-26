@@ -260,6 +260,11 @@ nnoremap zO :call SaveScreenOpenFoldLoadScreen(1)<cr>
 
 nnoremap zc :set foldmethod=indent<cr>zc
 
+function! Utf8 ()
+  :e ++enc=utf-8 " override fileencoding to utf-8
+endfunction
+command! -complete=command Utf8 call Utf8()
+
 function! SaveScreenOpenFoldLoadScreen (recursive)
   let w = winsaveview()
 
