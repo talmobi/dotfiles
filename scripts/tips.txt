@@ -1,3 +1,5 @@
+pgref -f match    pkill -f match  -- find test and kill exit process pids -9
+
 :.w !bash -- vim execute line in terminal/shell/bash
 
 :set spell, :set nospell, ]s [s z= zg (add) zw (wrong) -- vim spell
