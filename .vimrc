@@ -629,8 +629,8 @@ endfunction
 command! -nargs=+ -complete=shellcmd Q call ShellCommandToQuickfix(<q-args>)
 
 " a few common npm scripts to run
-command! Lint :call ShellCommandToQuickfix("npm run lint")
-command! Fixlint :call ShellCommandToQuickfix("npm run fixlint")
+command! Lint :call ShellCommandToQuickfix("npm run lint --silent")
+command! Fixlint :call ShellCommandToQuickfix("npm run fixlint --silent")
 
 command! Scratch :new | setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
 command! ScratchThis :setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
