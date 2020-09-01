@@ -1,8 +1,12 @@
-[![npm](https://img.shields.io/npm/v/$NAME.svg?maxAge=3600&style=flat-square)](https://www.npmjs.com/package/$NAME)
-[![npm](https://img.shields.io/npm/l/$NAME.svg?maxAge=3600&style=flat-square)](https://github.com/talmobi/$NAME/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/v/$NAME.svg?maxAge=3600)](https://www.npmjs.com/package/$NAME)
+[![npm](https://img.shields.io/npm/dm/$NAME.svg?maxAge=3600)](https://www.npmjs.com/package/$NAME)
+[![npm](https://img.shields.io/npm/l/$NAME.svg?maxAge=3600)](https://www.npmjs.com/package/$NAME)
+![mac](https://github.com/talmobi/$NAME/workflows/mac/badge.svg)
+![ubuntu](https://github.com/talmobi/$NAME/workflows/ubuntu/badge.svg)
+![windows](https://github.com/talmobi/$NAME/workflows/windows/badge.svg)
 
-#  屋 $NAME
-simple wildcard pub/sub store
+# 名前　$NAME
+Description.
 
 ## Easy to use
 
@@ -26,7 +30,7 @@ simple wildcard pub/sub store
 
 ## How
 
-## Alternatives
+## Similar
 [alt1](https://github.com/talmobi)
 
 [alt2](https://github.com/talmobi)
