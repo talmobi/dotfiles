@@ -186,6 +186,7 @@ set cindent
 " set isk+=- " consider words as part of -
 
 set number " show column number on left side
+set relativenumber " show relative numbers to current line
 
 set showmatch
 set ignorecase
