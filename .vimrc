@@ -67,7 +67,7 @@ if !exists("g:init_path")
 endif
 
 " cheap, non-fuzzy, built-in CtrlP
-nnoremap <c-p> :call feedkeys(":e " . g:init_path . "/" . "\<c-d>" ."*")<cr>
+nnoremap <c-p> :call feedkeys(":n " . g:init_path . "/" . "\<c-d>" ."*")<cr>
 
 " quick arga and args ( pretty rarely used, maybe not necessary.. )
 " nnoremap <c-a> :call feedkeys(":arga " . g:init_path . "/" . "\<c-d>" ."*")<cr>
