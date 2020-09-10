@@ -187,6 +187,8 @@ set cindent
 
 set number " show column number on left side
 set relativenumber " show relative numbers to current line
+autocmd FileType qf,help setlocal relativenumber
+autocmd FileType qf,help setlocal cursorline
 
 set showmatch
 set ignorecase
