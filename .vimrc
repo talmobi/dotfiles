@@ -189,6 +189,7 @@ set number " show column number on left side
 set relativenumber " show relative numbers to current line
 autocmd FileType qf,help setlocal relativenumber
 autocmd FileType qf,help setlocal cursorline
+autocmd FileType qf,help setlocal nowinfixheight
 
 " turn off cursorline because it makes scrolling slow
 " set nocursorline " slowness should have been fixed
