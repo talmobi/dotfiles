@@ -541,10 +541,13 @@ nmap ga <Plug>(EasyAlign)
 
 " flash the cursorline
 function! FlashCursor()
-  set cursorline
+  let t = &cursorline
+  let &cursorline = !t
+  " set cursorline!
   redraw
   sleep 175m
-  set nocursorline
+  let &cursorline = t
+  " set cursorline!
 endfunction
 
 " au VimEnter,WinEnter,BufWinEnter * call FlashCursor()
