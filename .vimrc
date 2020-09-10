@@ -333,7 +333,7 @@ set showmode
 " sudo write shorthand
 cmap w!! w !sudo tee % >/dev/null
 
-nmap <silent> ,, :nohlsearch<CR>:call FlashCursor()<CR>
+nmap <silent> mm :nohlsearch<CR>:call FlashCursor()<CR>
 
 " disable default useless and annoying ctrl-w_c ( use :close or :q instead )
 noremap <c-w>c <nop>
