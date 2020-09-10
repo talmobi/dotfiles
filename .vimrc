@@ -190,6 +190,10 @@ set relativenumber " show relative numbers to current line
 autocmd FileType qf,help setlocal relativenumber
 autocmd FileType qf,help setlocal cursorline
 
+" turn off cursorline because it makes scrolling slow
+" set nocursorline " slowness should have been fixed
+set cursorline
+
 set showmatch
 set ignorecase
 set smartcase
@@ -542,9 +546,6 @@ function! FlashCursor()
   sleep 175m
   set nocursorline
 endfunction
-
-" turn off cursorline because it makes scrolling slow
-set nocursorline
 
 " au VimEnter,WinEnter,BufWinEnter * call FlashCursor()
 
