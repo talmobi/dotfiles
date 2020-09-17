@@ -17,3 +17,4 @@ decodeURIComponent
 __dirname
 __filename
 process
+XMLHttpRequest
