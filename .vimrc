@@ -211,6 +211,7 @@ set tabstop=4 " how many spaces a tab should look like
 
 set expandtab
 set shiftwidth=2
+set tabstop=2
 
 set backspace=indent,eol,start
 
