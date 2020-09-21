@@ -132,6 +132,9 @@ export PATH=$PATH:~/dotfiles/sh
 export PATH=:~/.npm-packages/bin:$PATH
 export PATH=:~/.npm-global/bin:$PATH
 
+# dotfiles scripts path
+export PATH=$PATH:"$(brew --prefix)/bin"
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # enable bash completion in interactive shells
