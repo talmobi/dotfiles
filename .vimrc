@@ -189,7 +189,14 @@ set number " show column number on left side
 set relativenumber " show relative numbers to current line
 autocmd FileType qf,help setlocal relativenumber
 autocmd FileType qf,help setlocal cursorline
-autocmd FileType qf,help setlocal nowinfixheight
+" autocmd FileType qf,help setlocal nowinfixheight
+
+set winheight=8 " sets current window to minimum this when CTRL_W+=
+set winminheight=3
+
+" vim-qf plugin varaible default max height
+let g:qf_max_height = 8
+let g:qf_shorten_path = 3 " vim-qf path shortening length
 
 " turn off cursorline because it makes scrolling slow
 " set nocursorline " slowness should have been fixed
@@ -204,14 +211,12 @@ set encoding=utf-8
 set shiftround
 
 set nosmarttab
-set noexpandtab
 
 set shiftwidth=0 " spaces used when indenting and shifting <<, >> if 0 used tabs
 set tabstop=4 " how many spaces a tab should look like
 
-set expandtab
 set shiftwidth=2
-set tabstop=2
+set expandtab
 
 set backspace=indent,eol,start
 
@@ -474,6 +479,9 @@ Plug 'jparise/vim-graphql'
 
 Plug 'vim-scripts/gitignore'
 
+" https://github.com/dhruvasagar/vim-table-mode
+" Plug 'dhruvasagar/vim-table-mode'
+
 " for :Reject, :Keep and :Restore in quickfix list -- it's amazing
 " ( instead of set modifiable and :v/snip/d etc that breaks the jump marks... )
 Plug 'romainl/vim-qf'
@@ -570,7 +578,7 @@ let g:sparkupNextMapping = '<nop>'
 " config netrw a bit
 autocmd FileType netrw setlocal bufhidden=wipe
 let g:netrw_list_hide= '.*\.swp$'
-let g:netrw_list_hide= netrw_gitignore#Hide().'.*\.swp$'
+" let g:netrw_list_hide= netrw_gitignore#Hide().'.*\.swp$'
 
 " spelling
 " ref: https://github.com/bruno-/dotfiles/blob/master/home/.vimrc
