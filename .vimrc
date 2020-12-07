@@ -213,7 +213,7 @@ set shiftround
 set nosmarttab
 
 set shiftwidth=0 " spaces used when indenting and shifting <<, >> if 0 used tabs
-set tabstop=4 " how many spaces a tab should look like
+set tabstop=2 " how many spaces a tab should look like
 
 set shiftwidth=2
 set expandtab
