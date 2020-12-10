@@ -62,6 +62,8 @@ bitbake cross-localedef-native
 
 # image img slide demo test interview https://jsbin.com/makiyayugo/edit?html,js,output
 
+find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort -u # find all filetypes in directory
+
 while true; do foo; sleep 2; done
 
 while true; do clear; foo; sleep 1; done
