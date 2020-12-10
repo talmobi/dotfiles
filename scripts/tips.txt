@@ -4,7 +4,17 @@ Libuv thread pool UV_THREADPOOL_SIZE https://github.com/nodejs/node/issues/22468
 
 https://29a.ch/photo-forensics/#forensic-magnifier # inspect image png jpg jpeg photo
 
+apt install exiftool # check/inspect image meta data
+
+apt install pngcheck # chekc png data
+
+https://trailofbits.github.io/ctf/forensics/
+
 gem install zsteg # detect steganogrpahy
+
+https://ctf.hacker101.com/ctf
+
+https://play.picoctf.org/
 
 imabi learn japanese https://www.imabi.net
 
