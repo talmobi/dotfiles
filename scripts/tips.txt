@@ -4,6 +4,12 @@ Libuv thread pool UV_THREADPOOL_SIZE https://github.com/nodejs/node/issues/22468
 
 mkdir fs && sudo mount -o loop filename fs # pico mount file
 
+strings -td suspicious.dd.sda1 | grep -i "nothing to see here" # https://teddyheinen.com/picoctf-mini-2020/
+
+dd if=suspicious.dd.sda1 skip=2098176 count=128 iflag=skip_bytes,count_bytes of=slice # pico look at bytes after string in file
+
+xxd slice # pico visualize the slice from dd
+
 https://29a.ch/photo-forensics/#forensic-magnifier # inspect image png jpg jpeg photo
 
 apt install exiftool # check/inspect image meta data
