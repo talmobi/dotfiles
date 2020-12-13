@@ -384,12 +384,11 @@ inoremap ı ∞
 " shortcut to full size splitted window ( use <c-w>= to equalize )
 nnoremap <c-w>z <c-w>_ <c-w>\|
 
+" these shortcuts are unnecessary, keep in comments for historical reasons
 " open ( file / buffer ) in splits
-cnoremap <c-t> \| tab split<cr>gT:b#<cr>gt
-cnoremap <c-x> \| split<cr><c-w><c-p>:b#<cr><c-w><c-p>
-cnoremap <c-s> \| vsplit<cr><c-w><c-p>:b#<cr><c-w><c-p>
-
-
+" cnoremap <c-t> \| tab split<cr>gT:b#<cr>gt
+" cnoremap <c-x> \| split<cr><c-w><c-p>:b#<cr><c-w><c-p>
+" cnoremap <c-g> \| vsplit<cr><c-w><c-p>:b#<cr><c-w><c-p>
 
 " nnoremap <c-p> :e *<c-i>**/
 " nmap <a-l> <Plug>Colorizer
