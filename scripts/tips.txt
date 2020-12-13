@@ -142,6 +142,8 @@ pm2 deploy dev exec "echo foo \> \~/bar.txt"
 
 du -a ~ | sort -n -r | head -n 5 # find sort file size
 
+du --max-depth=1 -h # current directory file sizes
+
 mqtt pub -t 'sensor/get_sensor_config' -m 'foo'
 
 SELECT * FROM "sensor:sensorF" WHERE time > now() - 1w GROUP BY time(1m) fill(none) ORDER BY time desc
