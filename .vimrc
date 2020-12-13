@@ -387,7 +387,9 @@ nnoremap <c-w>z <c-w>_ <c-w>\|
 " open ( file / buffer ) in splits
 cnoremap <c-t> \| tab split<cr>gT:b#<cr>gt
 cnoremap <c-x> \| split<cr><c-w><c-p>:b#<cr><c-w><c-p>
-cnoremap <c-v> \| vsplit<cr><c-w><c-p>:b#<cr><c-w><c-p>
+cnoremap <c-s> \| vsplit<cr><c-w><c-p>:b#<cr><c-w><c-p>
+
+
 
 " nnoremap <c-p> :e *<c-i>**/
 " nmap <a-l> <Plug>Colorizer
