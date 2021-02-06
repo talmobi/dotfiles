@@ -53,8 +53,8 @@ set textwidth=80
 set viewoptions=cursor " only save cursor positions
 augroup AutoFolds
   autocmd!
-  autocmd BufWinLeave *.* silent mkview
-  autocmd BufWinEnter *.* silent loadview
+  autocmd BufWinLeave *.* silent! mkview
+  autocmd BufWinEnter *.* silent! loadview
 augroup END
 
 
