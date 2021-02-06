@@ -2,6 +2,30 @@ Does iojs/nodejs spawn multiple PIDs https://github.com/nodejs/node/issues/2301
 Threadpool meta-issue https://github.com/libuv/libuv/issues/1959
 Libuv thread pool UV_THREADPOOL_SIZE https://github.com/nodejs/node/issues/22468
 
+mkdir fs && sudo mount -o loop filename fs # pico mount file
+
+strings -td suspicious.dd.sda1 | grep -i "nothing to see here" # https://teddyheinen.com/picoctf-mini-2020/
+
+dd if=suspicious.dd.sda1 skip=2098176 count=128 iflag=skip_bytes,count_bytes of=slice # pico look at bytes after string in file
+
+xxd slice # pico visualize the slice from dd
+
+bind 'set bell-style none' # disable terminal error bell sound
+
+https://29a.ch/photo-forensics/#forensic-magnifier # inspect image png jpg jpeg photo
+
+apt install exiftool # check/inspect image meta data
+
+apt install pngcheck # chekc png data
+
+https://trailofbits.github.io/ctf/forensics/
+
+gem install zsteg # detect steganogrpahy
+
+https://ctf.hacker101.com/ctf
+
+https://play.picoctf.org/
+
 imabi learn japanese https://www.imabi.net
 
 pgref -f match    pkill -f match  -- find test and kill exit process pids -9
@@ -117,6 +141,8 @@ pm2 deploy dev # https://keymetrics.io/2014/06/25/ecosystem-json-deploy-and-iter
 pm2 deploy dev exec "echo foo \> \~/bar.txt"
 
 du -a ~ | sort -n -r | head -n 5 # find sort file size
+
+du --max-depth=1 -h # current directory file sizes
 
 mqtt pub -t 'sensor/get_sensor_config' -m 'foo'
 
