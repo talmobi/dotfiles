@@ -431,7 +431,7 @@ function! DeleteHiddenBuffers()
     endfor
 endfunction
 
-nnoremap ss :call ResetView()<cr>:syntax off<cr>:source ~/.vimrc<cr>
+nnoremap gs :call ResetView()<cr>:syntax off<cr>:source ~/.vimrc<cr>
 
 " vnoremap // "ay/<c-r>a<cr>:call RestorePreviousYank()<cr>N
 " vnoremap // :call VisualSearch()<cr>/<c-r>a<cr>N
