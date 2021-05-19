@@ -76,6 +76,8 @@ alias duke100="du -k * | awk '$1 > 100000' | sort -nr"
 # never again...
 alias gti=git
 
+. ~/dotfiles/z.sh
+
 alias h='history'
 export HISTIGNORE='history:clear:h:jap:tips'
 
