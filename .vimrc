@@ -181,6 +181,7 @@ set noautoindent
 set nocopyindent
 set nosmartindent
 
+set autoindent
 set cindent
 
 " set isk+=- " consider words as part of -
