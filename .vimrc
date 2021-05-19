@@ -433,6 +433,33 @@ endfunction
 
 nnoremap gs :call ResetView()<cr>:syntax off<cr>:source ~/.vimrc<cr>
 
+" configure vim-easymotion https://github.com/easymotion/vim-easymotion
+let g:EasyMotion_do_mapping = 0 " Disable default mapping
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+" nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+
+let mapleader = "§"
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+" Use uppercase target labels and type as a lower case
+let g:EasyMotion_use_upper = 1
+let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
+
+ " type `l` and match `l`&`L`
+let g:EasyMotion_smartcase = 1
+
+" Smartsign (type `3` and match `3`&`#`)
+let g:EasyMotion_use_smartsign_us = 1
+
 " vnoremap // "ay/<c-r>a<cr>:call RestorePreviousYank()<cr>N
 " vnoremap // :call VisualSearch()<cr>/<c-r>a<cr>N
 vnoremap // :call VisualSearch()<cr>
@@ -526,6 +553,8 @@ Plug 'rstacruz/sparkup'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+Plug 'easymotion/vim-easymotion'
 
 " https://github.com/prabirshrestha/vim-lsp
 " Plug 'prabirshrestha/async.vim'
