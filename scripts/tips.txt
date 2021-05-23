@@ -10,6 +10,10 @@ dd if=suspicious.dd.sda1 skip=2098176 count=128 iflag=skip_bytes,count_bytes of=
 
 xxd slice # pico visualize the slice from dd
 
+ssh d.jin.fi -l ada -D 12345 # socks proxy through ssh -> also set SOCKS proxy settings from browser
+
+# ssh proxy tunnel help # https://unix.stackexchange.com/a/58756
+
 bind 'set bell-style none' # disable terminal error bell sound
 
 https://29a.ch/photo-forensics/#forensic-magnifier # inspect image png jpg jpeg photo
