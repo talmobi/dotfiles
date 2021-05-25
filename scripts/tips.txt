@@ -104,7 +104,9 @@ docker run --name rudolf-production-app-whale --rm --detach --env MONGO_HOST=doc
 
 docker rm $(docker ps --all -q -f status=exited) # docker remove all exited containers
 
-docker run -d -p 80:80 docker/getting-started
+docker run -d -p 80:80 docker/getting-started # basic run
+
+docker tag docker101tutorial talmobi/docker101tutorial # basic upload
 
 :%!column -t
 
