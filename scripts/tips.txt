@@ -108,6 +108,8 @@ docker run -d -p 80:80 docker/getting-started # basic run
 
 docker tag docker101tutorial talmobi/docker101tutorial # basic upload
 
+docker exec -it 3f6a70a50aa5e5cba11bc9145a64544f73f50405eb1b851b36bf2d4e8de2a6bb /bin/sh # docker shell access ssh
+
 :%!column -t
 
 :%!sed 's/[A-Z]/ &/'
