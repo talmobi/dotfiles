@@ -110,6 +110,12 @@ docker tag docker101tutorial talmobi/docker101tutorial # basic upload
 
 docker exec -it 3f6a70a50aa5e5cba11bc9145a64544f73f50405eb1b851b36bf2d4e8de2a6bb /bin/sh # docker shell access ssh
 
+brew install --cask adoptopenjdk/openjdk/adoptopenjdk8 # install java 8
+
+# https://adoptopenjdk.net # java
+
+# https://stackoverflow.com/questions/24342886/how-to-install-java-8-on-mac # java install mac
+
 :%!column -t
 
 :%!sed 's/[A-Z]/ &/'
