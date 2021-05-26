@@ -95,6 +95,7 @@ nnoremap 2<c-g> m':?\(function\\|async.function\).\w?<cr>:call histdel('search',
 if executable('fzf')
   " fzf fuzzy CtrlP
   nnoremap <c-f> :execute ":Files " . g:init_path<cr>
+  " nnoremap å :execute ":Rg "<cr> " better to type out :Rg
   nnoremap  :execute ":Buffers"<cr>
 endif
 
@@ -444,7 +445,8 @@ let g:EasyMotion_do_mapping = 0 " Disable default mapping
 " or
 " `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.
-nmap s <Plug>(easymotion-overwin-f2)
+nmap s <Plug>(easymotion-s2)
+" nmap s <Plug>(easymotion-overwin-f2)
 
 let mapleader = "§"
 
