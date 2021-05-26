@@ -54,6 +54,10 @@ echo "TERM: $TERM"
 ncolors=$(tput colors)
 echo "ncolors: $ncolors"
 
+if [ -x "$(command -v vim)" ]; then
+  export EDITOR=vim
+fi
+
 alias jap="grep . ~/dotfiles/jap/* | nfzf"
 alias tips="grep . ~/dotfiles/scripts/tips.txt | nfzf"
 
@@ -81,23 +85,6 @@ alias nulab-sso='aws sso login --profile cacoo-develop'
 . ~/dotfiles/z.sh
 
 alias h='history'
-export HISTIGNORE='history:clear:h:jap:tips'
-
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-# also important for tmux @resurrect-save-shell-history to prevent duplicates
-HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=99999
-HISTFILESIZE=99999
-
-if [ -x "$(command -v vim)" ]; then
-  export EDITOR=vim
-fi
 
 # refresh tmux pane in case of tty corruption
 tmux-refresh() {
@@ -106,40 +93,9 @@ tmux-refresh() {
 
 # export PROMPT_COMMAND="history -a; history -n"
 
-# export FZF_DEFAULT_COMMAND='find . | grep --exclude=vim'
-export FZF_DEFAULT_COMMAND='rg --files'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-# https://github.com/junegunn/fzf/issues/816
-export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden --bind '?:toggle-preview' --bind 'ctrl-y:execute(echo -n {2..} | pbcopy)' --header 'Press CTRL-Y to copy command into clipboard'"
-
-# add linuxbrew to env
-test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
-test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-
 function parse_git_branch {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
-
-# prepend android sdk and tools to PATH
-export PATH=$PATH:/Users/mollie/Library/Android/sdk/platform-tools:/Users/mollie/Library/Android/sdk/tools:$PATH
-
-export PATH=$PATH:/Users/mollie/go/bin
-
-# postgres PATH
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
-
-# dotfiles scripts path
-export PATH=$PATH:~/dotfiles/sh
-
-# common npm global packages installation diretory
-# ref: https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
-# ref: https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally
-export PATH=:~/.npm-packages/bin:$PATH
-export PATH=:~/.npm-global/bin:$PATH
-
-# dotfiles scripts path
-export PATH=$PATH:"$(brew --prefix)/bin"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
@@ -212,7 +168,3 @@ fi
 arm() {
   arch -x86_64 $@
 }
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
