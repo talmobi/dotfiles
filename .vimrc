@@ -1,5 +1,7 @@
 set nocompatible
 
+set re=0 " fix https://github.com/vim/vim/issues/7280
+
 filetype on
 filetype plugin on
 filetype indent off
