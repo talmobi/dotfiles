@@ -717,7 +717,7 @@ set grepprg=grep\ --exclude=*node_modules*\ --exclude=*.git/*\ -n
 "  -M 200   : ignore lines longer than 200 column width ( practically ignores minified
 "  files )
 if executable('rg')
-  set grepprg=rg\ --vimgrep\ -S\ -M\ 200
+  set grepprg=rg\ --hidden\ --vimgrep\ -S\ -M\ 400
 endif
 
 set background=dark
