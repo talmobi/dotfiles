@@ -958,12 +958,12 @@ function! ExtraHighlights()
   endif
 endfunction-
 
-call ExtraHighlights()
+" call ExtraHighlights()
 
-augroup AutoExtraHighlights
-  autocmd!
-  autocmd BufNewFile,BufReadPost * call ExtraHighlights()
-augroup END
+" augroup AutoExtraHighlights
+"   autocmd!
+"   autocmd BufNewFile,BufReadPost * call ExtraHighlights()
+" augroup END
 
 " syntax match   jsFuncCall       /\<\K\k*\ze\s*(/
 
