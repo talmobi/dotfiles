@@ -471,7 +471,7 @@ vnoremap // :call VisualSearch()<cr>
 vnoremap Y ygv:call VisualSearch()<cr>
 
 " better default * ( doesn't move cursor at start)
-nnoremap * *<c-o>
+nnoremap * g*<c-o>
 vnoremap * <esc>:call VisualSearch()<cr>
 " have # as alias to * ( instead of default reverse search )
 nnoremap # *<c-o>
