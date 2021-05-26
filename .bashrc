@@ -124,6 +124,8 @@ function parse_git_branch {
 # prepend android sdk and tools to PATH
 export PATH=$PATH:/Users/mollie/Library/Android/sdk/platform-tools:/Users/mollie/Library/Android/sdk/tools:$PATH
 
+export PATH=$PATH:/Users/mollie/go/bin
+
 # postgres PATH
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 
