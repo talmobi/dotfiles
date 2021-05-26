@@ -76,6 +76,8 @@ alias duke100="du -k * | awk '$1 > 100000' | sort -nr"
 # never again...
 alias gti=git
 
+alias nulab-sso='aws sso login --profile cacoo-develop'
+
 . ~/dotfiles/z.sh
 
 alias h='history'
