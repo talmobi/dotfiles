@@ -522,6 +522,10 @@ Plug 'romainl/vim-qf'
 " typescript syntax highlighting
 Plug 'leafgarland/typescript-vim'
 
+Plug 'leafOfTree/vim-vue-plugin'
+
+Plug 'posva/vim-vue'
+
 " Plug 'skammer/vim-css-color'
 " Plug 'ap/vim-css-color'
 
