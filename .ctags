@@ -1,4 +1,4 @@
---regex-C=/$x/x/x/e/ https://github.com/jb55/typescript-ctags/blob/master/.ctags
+--regex-C=/$x/x/x/e/ # https://github.com/jb55/typescript-ctags/blob/master/.ctags
 
 --langdef=typescript
 --langmap=typescript:.ts.tsx
@@ -15,10 +15,13 @@
 --regex-typescript=/^[ \t]*import[ \t]+([a-zA-Z0-9_$]+)/\1/I,imports/
 
 
---regex-C=/$x/x/x/e/ https://github.com/romainl/ctags-patterns-for-javascript
+--regex-C=/$x/x/x/e/ # https://github.com/romainl/ctags-patterns-for-javascript
 
---langmap=javascript:.js.es6.es.jsx.mjs
---langmap=javascript:+.ts,+.tsx,+.vue
+--langmap=javascript:.js.es6.es.jsx.mjs,.ts,.tsx,.vue
+--regex-C=/$x/x/x/e/ # --langmap=javascript:+.ts
+--regex-C=/$x/x/x/e/ # --langmap=javascript:+.tsx
+--langmap=javascript:+.vue
+
 --javascript-kinds=-c-f-m-p-v
 
 --regex-javascript=/^[ \t]*var[ \t]\{1,\}\([A-Za-z0-9_$]\{1,\}\)[ \t]*=[ \t]*\[/\1/A,Array,Arrays/b
@@ -162,7 +165,6 @@
 
 --regex-javascript=/^[ \t]\{1,\}\([A-Za-z0-9_$]\{1,\}\),$/\1/V,Variable,Variables/b
 --regex-javascript=/^[ \t]\{1,\}\([A-Za-z0-9_$]\{1,\}\)$/\1/V,Variable,Variables/b
-
 
 --exclude=.git
 --exclude=node_modules
