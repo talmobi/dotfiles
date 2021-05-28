@@ -556,6 +556,11 @@ Plug 'posva/vim-vue'
 " Plug 'dhruvasagar/vim-table-mode'
 
 
+" disable, use :GitBlame instead and sync the windows manually with :set scrollbind and :syncbind
+" :GitMessage or <leader>gm for git commit history for line under cursor
+" Plug 'rhysd/git-messenger.vim'
+" Plug 'zivyangll/git-blame.vim'
+
 " for :Reject, :Keep and :Restore in quickfix list -- it's amazing
 " ( instead of set modifiable and :v/snip/d etc that breaks the jump marks... )
 Plug 'romainl/vim-qf'
@@ -732,7 +737,7 @@ command! Fixlint :call ShellCommandToQuickfix("npm run fixlint --silent")
 command! Scratch :new | setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
 command! ScratchThis :setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
 
-command! GitBlame :new | setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile | r !git blame #
+command! GitBlame :vnew | setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap scrollbind | 0r !git blame #
 
 " use some other default makeprg based on filetype
 " autocmd Filetype foo setlocal makeprg=/bin/foo
