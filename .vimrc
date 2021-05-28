@@ -267,6 +267,7 @@ set wildmode=list:full
 " skip gitignored files/dirs like node_modules
 set wildignore+=**/.git*
 set wildignore+=**/.svn*
+set wildignore+=tags
 
 " ignore bundle files
 " set wildignore+=*bundle.*
@@ -286,6 +287,7 @@ set wildignore+=*.psd
 set wildignore+=*.mp4,*.avi,*.mpg,*.mpeg
 set wildignore+=*.pyc,*.class
 
+set tags=tags;~ " search tags file upwards all the way to home (~) dir, ref: https://stackoverflow.com/questions/5017500/vim-difficulty-setting-up-ctags-source-in-subdirectories-dont-see-tags-file-i
 set wildignore+=tags
 " set wildignore+=*.tar.*
 " set wildignore+=*.zip
@@ -730,7 +732,7 @@ command! GitBlame :new | setlocal buftype=nofile bufhidden=wipe nobuflisted nosw
 
 " useful grep
 " set grepprg=grep\ -rn
-set grepprg=grep\ --exclude=*node_modules*\ --exclude=*.git/*\ -n
+set grepprg=grep\ --exclude=*node_modules*\ --exclude=*.git/*\ --exclude=tags\ -n
 
 " set ripgrep as default grep program if it exists
 " --vimgrep : every result in its own line
