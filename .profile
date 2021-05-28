@@ -26,6 +26,10 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 $(brew --prefix asdf)/asdf.sh
 
+# ref: https://www.npmjs.com/package/n
+export N_PREFIX=~/.n        # n install path
+export PATH=~/.n/bin:$PATH  # add node versions downloaded by n to PATH
+
 # test -d ~/var/log/ && (
 #     echo "$(date): .profile: $0: $$"; pstree -lp $PPID 2>/dev/null
 #     echo "BASH_SOURCE: ${BASH_SOURCE[*]}"
