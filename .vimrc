@@ -549,6 +549,17 @@ Plug 'leafOfTree/vim-vue-plugin'
 
 Plug 'posva/vim-vue'
 
+
+" Plug 'neoclide/coc.nvim'
+
+" https://github.com/dhruvasagar/vim-table-mode
+" Plug 'dhruvasagar/vim-table-mode'
+
+
+" for :Reject, :Keep and :Restore in quickfix list -- it's amazing
+" ( instead of set modifiable and :v/snip/d etc that breaks the jump marks... )
+Plug 'romainl/vim-qf'
+
 " Plug 'skammer/vim-css-color'
 " Plug 'ap/vim-css-color'
 
