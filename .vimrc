@@ -21,7 +21,16 @@ autocmd FileType json setlocal synmaxcol=299
 set directory^=$HOME/.vim/swaps//
 
 " suffixes to check when using 'gf' ( mnemnomic goto file )
-set suffixesadd+=.js,.jsx,.json,.java,.py
+set suffixesadd+=.js,.jsx,.json,.java,.py,.css,.less,.sass,.styl,.php,.md
+
+" JavaScript
+au BufNewFile,BufRead *.es6 setf javascript
+" TypeScript
+au BufNewFile,BufRead *.tsx setf typescript
+" Markdown
+au BufNewFile,BufRead *.md set filetype=markdown
+" Flow
+au BufNewFile,BufRead *.flow set filetype=javascript
 
 " auto mark files based on type ( holy shit! )
 " https://stackoverflow.com/a/16084326/3496140
@@ -516,12 +525,17 @@ Plug 'jparise/vim-graphql'
 
 Plug 'vim-scripts/gitignore'
 
-" https://github.com/dhruvasagar/vim-table-mode
-" Plug 'dhruvasagar/vim-table-mode'
+Plug 'elzr/vim-json', { 'for': ['json'] }
 
-" for :Reject, :Keep and :Restore in quickfix list -- it's amazing
-" ( instead of set modifiable and :v/snip/d etc that breaks the jump marks... )
-Plug 'romainl/vim-qf'
+Plug 'groenewege/vim-less', { 'for': ['less'] }
+
+Plug 'stephpy/vim-yaml', { 'for': ['yaml'] }
+
+Plug 'stephpy/vim-yaml', { 'for': ['yaml'] }
+
+Plug 'yuezk/vim-js', { 'for': ['javascript', 'javascript.jsx'] }
+
+Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx'] }
 
 " typescript syntax highlighting
 Plug 'leafgarland/typescript-vim'
@@ -602,6 +616,9 @@ function! FlashCursor()
   let &cursorline = t
   " set cursorline!
 endfunction
+
+" JSX
+let g:jsx_ext_required = 0
 
 " au VimEnter,WinEnter,BufWinEnter * call FlashCursor()
 
