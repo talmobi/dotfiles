@@ -116,8 +116,8 @@ command! -bang -nargs=* PRg
 nnoremap <c-k> :e <c-d>*
 cnoremap <c-o> */*<c-d>
 
-autocmd BufEnter * silent! cd %:h
-" set autochdir
+" autocmd BufEnter * silent! cd %:h
+set autochdir
 
 " cheap, non-fuzzy, built-in CtrlP
 " nnoremap <c-f> :call feedkeys(":Files " . g:init_path . "/")<cr>
