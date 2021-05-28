@@ -357,6 +357,8 @@ set listchars=tab:»·,trail:·,eol:¬,extends:>,precedes:<,nbsp:¶
 set pastetoggle=<F2>
 set showmode
 
+autocmd InsertLeave * set nopaste
+
 " sudo write shorthand
 cmap w!! w !sudo tee % >/dev/null
 
@@ -847,7 +849,7 @@ function! HighlightGlobal()
     hi def link lineURL        Number
     hi def link nonalphabet   Conditional
   endif
-endfunction-
+endfunction
 
 highlight StatusLineFileName ctermfg=black ctermbg=gray
 highlight StatusLineModifiedFlag ctermfg=NONE ctermbg=red
@@ -980,7 +982,7 @@ function! ExtraHighlights()
     hi link javaScriptTemplateDelim          javaScriptBraces
     hi link javaScriptTemplateString         String
   endif
-endfunction-
+endfunction
 
 " call ExtraHighlights()
 
