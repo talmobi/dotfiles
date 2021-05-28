@@ -61,6 +61,14 @@ if [ -x "$(command -v vim)" ]; then
   export EDITOR=vim
 fi
 
+function git-ctags () {
+  cwd=$(pwd)
+  project_path=$(git rev-parse --show-toplevel)
+  cd $project_path
+  ctags -R .
+  cd $cwd
+}
+
 alias jap="grep . ~/dotfiles/jap/* | nfzf"
 alias tips="grep . ~/dotfiles/scripts/tips.txt | nfzf"
 
