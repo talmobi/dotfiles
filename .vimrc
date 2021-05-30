@@ -355,9 +355,7 @@ set list
 set listchars=tab:»·,trail:·,eol:¬,extends:>,precedes:<,nbsp:¶
 
 set pastetoggle=<F2>
-set showmode
-
-autocmd InsertLeave * set nopaste
+set showmode " show paste mode
 
 " sudo write shorthand
 cmap w!! w !sudo tee % >/dev/null
