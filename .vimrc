@@ -673,7 +673,11 @@ let g:netrw_list_hide= '.*\.swp$'
 set spelllang=en_us                      " spelling options
 set spellfile=~/.vim/spell/en.utf-8.add  " spell files added with `zg`
 
-" load dictionaries based on filetype
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""" load dictionaries based on filetype
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" load dictionary for javascript
 autocmd FileType javascript setlocal dictionary+=~/.vim/words/Element.props.txt
 autocmd FileType javascript setlocal dictionary+=~/.vim/words/Element.methods.txt
 autocmd FileType javascript setlocal dictionary+=~/.vim/words/HTMLElement.props.txt
@@ -685,6 +689,19 @@ autocmd FileType javascript setlocal dictionary+=~/.vim/words/HTMLCanvasElement.
 autocmd FileType javascript setlocal dictionary+=~/.vim/words/HTMLCanvasElement.methods.txt
 autocmd FileType javascript setlocal dictionary+=~/.vim/words/CanvasRenderingContext2D.props.txt
 autocmd FileType javascript setlocal dictionary+=~/.vim/words/CanvasRenderingContext2D.methods.txt
+
+" load dictionary for typescript
+autocmd FileType typescript setlocal dictionary+=~/.vim/words/Element.props.txt
+autocmd FileType typescript setlocal dictionary+=~/.vim/words/Element.methods.txt
+autocmd FileType typescript setlocal dictionary+=~/.vim/words/HTMLElement.props.txt
+autocmd FileType typescript setlocal dictionary+=~/.vim/words/HTMLElement.methods.txt
+autocmd FileType typescript setlocal dictionary+=~/.vim/words/EventTarget.methods.txt
+autocmd FileType typescript setlocal dictionary+=~/.vim/words/Node.props.txt
+autocmd FileType typescript setlocal dictionary+=~/.vim/words/Node.methods.txt
+autocmd FileType typescript setlocal dictionary+=~/.vim/words/HTMLCanvasElement.props.txt
+autocmd FileType typescript setlocal dictionary+=~/.vim/words/HTMLCanvasElement.methods.txt
+autocmd FileType typescript setlocal dictionary+=~/.vim/words/CanvasRenderingContext2D.props.txt
+autocmd FileType typescript setlocal dictionary+=~/.vim/words/CanvasRenderingContext2D.methods.txt
 
 " add some general words to default dict
 set complete+=k~/.vim/words/global.txt
@@ -711,6 +728,7 @@ let g:defaultmakeprg=&makeprg
 
 " use 'npm run lint' as is common in javascript nodejs projects as default
 autocmd FileType javascript setlocal makeprg=npm\ run\ lint\ --silent
+autocmd FileType typescript setlocal makeprg=npm\ run\ lint\ --silent
 
 " run a shell command and grab its output into vim's quickfix
 " ( by temporarily setting makeprg and calling make, and then
@@ -840,9 +858,6 @@ nnoremap snipc :-1read /Users/mollie/.vim/snippets/colors.txt<CR>
 
 " sample unref'ed spawn snippet
 nnoremap snipspawn :-1read /Users/mollie/.vim/snippets/spawn.js<CR>
-
-" md means markdown
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 
 " Generic highlighting
