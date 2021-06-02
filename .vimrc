@@ -9,7 +9,7 @@ filetype indent off
 " hidden buffers
 set hidden
 
-set synmaxcol=199 "syntax anti-choke!
+set synmaxcol=299 "syntax anti-choke!
 
 " more color highlighting for *.json files
 autocmd FileType json setlocal synmaxcol=299
