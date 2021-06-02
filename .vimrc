@@ -21,7 +21,7 @@ autocmd FileType json setlocal synmaxcol=299
 set directory^=$HOME/.vim/swaps//
 
 " suffixes to check when using 'gf' ( mnemnomic goto file )
-set suffixesadd+=.js,.jsx,.json,.java,.py,.css,.less,.sass,.styl,.php,.md
+set suffixesadd+=.js,.jsx,.ts,.tsx,.vue,.json,.java,.py,.css,.less,.sass,.styl,.php,.md
 
 " JavaScript
 au BufNewFile,BufRead *.es6 setf javascript
