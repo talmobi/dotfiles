@@ -181,7 +181,7 @@ hi def link stylusProperty cssVisualProp
 " set nowrap
 set wrap
 
-set scrolloff=6
+set scrolloff=4
 set sidescrolloff=5 " was 7
 set sidescroll=4 " was 5
 
