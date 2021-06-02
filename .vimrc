@@ -376,6 +376,12 @@ xnoremap gU <nop>
 nnoremap gu <nop>
 nnoremap gU <nop>
 
+let mapleader = "§"
+
+" add lowercase/uppercase transform to leader
+noremap <leader>U gU
+noremap <leader>u gu
+
 " 日本語のドット置いて。。。 japanese dot
 nnoremap <a-o> A・<ESC>$
 inoremap <a-o> ・
