@@ -565,6 +565,9 @@ Plug 'posva/vim-vue'
 " Plug 'rhysd/git-messenger.vim'
 " Plug 'zivyangll/git-blame.vim'
 
+" TODO try fugitive
+Plug 'tpope/vim-fugitive'
+
 " for :Reject, :Keep and :Restore in quickfix list -- it's amazing
 " ( instead of set modifiable and :v/snip/d etc that breaks the jump marks... )
 Plug 'romainl/vim-qf'
