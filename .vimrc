@@ -376,6 +376,9 @@ xnoremap gU <nop>
 nnoremap gu <nop>
 nnoremap gU <nop>
 
+noremap ~ <nop>
+noremap g~ <nop>
+
 let mapleader = "§"
 
 " add lowercase/uppercase transform to leader
