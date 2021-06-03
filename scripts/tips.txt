@@ -2,6 +2,16 @@ Does iojs/nodejs spawn multiple PIDs https://github.com/nodejs/node/issues/2301
 Threadpool meta-issue https://github.com/libuv/libuv/issues/1959
 Libuv thread pool UV_THREADPOOL_SIZE https://github.com/nodejs/node/issues/22468
 
+git log --oneline --graph --decorate --all
+
+git log --oneline --graph --decorate
+
+git log origin/release..origin/develop
+
+git rev-list --count origin/release..origin/develop
+
+git rev-list origin/release..origin/develop
+
 mkdir fs && sudo mount -o loop filename fs # pico mount file
 
 strings -td suspicious.dd.sda1 | grep -i "nothing to see here" # https://teddyheinen.com/picoctf-mini-2020/
