@@ -19,6 +19,8 @@ autocmd FileType json setlocal synmaxcol=299
 " The ^= syntax for :set prepends the directory name to the head of the list, so Vim will check that directory first.
 " The // at the end of the directory name tells Vim to use the absolute path to the file to create the swap file so there aren't collisions between files of the same name from different directories.
 set directory^=$HOME/.vim/swaps//
+set undodir^=$HOME/.vim/undodir//
+set undofile
 
 " suffixes to check when using 'gf' ( mnemnomic goto file )
 set suffixesadd+=.js,.jsx,.ts,.tsx,.vue,.json,.java,.py,.css,.less,.sass,.styl,.php,.md
@@ -246,8 +248,8 @@ set ruler
 set hlsearch
 set incsearch
 
-set history=1000
-set undolevels=1000
+set history=500
+set undolevels=500
 
 set title
 
