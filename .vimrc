@@ -558,7 +558,10 @@ Plug 'leafOfTree/vim-vue-plugin'
 
 Plug 'posva/vim-vue'
 
+" typescript TSServer client
+Plug 'quramy/tsuquyomi'
 
+" another TSServer client
 " Plug 'neoclide/coc.nvim'
 
 " https://github.com/dhruvasagar/vim-table-mode
@@ -623,6 +626,9 @@ Plug 'easymotion/vim-easymotion'
 " Plug 'natebosch/vim-lsc'
 
 call plug#end()
+
+" auto run typescript check on buffer save
+autocmd BufWritePost *.ts,*.tsx TsuAsyncGeterr
 
 " remove '-' from iskeyword if it is set by css plugins
 " ( set by vim-stylus plugin at the moment )
