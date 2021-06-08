@@ -511,6 +511,9 @@ vnoremap # <esc>:call VisualSearch()<cr>
 " type in the <CR> implicitly for you
 nnoremap // 0//<cr>
 
+let g:tsuquyomi_disable_default_mappings = 1
+let g:tsuquyomi_disable_quickfix = 1
+
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 
@@ -628,7 +631,9 @@ Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 " auto run typescript check on buffer save
-autocmd BufWritePost *.ts,*.tsx TsuAsyncGeterr
+autocmd BufWritePost *.ts,*.tsx call tsuquyomi#asyncGeterr()
+
+autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 
 " remove '-' from iskeyword if it is set by css plugins
 " ( set by vim-stylus plugin at the moment )
