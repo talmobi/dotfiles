@@ -12,6 +12,8 @@ git rev-list --count origin/release..origin/develop
 
 git rev-list origin/release..origin/develop
 
+:swap-pane -s n -t m # tmux swap pane positions -- prefix + q to see index
+
 mkdir fs && sudo mount -o loop filename fs # pico mount file
 
 strings -td suspicious.dd.sda1 | grep -i "nothing to see here" # https://teddyheinen.com/picoctf-mini-2020/
