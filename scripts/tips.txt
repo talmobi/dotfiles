@@ -160,6 +160,10 @@ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb # 
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
+const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) # html dom viewport size
+
+  const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight # html dom viewport size
+
 machine github.com login <token> # .netrc ## generate token with https://help.github.com/articles/creating-an-oauth-token-for-command-line-use
 
 machine github.com \n login technoweenie \n password SECRET # .netrc
