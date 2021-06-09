@@ -363,6 +363,7 @@ set showmode " show paste mode
 cmap w!! w !sudo tee % >/dev/null
 
 nmap <silent> mm :nohlsearch<CR>:call FlashCursor()<CR>
+autocmd filetype netrw nmap <buffer> mm :nohlsearch<CR>:call FlashCursor()<CR>
 
 " disable default useless and annoying ctrl-w_c ( use :close or :q instead )
 noremap <c-w>c <nop>
