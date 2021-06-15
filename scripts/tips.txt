@@ -162,7 +162,9 @@ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb # 
 
 const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) # html dom viewport size
 
-  const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight # html dom viewport size
+const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight # html dom viewport size
+
+# css zigzag pattern by Johnny Okafuji https://codepen.io/johnykei/pen/gOmZLNg , fork: https://codepen.io/talmobi/pen/rNyoyRz
 
 machine github.com login <token> # .netrc ## generate token with https://help.github.com/articles/creating-an-oauth-token-for-command-line-use
 
