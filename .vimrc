@@ -60,7 +60,7 @@ set formatoptions= "current, disabled TODO
 " -> this way when organizing long text with gq ( such as
 "  comments and, incidentally this very comment, it will not
 "  wrap or be too long in most situations.
-set textwidth=80
+set textwidth=75
 
 " auto save/load view
 set viewoptions=cursor " only save cursor positions
