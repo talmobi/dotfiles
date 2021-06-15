@@ -141,6 +141,13 @@ set autochdir
 "   endif
 " endfunction
 
+function! SetEslintErrFormat ()
+endfunction
+  " ref: https://vim.fandom.com/wiki/Errorformats#eslint
+  " used with: eslint --format compact
+set errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %trror\ -\ %m
+set errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %tarning\ -\ %m
+
 " sometimes mk/loadview fucks up, so here
 " is a function to reset the view file
 " ( found in ~/.vim/view/ ) of the current file
