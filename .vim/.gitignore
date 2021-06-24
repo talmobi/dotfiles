@@ -2,6 +2,7 @@
 
 view
 plugged
+undodir
 
 **.sw?
 **.DS_STORE

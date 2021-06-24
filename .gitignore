@@ -11,6 +11,7 @@ _oldbundles
 
 # was already ignored in .vim/.gitignore but just to make sure..
 .vim/view/
+.vim/undodir
 
 # tmp logs
 *.log.txt
