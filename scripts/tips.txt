@@ -2,6 +2,8 @@ Does iojs/nodejs spawn multiple PIDs https://github.com/nodejs/node/issues/2301
 Threadpool meta-issue https://github.com/libuv/libuv/issues/1959
 Libuv thread pool UV_THREADPOOL_SIZE https://github.com/nodejs/node/issues/22468
 
+https://jovica.org/posts/vim-edit-multiple-files/ # *do :args :argdo :bufdo
+
 git log --oneline --graph --decorate --all
 
 git log --oneline --graph --decorate
