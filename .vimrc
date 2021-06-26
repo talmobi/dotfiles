@@ -21,6 +21,7 @@ autocmd FileType json setlocal synmaxcol=299
 set directory^=$HOME/.vim/swaps//
 set undodir^=$HOME/.vim/undodir//
 set undofile
+set noswapfile " disable swap files
 
 " suffixes to check when using 'gf' ( mnemnomic goto file )
 set suffixesadd+=.js,.jsx,.ts,.tsx,.vue,.json,.java,.py,.css,.less,.sass,.styl,.php,.md
@@ -64,10 +65,11 @@ set textwidth=75
 
 " auto save/load view
 set viewoptions=cursor " only save cursor positions
+" let auto_fold_blacklist = ['']
 augroup AutoFolds
   autocmd!
-  autocmd BufWinLeave *.* silent! mkview
-  autocmd BufWinEnter *.* silent! loadview
+  autocmd BufWinLeave *.js, *.jsx, *.ts, *.tsx, *.json, *.md, *.txt [^.]\+ silent! mkview
+  autocmd BufWinEnter *.js, *.jsx, *.ts, *.tsx, *.json, *.md, *.txt [^.]\+ silent! loadview
 augroup END
 
 
