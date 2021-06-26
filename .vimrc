@@ -517,6 +517,10 @@ vnoremap # <esc>:call VisualSearch()<cr>
 " vnoremap # <esc>:call VisualSearch()<cr>cgn
 " vnoremap # :call VisualSearch()<cr>*''cgn
 
+let g:dotoo#agenda#files=['~/Dropbox/dotoo-files/**/*.dotoo']
+let g:dotoo#capture#refile=expand('~/Dropbox/dotoo-files/refile.dotoo')
+
+autocmd BufWinEnter *.dotoo set autoread
 
 " type in the <CR> implicitly for you
 nnoremap // 0//<cr>
@@ -531,6 +535,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-journal'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/rainbow_parentheses.vim'
+
+Plug 'dhruvasagar/vim-dotoo'
 
 " indent text object
 " github.com/michaeljsmith/vim-indent-object
