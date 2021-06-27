@@ -564,8 +564,6 @@ Plug 'groenewege/vim-less', { 'for': ['less'] }
 
 Plug 'stephpy/vim-yaml', { 'for': ['yaml'] }
 
-Plug 'stephpy/vim-yaml', { 'for': ['yaml'] }
-
 Plug 'yuezk/vim-js', { 'for': ['javascript', 'javascript.jsx'] }
 
 Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx'] }
@@ -575,7 +573,7 @@ Plug 'leafgarland/typescript-vim'
 
 Plug 'leafOfTree/vim-vue-plugin'
 
-Plug 'posva/vim-vue'
+" Plug 'posva/vim-vue'
 
 " typescript TSServer client
 Plug 'quramy/tsuquyomi'
