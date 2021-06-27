@@ -68,8 +68,8 @@ set viewoptions=cursor " only save cursor positions
 " let auto_fold_blacklist = ['']
 augroup AutoFolds
   autocmd!
-  autocmd BufWinLeave *.js, *.jsx, *.ts, *.tsx, *.json, *.md, *.txt [^.]\+ silent! mkview
-  autocmd BufWinEnter *.js, *.jsx, *.ts, *.tsx, *.json, *.md, *.txt [^.]\+ silent! loadview
+  autocmd BufWinLeave *.js,*.jsx,*.ts,*.tsx,*.json,*.md,*.txt,[^.]\+ silent! mkview!
+  autocmd BufWinEnter *.js,*.jsx,*.ts,*.tsx,*.json,*.md,*.txt,[^.]\+ silent! loadview
 augroup END
 
 
