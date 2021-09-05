@@ -528,6 +528,9 @@ nnoremap // 0//<cr>
 let g:tsuquyomi_disable_default_mappings = 1
 let g:tsuquyomi_disable_quickfix = 1
 
+map ; <Plug>(clever-f-repeat-forward)
+map , <Plug>(clever-f-repeat-back)
+
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 
@@ -634,6 +637,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'easymotion/vim-easymotion'
+
+Plug 'rhysd/clever-f.vim'
 
 " https://github.com/prabirshrestha/vim-lsp
 " Plug 'prabirshrestha/async.vim'
