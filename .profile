@@ -1,5 +1,7 @@
+echo "in profile"
+
 # reset PATH to default
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 # prepend android sdk and tools to PATH
 export PATH=/Users/mollie/Library/Android/sdk/platform-tools:/Users/mollie/Library/Android/sdk/tools:$PATH
@@ -18,7 +20,7 @@ export PATH=~/dotfiles/sh:$PATH
 export PATH=~/.npm-packages/bin:$PATH
 export PATH=~/.npm-global/bin:$PATH
 
-# add linuxbrew to env
+# add linuxbrew to env if exists
 test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
 test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
