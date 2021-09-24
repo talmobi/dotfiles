@@ -4,6 +4,8 @@ Libuv thread pool UV_THREADPOOL_SIZE https://github.com/nodejs/node/issues/22468
 
 https://jovica.org/posts/vim-edit-multiple-files/ # *do :args :argdo :bufdo
 
+npm config get prefix # get npm prefix node_modules global
+
 brew install k9s # debug k8s kubernetes setup dev log
 
 systemctl list-unit-files --type service -all # list services
