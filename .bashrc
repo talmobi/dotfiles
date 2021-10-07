@@ -82,6 +82,7 @@ alias gist="ls -1 ~/dotfiles/gists/* | fzf --exit-0 --bind 'enter:execute(vim --
 alias gitcheckout="git branch | sed s/*//g | sed s/\ //g | nfzf --normal | xargs git checkout"
 alias gitmerge="git branch | sed s/*//g | sed s/\ //g | nfzf --normal | xargs git merge"
 alias gitlog="git log --all --graph --decorate --oneline"
+alias gitrebase="git branch | sed s/*//g | sed s/\ //g | nfzf --normal | xargs git rebase -i"
 
 # https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/
 # get top 10 files/dirs eting disc space
