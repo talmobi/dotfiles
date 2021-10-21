@@ -364,6 +364,7 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 
 set list
 set listchars=tab:»·,trail:·,eol:¬,extends:>,precedes:<,nbsp:¶
+" nbsp:  
 
 set pastetoggle=<F2>
 set showmode " show paste mode
