@@ -112,10 +112,16 @@ if executable('fzf')
   nnoremap  :execute ":Buffers"<cr>
 endif
 
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, {'options': ['--keep-right', '--preview', 'cat {}']}, <bang>0)
+
+
 " customize :Rg  ref: https://github.com/junegunn/fzf.vim/issues/837
 command! -bang -nargs=* PRg
-  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0], 'options': ''}), <bang>0)
   " \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2]}), <bang>0)
+
+  command! -bang -nargs=* TRg call fzf#run({'dir': systemlist('git rev-parse --show-toplevel')[0], 'options': ['--keep-right', '--preview', 'cat {}'], 'sink': 'e'})
 
 nnoremap <c-k> :e <c-d>*
 cnoremap <c-o> */*<c-d>
@@ -575,9 +581,9 @@ Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx'] }
 " typescript syntax highlighting
 Plug 'leafgarland/typescript-vim'
 
-Plug 'leafOfTree/vim-vue-plugin'
+" Plug 'leafOfTree/vim-vue-plugin'
 
-" Plug 'posva/vim-vue'
+Plug 'posva/vim-vue'
 
 " typescript TSServer client
 Plug 'quramy/tsuquyomi'
