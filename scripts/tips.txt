@@ -259,3 +259,9 @@ sudo lsof -i tcp:3000 # process using port macOS El Capitan
 netstat -vanp --tcp | grep 3000 # process using port Centos7
 
 git submodule update --init --recursive
+
+git log --diff-filter=D --summary | sed -n '/^commit/h;/\/some_dir\//{G;s/\ncommit \(.*\)/ \1/gp}' # search git deleted files
+
+git log --diff-filter=D --summary | sed -n -e '/^commit/h' -e '\:/:{' -e G -e 's/\ncommit \(.*\)/ \1/gp' -e } # search git deleted files OSX
+
+new OnboardingUtil(this.$cacooStore.currentOrganizationKey, this.$cacooStore.account.id).set([OnboardingEnum.EDIT_DIAGRAM]) # MainContainer.vue 329
