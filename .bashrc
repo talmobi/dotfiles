@@ -1,6 +1,9 @@
 export LC_ALL=en_US.UTF-8
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
+# disbale ctrl-d for closing windows/sessions accidentally
+set -o ignoreeof
+
 # fix for scp / rsync ( don't do anything if terminal isn't human basically )
 case $- in
   *i*) ;;

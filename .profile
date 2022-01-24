@@ -1,5 +1,8 @@
 echo "in profile"
 
+# disbale ctrl-d for closing windows/sessions accidentally
+set -o ignoreeof
+
 # reset PATH to default
 export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
