@@ -86,6 +86,7 @@ alias gitcheckout="git branch | sed s/*//g | sed s/\ //g | nfzf --normal | xargs
 alias gitmerge="git branch | sed s/*//g | sed s/\ //g | nfzf --normal | xargs git merge"
 alias gitlog="git log --all --graph --decorate --oneline"
 alias gitrebase="git branch | sed s/*//g | sed s/\ //g | nfzf --normal | xargs git rebase -i"
+alias gitdeletedfiles="git log --diff-filter=D --summary | sed -n -e '/^commit/h' -e '\:/:{' -e G -e 's/\ncommit \(.*\)/ \1/gp' -e }"
 
 # https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/
 # get top 10 files/dirs eting disc space
