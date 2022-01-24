@@ -121,6 +121,11 @@ command! -bang -nargs=* PRg
   \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0], 'options': ''}), <bang>0)
   " \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2]}), <bang>0)
 
+" no ignore version of PRg (example search through node_modules which is
+" normally .gitignored
+command! -bang -nargs=* NRg
+  \ call fzf#vim#grep("rg --no-ignore --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0], 'options': ''}), <bang>0)
+
   command! -bang -nargs=* TRg call fzf#run({'dir': systemlist('git rev-parse --show-toplevel')[0], 'options': ['--keep-right', '--preview', 'cat {}'], 'sink': 'e'})
 
 nnoremap <c-k> :e <c-d>*
