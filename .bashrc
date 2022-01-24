@@ -208,7 +208,7 @@ export FZF_DEFAULT_OPTS="--bind ctrl-e:preview-down,ctrl-y:preview-up"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden --bind '?:toggle-preview' --bind 'ctrl-y:execute(echo -n {2..} | pbcopy)' --header 'Press CTRL-Y to copy command into clipboard'"
 
 eval "$(direnv hook bash)"
-$(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
+# $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
 
 # test -d ~/var/log/ && (
 #     echo "$(date): .bashrc: $0: $$"; pstree -lp $PPID 2>/dev/null

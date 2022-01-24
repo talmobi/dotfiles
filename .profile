@@ -29,7 +29,7 @@ test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-$(brew --prefix asdf)/asdf.sh
+# $(brew --prefix asdf)/asdf.sh
 
 # ref: https://www.npmjs.com/package/n
 export N_PREFIX=~/.n        # n install path
