@@ -19,4 +19,4 @@ if [ "$destfile" == "" ]; then
   exit
 fi
 
-ffmpeg -i $sourcefile -acodec libmp3lame -ab 128k "$sourcefile.mp3"
+ffmpeg -i $sourcefile -codec copy -movflags +faststart "$sourcefile.mp4"
