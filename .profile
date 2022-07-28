@@ -1,5 +1,8 @@
 echo "in profile"
 
+# disbale ctrl-d for closing windows/sessions accidentally
+set -o ignoreeof
+
 # reset PATH to default
 export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
@@ -26,7 +29,7 @@ test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-$(brew --prefix asdf)/asdf.sh
+# $(brew --prefix asdf)/asdf.sh
 
 # ref: https://www.npmjs.com/package/n
 export N_PREFIX=~/.n        # n install path

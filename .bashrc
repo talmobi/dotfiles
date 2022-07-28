@@ -1,6 +1,9 @@
 export LC_ALL=en_US.UTF-8
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
+# disbale ctrl-d for closing windows/sessions accidentally
+set -o ignoreeof
+
 # fix for scp / rsync ( don't do anything if terminal isn't human basically )
 case $- in
   *i*) ;;
@@ -83,6 +86,7 @@ alias gitcheckout="git branch | sed s/*//g | sed s/\ //g | nfzf --normal | xargs
 alias gitmerge="git branch | sed s/*//g | sed s/\ //g | nfzf --normal | xargs git merge"
 alias gitlog="git log --all --graph --decorate --oneline"
 alias gitrebase="git branch | sed s/*//g | sed s/\ //g | nfzf --normal | xargs git rebase -i"
+alias gitdeletedfiles="git log --diff-filter=D --summary | sed -n -e '/^commit/h' -e '\:/:{' -e G -e 's/\ncommit \(.*\)/ \1/gp' -e }"
 
 # https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/
 # get top 10 files/dirs eting disc space
@@ -204,7 +208,7 @@ export FZF_DEFAULT_OPTS="--bind ctrl-e:preview-down,ctrl-y:preview-up"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden --bind '?:toggle-preview' --bind 'ctrl-y:execute(echo -n {2..} | pbcopy)' --header 'Press CTRL-Y to copy command into clipboard'"
 
 eval "$(direnv hook bash)"
-$(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
+# $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
 
 # test -d ~/var/log/ && (
 #     echo "$(date): .bashrc: $0: $$"; pstree -lp $PPID 2>/dev/null

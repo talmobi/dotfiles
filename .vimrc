@@ -50,7 +50,7 @@ au BufNewFile,BufRead *.flow set filetype=javascript
 " augroup END
 
 " fold indents
-set foldmethod=indent
+set foldmethod=manual
 
 " format options
 set formatoptions=tcq "vim default
@@ -66,11 +66,11 @@ set textwidth=75
 " auto save/load view
 set viewoptions=cursor " only save cursor positions
 " let auto_fold_blacklist = ['']
-augroup AutoFolds
-  autocmd!
-  autocmd BufWinLeave *.js,*.jsx,*.ts,*.tsx,*.json,*.md,*.txt,[^.]\+ silent! mkview!
-  autocmd BufWinEnter *.js,*.jsx,*.ts,*.tsx,*.json,*.md,*.txt,[^.]\+ silent! loadview
-augroup END
+" augroup AutoFolds
+"   autocmd!
+"   autocmd BufWinLeave *.js,*.jsx,*.ts,*.tsx,*.json,*.md,*.txt,[^.]\+ silent! mkview!
+"   autocmd BufWinEnter *.js,*.jsx,*.ts,*.tsx,*.json,*.md,*.txt,[^.]\+ silent! loadview
+" augroup END
 
 
 set path=.,,
@@ -120,6 +120,11 @@ command! -bang -nargs=? -complete=dir Files
 command! -bang -nargs=* PRg
   \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0], 'options': ''}), <bang>0)
   " \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2]}), <bang>0)
+
+" no ignore version of PRg (example search through node_modules which is
+" normally .gitignored
+command! -bang -nargs=* NRg
+  \ call fzf#vim#grep("rg --no-ignore --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0], 'options': ''}), <bang>0)
 
   command! -bang -nargs=* TRg call fzf#run({'dir': systemlist('git rev-parse --show-toplevel')[0], 'options': ['--keep-right', '--preview', 'cat {}'], 'sink': 'e'})
 
