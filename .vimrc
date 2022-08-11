@@ -50,7 +50,7 @@ au BufNewFile,BufRead *.flow set filetype=javascript
 " augroup END
 
 " fold indents
-set foldmethod=indent
+set foldmethod=manual
 
 " format options
 set formatoptions=tcq "vim default
@@ -66,11 +66,11 @@ set textwidth=75
 " auto save/load view
 set viewoptions=cursor " only save cursor positions
 " let auto_fold_blacklist = ['']
-augroup AutoFolds
-  autocmd!
-  autocmd BufWinLeave *.js,*.jsx,*.ts,*.tsx,*.json,*.md,*.txt,[^.]\+ silent! mkview!
-  autocmd BufWinEnter *.js,*.jsx,*.ts,*.tsx,*.json,*.md,*.txt,[^.]\+ silent! loadview
-augroup END
+" augroup AutoFolds
+"   autocmd!
+"   autocmd BufWinLeave *.js,*.jsx,*.ts,*.tsx,*.json,*.md,*.txt,[^.]\+ silent! mkview!
+"   autocmd BufWinEnter *.js,*.jsx,*.ts,*.tsx,*.json,*.md,*.txt,[^.]\+ silent! loadview
+" augroup END
 
 
 set path=.,,
