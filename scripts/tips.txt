@@ -100,9 +100,11 @@ miteru "**/*.php" "**/*.js" "**/*.css" --server --limit 200
 
 DEST="${FILE#PWD}" # bash string replace substring slice
 
-alias ducks="du -cks * | sort -n | head"
+du -h --max-depth=3 / | sort -h # file size large top max find directory
 
-alias duke100="du -k * | awk '$1 > 100000' | sort -nr"
+alias ducks="du -cks * | sort -n | head" # file size
+
+alias duke100="du -k * | awk '$1 > 100000' | sort -nr" # file size
 
 bitbake -c clean cross-localedef-native
 
