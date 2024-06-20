@@ -35,6 +35,12 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 export N_PREFIX=~/.n        # n install path
 export PATH=~/.n/bin:$PATH  # add node versions downloaded by n to PATH
 
+# capture the output of a command so it can be retrieved with ret
+cap () { tee /tmp/capture.out; }
+
+# return the output of the most recent command that was captured by cap
+ret () { cat /tmp/capture.out; }
+
 # test -d ~/var/log/ && (
 #     echo "$(date): .profile: $0: $$"; pstree -lp $PPID 2>/dev/null
 #     echo "BASH_SOURCE: ${BASH_SOURCE[*]}"
