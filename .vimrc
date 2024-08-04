@@ -194,6 +194,35 @@ function! ResetView ()
   endif
 endfunction
 
+" https://www.reddit.com/r/vim/comments/gbhvlo/what_am_i_missing_by_not_using_fzf/fpa2kys/
+function! SetSanePath() abort
+    " Set a basic &path
+    set path=.,,
+
+    " Check if inside git repository and retrieve current branch
+    let l:branch = system('git rev-parse --abbrev-ref HEAD 2>/dev/null')
+    if l:branch == ''
+        return
+    endif
+
+    " Retrieve list of tracked directories
+    let l:tree_command = "git ls-tree -d --name-only " . l:branch
+    let l:git_directories = systemlist(l:tree_command . ' 2>/dev/null')
+    if empty(l:git_directories)
+        return
+    endif
+
+    " Remove dot directories
+    let l:directories = filter(l:git_directories, { idx, val -> val !~ '^\.' })
+
+    " Add recursive wildcard to each directory
+    let l:final_directories = map(l:directories, { idx, val -> val . '/**' })
+
+    " Add all directories to &path
+    let &path .= join(l:final_directories, ',')
+endfunction
+" call SetSanePath()
+
 command! ResetView :call ResetView()
 
 " essentially adds flex support for vim-stylus plugin, see: https://github.com/wavded/vim-stylus/issues/46
@@ -645,8 +674,11 @@ Plug 'wavded/vim-stylus'
 " e.g. div#root<c-r> completes to <div id="root"></div> and sets cursor position inside the div
 Plug 'rstacruz/sparkup'
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 Plug 'easymotion/vim-easymotion'
 

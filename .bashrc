@@ -22,6 +22,7 @@ esac
 isWindows=1
 
 alias ls='ls -G'
+alias bf='butterfish'
 
 if  [ $machine = Mac ] ; then
   alias ls='ls -G'
@@ -48,6 +49,8 @@ fi
 
 # fix irssi corrupted scrolling
 alias irssi='TERM=screen irssi'
+
+alias nfzf='nfzf --exact --keep-right'
 
 # if on windows
 if [ $isWindows -eq 1 ]; then
@@ -202,12 +205,11 @@ HISTFILESIZE=99999
 # export FZF_DEFAULT_COMMAND='find . | grep --exclude=vim'
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS="--bind ctrl-e:preview-down,ctrl-y:preview-up"
 
 # https://github.com/junegunn/fzf/issues/816
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden --bind '?:toggle-preview' --bind 'ctrl-y:execute(echo -n {2..} | pbcopy)' --header 'Press CTRL-Y to copy command into clipboard'"
 
-eval "$(direnv hook bash)"
+# eval "$(direnv hook bash)"
 # $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
 
 # test -d ~/var/log/ && (
