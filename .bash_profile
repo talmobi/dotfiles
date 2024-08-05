@@ -19,4 +19,6 @@ export PATH="~/npm-global/bin:$PATH"
 export N_PREFIX=~/.n          # n install path
 export PATH=~/.n/bin:$PATH    # add node versions downloaded by n to PATH
 
-. "$HOME/.cargo/env"
+if test -f "$HOME/.cargo/env"; then
+  . "$HOME/.cargo/env"
+fi
