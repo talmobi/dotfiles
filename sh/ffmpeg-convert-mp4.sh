@@ -15,8 +15,9 @@ if [ ! -e "$sourcefile" ]; then
 fi
 
 if [ "$destfile" == "" ]; then
-  echo 'Please provide an output preview file name. (arg 2)'
+  echo 'Please provide an output file name. (arg 2)'
   exit
 fi
 
-ffmpeg -i $sourcefile -codec copy -movflags +faststart "$sourcefile.mp4"
+ffmpeg -i $sourcefile -codec copy -movflags +faststart "$destfile.mp4"
+# ffmpeg -i $sourcefile -c:v libx264 -crf 23 -c:a aac -movflags faststart "$destfile.mp4"

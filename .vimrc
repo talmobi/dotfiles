@@ -231,7 +231,7 @@ autocmd FileType qf,help setlocal relativenumber
 autocmd FileType qf,help setlocal cursorline
 " autocmd FileType qf,help setlocal nowinfixheight
 
-set winheight=8 " sets current window to minimum this when CTRL_W+=
+set winheight=6 " sets current window to minimum this when CTRL_W+=
 set winminheight=3
 
 " vim-qf plugin varaible default max height

@@ -49,6 +49,8 @@ fi
 # fix irssi corrupted scrolling
 alias irssi='TERM=screen irssi'
 
+alias nfzf='nfzf --exact --keep-right'
+
 # if on windows
 if [ $isWindows -eq 1 ]; then
   export TERM=xterm
@@ -113,7 +115,7 @@ function parse_git_branch {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+eval "$(~/.linuxbrew/bin/brew shellenv)"
 
 # enable bash completion in interactive shells
 # if ! shopt -oq posix; then
@@ -199,15 +201,18 @@ shopt -s histappend
 HISTSIZE=99999
 HISTFILESIZE=99999
 
+eval "$(fzf --bash)"
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # export FZF_DEFAULT_COMMAND='find . | grep --exclude=vim'
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS="--bind ctrl-e:preview-down,ctrl-y:preview-up"
+# export FZF_DEFAULT_OPTS="--bind ctrl-e:preview-down,ctrl-y:preview-up"
 
 # https://github.com/junegunn/fzf/issues/816
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden --bind '?:toggle-preview' --bind 'ctrl-y:execute(echo -n {2..} | pbcopy)' --header 'Press CTRL-Y to copy command into clipboard'"
 
-eval "$(direnv hook bash)"
+# eval "$(direnv hook bash)"
 # $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
 
 # test -d ~/var/log/ && (
@@ -216,3 +221,4 @@ eval "$(direnv hook bash)"
 #     echo "FUNCNAME: ${FUNCNAME[*]}"
 #     echo "BASH_LINENO: ${BASH_LINENO[*]}"
 # ) >> ~/var/log/config-scripts.log
+. "$HOME/.cargo/env"

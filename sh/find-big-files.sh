@@ -1,3 +1,3 @@
 #!/bin/bash
 
-find $1 -xdev -type f -size $2 -exec ls -la {} \;
+sudo find / -type f -exec du -h {} + 2>/dev/null | sort -rh | head -n 10
