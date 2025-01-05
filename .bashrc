@@ -22,6 +22,7 @@ esac
 isWindows=1
 
 alias ls='ls -G'
+alias bf='butterfish'
 
 if  [ $machine = Mac ] ; then
   alias ls='ls -G'
