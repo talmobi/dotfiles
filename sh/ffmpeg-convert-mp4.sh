@@ -1,6 +1,7 @@
 
 sourcefile=$1
-destfile=$2
+destination=$2
+suffix=".mp4"
 
 # check that ffmpeg exists
 command -v ffmpeg >/dev/null || {
@@ -14,10 +15,18 @@ if [ ! -e "$sourcefile" ]; then
   exit
 fi
 
-if [ "$destfile" == "" ]; then
+if [ "$destination" == "" ]; then
   echo 'Please provide an output file name. (arg 2)'
   exit
 fi
 
-ffmpeg -i $sourcefile -codec copy -movflags +faststart "$destfile.mp4"
-# ffmpeg -i $sourcefile -c:v libx264 -crf 23 -c:a aac -movflags faststart "$destfile.mp4"
+# Check if destination already ends with the suffix
+if [[ "$destination" == *"$suffix" ]]; then
+  output_filename="$destination"  # Already has suffix, use as-is
+else
+  output_filename="$destination$suffix"  # Append the suffix
+fi
+
+
+# ffmpeg -i $sourcefile -codec copy -movflags +faststart "$destination.mp4"
+ffmpeg -i "$sourcefile" -c:v libx264 -crf 23 -c:a aac -movflags faststart "$output_filename"
