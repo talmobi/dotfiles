@@ -27,6 +27,11 @@ else
   output_filename="$destination$suffix"  # Append the suffix
 fi
 
-
-# ffmpeg -i $sourcefile -codec copy -movflags +faststart "$destination.mp4"
-ffmpeg -i "$sourcefile" -c:v libx264 -preset fast -crf 23 -c:a aac -movflags +faststart "$output_filename"
+ffmpeg -i "$sourcefile" \
+       -c:v libx264 -preset medium -crf 23 -g 60 -keyint_min 30 \
+       -c:a aac -b:a 128k \
+       -f mp4 \
+       -movflags empty_moov+frag_keyframe+default_base_moof+omit_tfhd_offset \
+       -frag_size 512000 \
+       -reset_timestamps 1 \
+       "$output_filename"

@@ -110,6 +110,13 @@ tmux-refresh() {
   stty sane; printf '\033k%s\033\\\033]2;%s\007' "$(basename "$SHELL")" "$(uname -n)"; tput reset; tmux refresh
 }
 
+cd-top-dir() {
+  local dir
+  dir=$(find . -mindepth 1 -maxdepth 1 -type d ! -name '.*' -printf '%f\n' | nfzf)
+  echo "Directory selected: $dir"  # This is what you're already seeing print fine
+  [[ -n "$dir" ]] && cd "$dir" || echo "No directory selected"
+}
+
 # export PROMPT_COMMAND="history -a; history -n"
 
 function parse_git_branch {

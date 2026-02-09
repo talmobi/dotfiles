@@ -22,10 +22,3 @@ export PATH=~/.n/bin:$PATH    # add node versions downloaded by n to PATH
 if test -f "$HOME/.cargo/env"; then
   . "$HOME/.cargo/env"
 fi
-
-cd-top-dir() {
-  local dir
-  dir=$(find . -mindepth 1 -maxdepth 1 -type d ! -name '.*' -printf '%f\n' | nfzf)
-  echo "Directory selected: $dir"  # This is what you're already seeing print fine
-  [[ -n "$dir" ]] && cd "$dir" || echo "No directory selected"
-}
